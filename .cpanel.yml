@@ -1,0 +1,14 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/eqeqmgjz/hoaanhtuc.vn/
+    - /bin/cp -R * $DEPLOYPATH
+    # - /bin/cp /app $DEPLOYPATH
+    # - /bin/cp /bootstrap $DEPLOYPATH
+    # - /bin/cp /config $DEPLOYPATH
+    # - /bin/cp /database $DEPLOYPATH
+    # - /bin/cp /lang $DEPLOYPATH
+    # - /bin/cp /public $DEPLOYPATH
+    # - /bin/cp /resources $DEPLOYPATH
+    # - /bin/cp /routes $DEPLOYPATH
+    # - /bin/cp /tests $DEPLOYPATH
