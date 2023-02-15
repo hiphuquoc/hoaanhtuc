@@ -65,9 +65,12 @@
                     </div>
                     <!-- mô tả sản phẩm -->
                     @if(!empty($item->description))
-                        <div class="productDetailBox_detail_description">
+                        <div id="js_viewMoreContent_content" class="productDetailBox_detail_description">
                             {!! $item->description !!}
                         </div>
+                        {{-- <div id="js_checkViewMore_button" class="viewMoreText" onClick="viewMoreContent(this, 'js_viewMoreContent_content', 'maxLine_5')" style="display:none;">
+                            Xem thêm 
+                        </div> --}}
                     @endif
                     <!-- Gallery Mobile -->
                     <div id="galleryMobile" class="show-990">
@@ -180,6 +183,10 @@
 </div>
 @push('scriptCustom')
     <script type="text/javascript">
+        $(window).ready(function(){
+            checkViewMore('js_viewMoreContent_content');
+        })
+
         $('#galleryMobile .galleryProductBox').slick({
             dots: false,
             arrows: false,
@@ -197,5 +204,27 @@
                 },
             ]
         });
+        function checkViewMore(idContent, limit = 350){
+            const element   = $('#'+idContent);
+            if(element.outerHeight()>limit){
+                element.addClass('customScrollBar-y');
+                element.css('height', limit+'px');
+                // $('#js_checkViewMore_button').css('display', 'block');
+            }
+        }
+        // function viewMoreContent(elementButton, idContent, className){
+        //     const element = $('#'+idContent);
+        //     if(element.hasClass(className)){
+        //         /* đang dóng */
+        //         element.removeClass(className);
+        //         $(elementButton).html('Ẩn bớt');
+        //         $(elementButton).addClass('open');
+        //     }else {
+        //         /* đang mở */
+        //         element.addClass(className);
+        //         $(elementButton).html('Xem thêm');
+        //         $(elementButton).removeClass('open');
+        //     }
+        // }
     </script>
 @endpush

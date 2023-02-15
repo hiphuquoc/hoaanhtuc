@@ -114,6 +114,9 @@
         }
         &_description {
             margin-bottom: 0.5rem;
+            &.customScrollBar-y {
+                padding-right: 0.5rem;
+            }
         }
         &_option {
             // margin-bottom: 0.5rem;
@@ -443,4 +446,21 @@
 
 .productGridBox {
     @include productGrid;
+}
+
+.viewMoreText {
+    cursor: pointer;
+    text-align: right;
+    color: $colorLv1;
+    &:after {
+        content: '\f107';
+        @include fontAwesome;
+        margin-left: 0.25rem;
+        font-size: 0.9rem;
+    }
+    &.open {
+        &:after {
+            content: '\f106';
+        }
+    }
 }
