@@ -1,0 +1,83 @@
+.sidebarSectionBox {
+    &:not(:first-child){
+        margin-top: 1.5rem;
+    }
+    &_title {
+        // font-size: 1.2rem;
+        // font-family: $fontTitle;
+        // font-weight: 700;
+        // margin-bottom: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h2, h3 {
+            font-size: 1.25rem;
+            font-family: $fontTitle;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+        // &:after {
+        //     content: '\f106';
+        //     @include fontAwesome;
+        //     font-size: 1rem;
+        //     color: $colorDesc;
+        // }
+    }
+    &_box {
+        font-size: 1rem;
+        border: 1px solid $bg-04;
+        border-radius: 5px;
+        &_item {
+            display: flex;
+            padding: 0.65rem;
+            align-items: center;
+            &:not(:first-child){
+                border-top: 1px dashed $bg-05;
+            }
+            &:hover {
+                background: $bg-03;
+            }
+            &.children {
+                i {
+                    margin-left: 0.5rem;
+                    font-size: 0.4rem;
+                }
+            }
+            h2, h3, h4 {
+                font-size: 1rem;
+                font-weight: 500;
+                color: $colorTitle;
+                margin: 0;
+            }
+            i {
+                width: 25px;
+                margin-right: 0.5rem;
+                font-size: 0.8rem;
+                color: $colorLv1;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.sidebarListBox {
+    &_item {
+        display: flex;
+        color: $colorText;
+        &:not(:first-child){
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed $bg-05;
+        }
+        &:before {
+            content: '\f105';
+            @include fontAwesome;
+            font-size: 0.8rem;
+            color: $bg-06;
+            margin-right: 0.5rem;
+        }
+        &.selected {
+            color: $colorLv2;
+        }
+    }
+}
