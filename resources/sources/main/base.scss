@@ -663,18 +663,29 @@ label {
 }
 
 .badge {
-  font-size: 0.95rem;
   display: inline-block;
-  padding: 0.25rem 0.5rem;
+  padding: 0.15rem 0.5rem;
   border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.925rem;
   &:not(:last-child){
-    margin-right: 0.5rem;
+    margin-right: 0.25rem;
     margin-bottom: 0.5rem;
   }
   &Secondary {
     background: $bg-02;
+    &.selected {
+        background: $bg-07;
+        color: #fff;
+        &:hover {
+            background: $bg-07;
+            color: #fff;
+        }
+    }
+    &:hover {
+        background: $colorSecondary-01;
+    }
   }
-
 }
 
 .maxLine_1, .maxLine_2, .maxLine_3, .maxLine_4, .maxLine_5 {

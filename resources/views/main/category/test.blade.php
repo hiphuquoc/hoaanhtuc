@@ -20,8 +20,6 @@
                         </div>
                     </div>
                 </div>
-
-                
                 <div class="productGridFlexBox">
                     @include('main.template.productGrid', compact('products'))
                 </div>
@@ -29,7 +27,10 @@
             </div>
             <div class="categoryWithFilterBox_filter">
 
-                @include('main.template.filter')
+                @include('main.template.filter', [
+                    'categoryChilds'    => $item->childs,
+                    'brands'            => $brands
+                ])
 
             </div>
         </div>

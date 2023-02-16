@@ -1,6 +1,7 @@
 @import 'base.scss';
 @import 'menu.scss';
 @import 'sidebar.scss';
+@import 'category.scss';
 @import 'product.scss';
 @import 'categoryBlog.scss';
 @import 'blog.scss';
@@ -397,7 +398,7 @@
         width: 100%;
     }
     &_filter {
-        flex: 0 0 220px;
+        flex: 0 0 250px;
         margin-left: 2.5rem;
     }
     @media(max-width: 767px){
@@ -422,7 +423,7 @@
             &:after {
                 content: '\f106';
                 @include fontAwesome;
-                
+                font-size: 1rem;
                 color: $colorDesc;
             }
         }

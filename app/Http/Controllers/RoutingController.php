@@ -78,11 +78,25 @@ class RoutingController extends Controller{
                                         ->whereHas('categories.infoCategory', function($query) use($arrayCategory){
                                             $query->whereIn('id', $arrayCategory);
                                         })
-                                        ->with('seo', 'files', 'prices', 'contents', 'categories', 'brand')
+                                        ->with('seo', 'files', 'prices', 'contents', 'categories', 'brand.seo')
                                         ->get();
+                    /* lấy thông tin category dưới 1 cấp => gộp vào collection */
+                    $idSeo          = $item->seo->id;
+                    $item->childs   = Category::select('*')
+                                        ->whereHas('seo', function($query) use($idSeo){
+                                            $query->where('parent', $idSeo);
+                                        })
+                                        ->get();
+                    /* lấy thông tin nghành hàng của tất cả sản phẩm trong category */
+                    $brands             = new \Illuminate\Database\Eloquent\Collection;
+                    foreach($products as $product){
+                        if (!$brands->contains('id', $product->brand->id)){
+                            $brands[]   = $product->brand;
+                        }
+                    }
                     /* breadcrumb */
                     $breadcrumb     = Url::buildBreadcrumb($checkExists->slug_full);
-                    return view('main.category.index', compact('item', 'products', 'breadcrumb'));
+                    return view('main.category.index', compact('item', 'products', 'breadcrumb', 'brands'));
                     break;
                 case 'brand_info':
                     /* thông tin brand */
