@@ -18,17 +18,19 @@
             @php
                 $total = 0;
             @endphp
-            @foreach($products as $product)
-                @php
-                    /* cộng tổng */
-                    $total      += $product->cart['quantity']*$product->price->price;
-                    $idProduct  = $product->id ?? 0;
-                    $keyId      = !empty($product->id)&&!empty($product->price->id) ? $product->id.$product->price->id : null;
-                @endphp
-                <div id="{{ 'js_updateCart_idWrite_'.$keyId }}" class="cartBox_list_item">
-                    @include('main.cart.cartSortRow', compact('product'))
-                </div>
-            @endforeach
+            <div class="customScrollBar-y" style="max-height:500px;">
+                @foreach($products as $product)
+                    @php
+                        /* cộng tổng */
+                        $total      += $product->cart['quantity']*$product->price->price;
+                        $idProduct  = $product->id ?? 0;
+                        $keyId      = !empty($product->id)&&!empty($product->price->id) ? $product->id.$product->price->id : null;
+                    @endphp
+                    <div id="{{ 'js_updateCart_idWrite_'.$keyId }}" class="cartBox_list_item">
+                        @include('main.cart.cartSortRow', compact('product'))
+                    </div>
+                @endforeach
+            </div>
             <div class="cartBox_list_item total">
                 <div>Tổng cộng:</div> <span id="js_updateCart_total">{!! number_format($total).config('main.currency_unit') !!}</span>
             </div>

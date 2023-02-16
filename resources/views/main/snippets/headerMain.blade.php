@@ -113,8 +113,8 @@
                 @endif
                 </div>
                 <div class="headerMain_item_menuRight_item">
-                <img src="{{ Storage::url('images/svg/icon-user.svg') }}" alt="" title="" />
-                <div>Đăng ký phân phối</div>
+                    <img src="{{ Storage::url('images/svg/icon-user.svg') }}" alt="" title="" />
+                    <div>Đăng ký phân phối</div>
                 </div>
             </div>
         </div>

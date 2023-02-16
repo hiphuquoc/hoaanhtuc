@@ -8,6 +8,8 @@
         /* ảnh */
         $image              = config('image.default_square');
         if(!empty($product->price->files[0]->file_path)&&file_exists(Storage::path($product->price->files[0]->file_path))) $image = Storage::url($product->price->files[0]->file_path);
+        /* action */
+        $eventRemoveProductCart = 'removeProductCart("'.$idProduct.'", "'.$idPrice.'", "js_updateCart_idWrite_'.$keyId.'", "js_updateCart_total", "js_updateCart_count")';
     @endphp
     <a href="/{{ $product->seo->slug_full ?? null }}" class="cartBox_list_item_image">
         <img src="{{ $image }}" alt="{{ $title }}" title="{{ $title }}" />
@@ -32,6 +34,9 @@
                     Thành tiền: <span>{!! number_format($product->cart['quantity']*$product->price->price).config('main.currency_unit') !!}</span>
                 </div>
             @endif
+        </div>
+        <div class="cartBox_list_item_content_action" onclick="{{ $eventRemoveProductCart }}">
+            <img src="/storage/images/svg/icon-trash.svg" alt="xóa sản phẩm trong giỏ hàng" title="xóa sản phẩm trong giỏ hàng" />
         </div>
     </div>
 @endif
