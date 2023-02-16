@@ -1,18 +1,18 @@
 <div class="filterBox">
     <!-- danh mục con -->
-    @if(!empty($categoryChilds)&&$categoryChilds->isNotEmpty())
+    @if(!empty($categories)&&$categories->isNotEmpty())
         <div class="filterBox_item">
             <div class="filterBox_item_title">
                 Dòng sản phẩm
             </div>
             <div class="filterBox_item_box">
                 <div class="filterBox_item_box_item">
-                    @if($categoryChilds->count()>1)
+                    @if($categories->count()>1)
                         <span class="badge badgeSecondary selected">Tất cả</span>
                     @endif
-                    @foreach($categoryChilds as $category)
+                    @foreach($categories as $category)
                         @php
-                            $selected = $categoryChilds->count()>1 ? null : 'selected';
+                            $selected = $categories->count()>1 ? null : 'selected';
                         @endphp
                         <span class="badge badgeSecondary {{ $selected }}">{{ $category->name }}</span>
                     @endforeach

@@ -28,8 +28,8 @@
             <div class="categoryWithFilterBox_filter">
 
                 @include('main.template.filter', [
-                    'categoryChilds'    => $item->childs,
-                    'brands'            => $brands ?? null
+                    'categories'        => $categories,
+                    'brands'            => $brands ?? $item
                 ])
 
             </div>

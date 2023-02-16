@@ -82,7 +82,7 @@ class RoutingController extends Controller{
                                         ->get();
                     /* lấy thông tin category dưới 1 cấp => gộp vào collection */
                     $idSeo          = $item->seo->id;
-                    $item->childs   = Category::select('*')
+                    $categories     = Category::select('*')
                                         ->whereHas('seo', function($query) use($idSeo){
                                             $query->where('parent', $idSeo);
                                         })
@@ -96,7 +96,7 @@ class RoutingController extends Controller{
                     }
                     /* breadcrumb */
                     $breadcrumb     = Url::buildBreadcrumb($checkExists->slug_full);
-                    return view('main.category.index', compact('item', 'products', 'breadcrumb', 'brands'));
+                    return view('main.category.index', compact('item', 'products', 'breadcrumb', 'brands', 'categories'));
                     break;
                 case 'brand_info':
                     /* thông tin brand */
@@ -112,9 +112,28 @@ class RoutingController extends Controller{
                                         })
                                         ->with('seo', 'files', 'prices', 'contents', 'categories', 'brand')
                                         ->get();
+                    /* danh sách tất cả category của những sản phẩm trên */
+                    $categories     = new \Illuminate\Database\Eloquent\Collection;
+                    foreach($products as $product){
+                        foreach($product->categories as $category){
+                            if (!$categories->contains('id', $category->infoCategory->id)){
+                                $categories[]   = $category->infoCategory;
+                            }
+                        }
+                    }
+                    /* lấy thêm brands cho filter => duy nhất */
+                    $brands         = new \Illuminate\Database\Eloquent\Collection;
+                    $brands[]       = $item;  
+                    /* lấy thông tin category của các sản phẩm */
+                    $idSeo          = $item->seo->id;
+                    $item->childs   = Category::select('*')
+                                        ->whereHas('seo', function($query) use($idSeo){
+                                            $query->where('parent', $idSeo);
+                                        })
+                                        ->get();
                     /* breadcrumb */
                     $breadcrumb     = Url::buildBreadcrumb($checkExists->slug_full);
-                    return view('main.category.index', compact('item', 'products', 'breadcrumb'));
+                    return view('main.category.index', compact('item', 'products', 'breadcrumb', 'brands', 'categories'));
                     break;
                 case 'page_info':
                     /* thông tin brand */
