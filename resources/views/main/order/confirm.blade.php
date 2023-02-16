@@ -4,8 +4,8 @@
 @endsection
 @section('content')
 <div id="js_printContent">
-<div class="pageCheckout">
-    <div class="pageCheckout_content" style="max-width:660px;">
+<div class="pageCheckout" style="min-height:unset;margin-bottom:5.5rem;">
+    <div class="pageCheckout_content" style="max-width:660px;margin-right:0;">
         <div class="pageCheckout_content_box">
             
             <div class="pageCheckout_content_box_logo">
@@ -14,12 +14,12 @@
             </div>
             <div class="pageCheckout_content_box_body">
                 <!-- lời cảm ơn -->
-                <div class="messageOrderSuccess notPrint">
+                {{-- <div class="messageOrderSuccess notPrint">
                     <div class="messageOrderSuccess_image">
                         <img src="{{ Storage::url('images/icon-order-succes.png') }}" />
                     </div>
                     <div class="messageOrderSuccess_text">Cảm ơn bạn đã đặt hàng!</div>
-                </div>
+                </div> --}}
                 <!-- danh sách sản phẩm -->
                 <div class="confirmSectionBox">
                     <div class="confirmSectionBox_title" style="margin-bottom:1.25rem;">
