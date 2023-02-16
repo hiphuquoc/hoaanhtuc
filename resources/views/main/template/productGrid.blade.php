@@ -1,5 +1,5 @@
 @if(!empty($products)&&$products->isNotEmpty())
-    <div class="productGridBox">
+    <div id="js_filterProduct_show" class="productGridBox">
         @foreach($products as $product)
             @php
                 $allImage           = new \Illuminate\Database\Eloquent\Collection;
@@ -11,8 +11,18 @@
                     }
                 }
                 $productName        = $product->name ?? $product->seo->title ?? null;
+                /* data filter */
+                $dataFilter         = null;
+                $i                  = 0;
+                foreach($product->categories as $category){
+                    if($i!=0) $dataFilter .= ' ';
+                    $dataFilter     .= $category->infoCategory->seo->slug;
+                    ++$i;
+                }
+                /* gộp thêm của brand vào */
+                $dataFilter         .= ' '.$product->brand->seo->slug;
             @endphp 
-            <div class="productGridBox_item">
+            <div class="productGridBox_item" data-filter="{{ $dataFilter }}">
                 @php
                     $i = 0;
                 @endphp

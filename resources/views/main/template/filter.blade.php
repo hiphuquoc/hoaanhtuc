@@ -8,13 +8,13 @@
             <div class="filterBox_item_box">
                 <div class="filterBox_item_box_item">
                     @if($categories->count()>1)
-                        <span class="badge badgeSecondary selected">Tất cả</span>
+                        <span class="badge badgeSecondary selected" onClick="filterProduct(this, 'all')">Tất cả</span>
                     @endif
                     @foreach($categories as $category)
                         @php
                             $selected = $categories->count()>1 ? null : 'selected';
                         @endphp
-                        <span class="badge badgeSecondary {{ $selected }}">{{ $category->name }}</span>
+                        <span class="badge badgeSecondary {{ $selected }}" onClick="filterProduct(this, '{{ $category->seo->slug }}')">{{ $category->name }}</span>
                     @endforeach
                 </div>
             </div>
@@ -29,13 +29,13 @@
             <div class="filterBox_item_box">
                 <div class="filterBox_item_box_item">
                     @if($brands->count()>1)
-                        <span class="badge badgeSecondary selected">Tất cả</span>
+                        <span class="badge badgeSecondary selected" onClick="filterProduct(this, 'all')">Tất cả</span>
                     @endif
                     @foreach($brands as $brand)
                         @php
                             $selected = $brands->count()>1 ? null : 'selected';
                         @endphp
-                        <span class="badge badgeSecondary {{ $selected }}">{{ $brand->name }}</span>
+                        <span class="badge badgeSecondary {{ $selected }}"  onClick="filterProduct(this, '{{ $brand->seo->slug }}')">{{ $brand->name }}</span>
                     @endforeach
                 </div>
             </div>
