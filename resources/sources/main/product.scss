@@ -477,7 +477,6 @@
 }
 .loadingGridBox {
     display: none;
-    display: flex;
     flex-wrap: wrap;
     &_item {
         width: calc(25% - 1rem);
