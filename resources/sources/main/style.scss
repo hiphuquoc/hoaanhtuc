@@ -570,6 +570,16 @@
         display: flex;
         &_item {
             position: relative;
+            overflow: hidden;
+            &:hover {
+                img {
+                    scale: 1.25;
+                    transition: all 0.5s;
+                }
+                h3, h4 {
+                    color: $colorLv4;
+                }
+            }
             img {
                 width: 100%;
                 display: flex;

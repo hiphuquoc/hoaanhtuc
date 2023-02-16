@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Blog;
 use App\Models\Page;
 
 class HomeController extends Controller{
@@ -36,7 +37,13 @@ class HomeController extends Controller{
                                     ->join('seo', 'seo.id', '=', 'category_info.seo_id')
                                     ->orderBy('seo.ordering', 'DESC')
                                     ->get();
-        return view('main.home.index', compact('item', 'categories', 'newProducts', 'hotProducts', 'promotionProducts'));
+        $blogs                  = Blog::select('*')
+                                    ->whereHas('categories.infoCategory.seo', function($query){
+                                        $query->where('slug', 'blog-lam-dep');
+                                    })
+                                    ->with('seo')
+                                    ->get();
+        return view('main.home.index', compact('item', 'categories', 'newProducts', 'hotProducts', 'promotionProducts', 'blogs'));
     }
 
     public static function category(){

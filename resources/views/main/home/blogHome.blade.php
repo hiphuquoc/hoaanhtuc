@@ -1,24 +1,29 @@
-<div class="blogHomeBox">
-    <div class="blogHomeBox_title">
-        <h2>Blog làm đẹp</h2>
-    </div>
-    <div class="blogHomeBox_description">
-        Là phụ nữ, nhất định phải xinh đẹp và tự tin. Hãy cùng Cỏ mềm HomeLab khám phá những bí quyết làm đẹp thú vị nhé!
-    </div>
-    <div class="blogHomeBox_box js_setSlickBlogHomeBox">
-        @for($i=0;$i<10;++$i)
-            <div class="blogHomeBox_box_item">
-                <img src="https://static.comem.vn/uploads/December2022/serum-ha_m.png" alt="" title="" />
-                <div class="blogHomeBox_box_item_content">
-                    <div class="blogHomeBox_box_item_content_title">
-                        <h3 class="maxLine_2">25+ Biểu tượng Giáng sinh cute 99% đã biết "nhưng chưa hiểu</h3>
+@if(!empty($blogs)&&$blogs->isNotEmpty())
+    <div class="blogHomeBox">
+        <div class="blogHomeBox_title">
+            <a href="/blog-lam-dep"><h2>Blog làm đẹp</h2></a>
+        </div>
+        <div class="blogHomeBox_description">
+            Là phụ nữ, nhất định phải xinh đẹp và tự tin. Hãy cùng Cỏ mềm HomeLab khám phá những bí quyết làm đẹp thú vị nhé!
+        </div>
+        <div class="blogHomeBox_box js_setSlickBlogHomeBox">
+            @foreach($blogs as $blog)
+                @php
+                    $title      = $blog->name ?? $blog->seo->title ?? null;
+                @endphp
+                <a href="/{{ $blog->seo->slug_full ?? null }}" class="blogHomeBox_box_item" title="{{ $title }}">
+                    <img src="{{ Storage::url($blog->seo->image_small) }}" alt="{{ $title }}" title="{{ $title }}" />
+                    <div class="blogHomeBox_box_item_content">
+                        <div class="blogHomeBox_box_item_content_title">
+                            <h3 class="maxLine_2">{{ $title }}</h3>
+                        </div>
                     </div>
-                </div>
-                <div class="blogHomeBox_box_item_background"></div>
-            </div>
-        @endfor
+                    <div class="blogHomeBox_box_item_background"></div>
+                </a>
+            @endforeach
+        </div>
     </div>
-</div>
+@endif
 @push('scriptCustom')
     <script type="text/javascript">
         $(document).ready(function(){
