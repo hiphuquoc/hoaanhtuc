@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    @push('scripts-custom')
+    @push('scriptCustom')
         @if($blogRelates->count()>=4)
             <script type="text/javascript">
                 $(document).ready(function(){
