@@ -29,7 +29,7 @@
 
                 @include('main.template.filter', [
                     'categoryChilds'    => $item->childs,
-                    'brands'            => $brands
+                    'brands'            => $brands ?? null
                 ])
 
             </div>
