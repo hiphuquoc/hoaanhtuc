@@ -50,10 +50,10 @@
                     display: flex;
                 }
                 img {
-                    border-radius: 5px; 
-                    height: 150px;
+                    border-radius: 5px;
                     object-fit: cover;
                     width: 100%;
+                    aspect-ratio: 750/460;
                     margin: 0;
                 }
             }
@@ -93,10 +93,8 @@
                 }
             }
         }
-        .slick-arrow {
-            @include slickArrowCircle
-        }
     }
+    @include slickArrowCircle
     // @media (max-width: 1023px){
     //     margin: 1.75rem 0 1rem 0;
     // }

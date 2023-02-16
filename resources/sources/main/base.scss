@@ -65,30 +65,30 @@ $fontTitle  : "SVN-Gilroy Bold", tahoma, serif;
   .slick-slider {
     position: relative;
     button {
-        width: 35px;
-        aspect-ratio: 1/1;
-        border: none;
-        outline: none;
-        background: $bg-07;
-        border-radius: 50%;
-        color: #fff;
-        opacity: 0.4;
-        &:hover {
-          opacity: 0.6;
-        }
+      width: 35px;
+      aspect-ratio: 1/1;
+      border: none;
+      outline: none;
+      background: $bg-08;
+      border-radius: 50%;
+      color: #fff;
+      opacity: 0.3;
+      &:hover {
+        opacity: 0.5;
+      }
     }
     .slick-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 2;
-        cursor: pointer;
-        &.slick-prev {
-            left: 0;
-        }
-        &.slick-next {
-            right: 0;
-        }
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      cursor: pointer;
+      &.slick-prev {
+          left: 0;
+      }
+      &.slick-next {
+          right: 0;
+      }
     }
   }
 }

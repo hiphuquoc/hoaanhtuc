@@ -928,7 +928,7 @@
     display: flex;
     align-items: flex-start;
     &_content {
-        width: 100%;
+        width: calc(100% - 320px - 2.5rem);
         ul {
             margin-left: 1.25rem;
         }
