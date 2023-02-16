@@ -41,7 +41,7 @@
         color: inherit;
     }
     &_list {
-        display: none;
+        // display: none;
         width: 480px;
         background: #fff;
         color: $colorText;
@@ -145,6 +145,7 @@
             }
         }
         .emptyCart {
+            padding: 1rem;
             img {
                 width: 100%;
                 height: 160px;
