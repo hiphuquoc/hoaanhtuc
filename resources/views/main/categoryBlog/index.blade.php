@@ -39,7 +39,7 @@
         <div class="sectionBox">
             <div class="container">
                 <div class="pageContentWithSidebar">
-                    <div id="js_buildTocContentSidebar_element" class="pageContentWithSidebar_box">
+                    <div id="js_buildTocContentSidebar_element" class="pageContentWithSidebar_content">
                         <!-- title -->
                         <h1 class="titlePage">{{ $item->name ?? null }}</h1>
                         <!-- rating -->
