@@ -1,15 +1,17 @@
 
 <div class="hide-766">
+    @php
+        $title = 'slider trang chủ '.config('main.company_name');
+    @endphp
     <div id="js_setSlick" class="sliderBox js_setSlick">
-        <img src="{{ Storage::url('images/slider-1.jpg') }}" alt="" title="" />
-        <img src="{{ Storage::url('images/slider-1.jpg') }}" alt="" title="" />
-        <img src="{{ Storage::url('images/slider-1.jpg') }}" alt="" title="" />
+        <img src="/storage/images/upload/slider-1-blur-type-manager-upload.webp" data-src="/storage/images/upload/slider-1-type-manager-upload.webp" alt="{{ $title }}" title="{{ $title }}" />
+        <img src="/storage/images/upload/slider-1-blur-type-manager-upload.webp" data-src="/storage/images/upload/slider-1-type-manager-upload.webp" alt="{{ $title }}" title="{{ $title }}" />
     </div>
 </div>
 <div class="show-766">
     <div class="sliderBox js_setSlick">
-        <img src="/storage/images/upload/slider_1_mobile-type-manager-upload.webp" alt="" title="" />
-        <img src="/storage/images/upload/slider_1_mobile-type-manager-upload.webp" alt="" title="" />
+        <img src="/storage/images/upload/slider-1-mobile-blur-type-manager-upload.webp" data-src="/storage/images/upload/slider-1-mobile-type-manager-upload.webp" alt="{{ $title }}" title="{{ $title }}" />
+        <img src="/storage/images/upload/slider-1-mobile-blur-type-manager-upload.webp" data-src="/storage/images/upload/slider-1-mobile-type-manager-upload.webp" alt="{{ $title }}" title="{{ $title }}" />
     </div>
 </div>
 @push('scriptCustom')

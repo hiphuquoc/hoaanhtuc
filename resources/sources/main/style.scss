@@ -40,6 +40,9 @@
 }
 .sliderBox {
     position: relative;
+    width: 100%;
+    aspect-ratio: 1920/600;
+    overflow: hidden;
     .slick-dots {
         position: absolute;
         margin: 0;
@@ -98,6 +101,7 @@
         }
     }
     @media(max-width: 766px){
+        aspect-ratio: 750/550;
         .slick-dots {
             bottom: 0;
             li {
