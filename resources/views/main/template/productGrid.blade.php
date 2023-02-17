@@ -11,18 +11,21 @@
                     }
                 }
                 $productName        = $product->name ?? $product->seo->title ?? null;
-                /* data filter */
-                $dataFilter         = null;
+                /* data filter => data-filter này phải gộp theo thứ tự menu filter từ trên xuống của giá trị (để xây dựng partern filter chính xác) 
+                    => filter theo danh mục
+                    => filter theo nhãn hàng
+                    => filter theo giá
+                */
+                $dataFilter         = 'tat-ca-danh-muc tat-ca-nhan-hang';
                 $i                  = 0;
                 foreach($product->categories as $category){
-                    if($i!=0) $dataFilter .= ' ';
-                    $dataFilter     .= $category->infoCategory->seo->slug;
+                    $dataFilter     .= ' '.$category->infoCategory->seo->slug;
                     ++$i;
                 }
                 /* gộp thêm của brand vào */
                 $dataFilter         .= ' '.$product->brand->seo->slug;
             @endphp 
-            <div class="productGridBox_item" data-filter="{{ $dataFilter }}">
+            <div class="productGridBox_item" data-key="{{ $dataFilter }}" data-price="{{ $product->prices[0]->price }}">
                 @php
                     $i = 0;
                 @endphp

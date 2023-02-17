@@ -439,6 +439,7 @@
                     display: flex;
                     align-items: center;
                     position: relative;
+                    cursor: pointer;
                     &:not(:first-child){
                         margin-top: 0.5rem;
                     }
@@ -451,7 +452,7 @@
                         border: 1px solid $colorLv1;
                         display: inline-block;
                     }
-                    &.checked {
+                    &.selected {
                         &:before {
                             background: $colorLv2;
                         }
