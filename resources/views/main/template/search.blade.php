@@ -14,16 +14,16 @@
 </div>
 @push('scriptCustom')
     <script type="text/javascript">
-        // $(document).ready(function() {
-        //     const input         = $('#searchProductAjax_input');
-        //     const resultBox     = $('.searchViewBefore_selectbox');
-        //     input.on('focus', function() {
-        //         resultBox.show();
-        //     });
-        //     input.on('blur', function() {
-        //         resultBox.hide();
-        //     });
-        // });
+        $(document).ready(function() {
+            const input         = $('#searchProductAjax_input');
+            const resultBox     = $('.searchViewBefore_selectbox');
+            input.on('focus', function() {
+                resultBox.show();
+            });
+            input.on('blur', function() {
+                resultBox.hide();
+            });
+        });
         /* tìm kiếm sản phẩm ajax */
         function searchProductAjax(elementButton){
             const valueElement = $(elementButton).val();
