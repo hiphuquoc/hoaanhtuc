@@ -62,7 +62,7 @@
                 <div class="detailPayment" style="margin-top:1rem;">
                     <div class="detailPayment_item">
                         <div>Phí vận chuyển:</div> 
-                        <div>{!! !empty($order->ship_cash) ? $order->ship_cash.config('main.currency_unit') : 0 !!}</div>
+                        <div>{!! !empty($order->ship_cash) ? number_format($order->ship_cash).config('main.currency_unit') : 0 !!}</div>
                     </div>
                     <div class="detailPayment_item">
                         <div>Tổng cộng:</div> 
