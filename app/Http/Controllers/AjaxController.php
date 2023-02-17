@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\RequestInfo;
-use App\Models\Customer;
+use Illuminate\Support\Facades\Storage;
 use App\Models\District;
-use App\Models\ServicePrice;
+use App\Models\Product;
 // use App\Services\BuildInsertUpdateModel;
 
 class AjaxController extends Controller {
@@ -29,6 +28,48 @@ class AjaxController extends Controller {
             foreach($districts as $district){
                 $response   .= '<option value="'.$district->id.'">'.$district->district_name.'</option>';
             }
+        }
+        echo $response;
+    }
+
+    public static function searchProductAjax(Request $request){
+        $products           = Product::select('product_info.*')
+                                ->join('seo', 'seo.id', '=', 'product_info.seo_id')
+                                ->where('name', 'like', '%'.$request->get('key').'%')
+                                ->skip(0)
+                                ->take(6)
+                                ->with('seo')
+                                ->orderBy('seo.ordering', 'DESC')
+                                ->get();
+        $count              = Product::select('product_info.*')
+                                ->where('name', 'like', '%'.$request->get('key').'%')
+                                ->count();
+        $response           = null;
+        if(!empty($products)&&$products->isNotEmpty()){
+            foreach($products as $product){
+                $title      = $product->name ?? $product->seo->title ?? null;
+                $priceOld   = null;
+                if($product->prices[0]->price<$product->prices[0]->price_before_promotion) $priceOld = '<div class="searchViewBefore_selectbox_item_content_price_old">'.number_format($product->prices[0]->price_before_promotion).config('main.currency_unit').'</div>';
+                $response       .= '<a href="/'.$product->seo->slug_full.'" class="searchViewBefore_selectbox_item">
+                                        <div class="searchViewBefore_selectbox_item_image">
+                                            <img src="'.Storage::url($product->prices[0]->files[0]->file_path).'" alt="'.$title.'" title="'.$title.'" />
+                                        </div>
+                                        <div class="searchViewBefore_selectbox_item_content">
+                                            <div class="searchViewBefore_selectbox_item_content_title maxLine_2">
+                                                '.$title.'
+                                            </div>
+                                            <div class="searchViewBefore_selectbox_item_content_price">
+                                                <div>'.number_format($product->prices[0]->price).config('main.currency_unit').'</div>
+                                                '.$priceOld.'
+                                            </div>
+                                        </div>
+                                    </a>';
+            }
+            $response           .= '<a href="#" class="searchViewBefore_selectbox_item">
+                                        Xem tất cả (<span style="font-size:1.1rem;">'.$count.'</span>) <i class="fa-solid fa-angles-right"></i>
+                                    </a>';
+        }else {
+            $response       = '<div class="searchViewBefore_selectbox_item">Không có sản phẩm phù hợp!</div>';
         }
         echo $response;
     }

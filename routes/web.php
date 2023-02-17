@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController as BlogPublicController;
 use App\Http\Controllers\RoutingController;
+use App\Http\Controllers\PageController as PagePublic;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
@@ -38,6 +39,7 @@ Route::get('/', [HomeController::class, 'home'])->name('main.home');
 Route::get('/error', [\App\Http\Controllers\ErrorController::class, 'handle'])->name('error.handle');
 Route::get('/category', [HomeController::class, 'category'])->name('main.category');
 Route::get('/product', [HomeController::class, 'product'])->name('main.product');
+Route::get('/san-pham-khuyen-mai', [PagePublic::class, 'saleOff'])->name('main.saleOff');
 /* blog tổng */
 Route::get('/tin-tuc', [BlogPublicController::class, 'index'])->name('main.blog');
 /* cart */
@@ -58,6 +60,7 @@ Route::get('sitemap/{type}.xml', [SitemapController::class, 'child'])->name('sit
 Route::get('/buildTocContentMain', [HomeController::class, 'buildTocContentMain'])->name('main.buildTocContentMain');
 Route::get('/loadLoading', [AjaxController::class, 'loadLoading'])->name('ajax.loadLoading');
 Route::get('/loadDistrictByIdProvince', [AjaxController::class, 'loadDistrictByIdProvince'])->name('ajax.loadDistrictByIdProvince');
+Route::get('/searchProductAjax', [AjaxController::class, 'searchProductAjax'])->name('ajax.searchProductAjax');
 /* login */
 Route::get('/admin', [LoginController::class, 'loginForm'])->name('admin.loginForm');
 Route::post('/loginAdmin', [LoginController::class, 'loginAdmin'])->name('admin.loginAdmin');

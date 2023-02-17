@@ -60,6 +60,12 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="/san-pham-khuyen-mai" title="Sản phẩm đang khuyến mãi trên {{ config('main.company_name') }}">
+                            <i class="fa-solid fa-bolt"></i>
+                            <div>Sản phẩm khuyến mãi</div>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/tin-tuc" title="Blog {{ config('main.company_name') }}">
                             <i class="fa-regular fa-bookmark"></i>
                             <div>Tin tức</div>

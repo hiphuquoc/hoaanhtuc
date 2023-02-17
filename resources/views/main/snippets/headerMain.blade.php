@@ -15,8 +15,7 @@
                 </a>
             </div>
             <div class="headerMain_item_search">
-                <input type="text" name="search" placeholder="Tìm kiếm" />
-                <button type="submit" class="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                @include('main.template.search')
             </div>
             <!-- để chung thể div để thiết lập last-child -->
             <div> 
@@ -99,7 +98,7 @@
                     </li>
                 {{-- @endif --}}
                 <li>
-                    <a href="#">Sản phẩm khuyến mãi</a>
+                    <a href="/san-pham-khuyen-mai">Sản phẩm khuyến mãi</a>
                 </li>
                 <li>
                     <a href="/tin-tuc">Tin tức</a>

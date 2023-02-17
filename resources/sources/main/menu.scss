@@ -59,24 +59,6 @@
         }
         &_search {
             max-width: 500px;
-            display: flex;
-            button {
-                background: $colorSecondary;
-                padding: 0.5rem 1rem;
-                border-radius: 0 7px 7px 0;
-                &:hover, &:focus {
-                    background: $colorSecondaryHover;
-                }
-                i {
-                    margin: 0;
-                    color: $colorText;
-                    font-size: 1.2rem;
-                }
-            }
-            input {
-                padding: 0.5rem 1rem;
-                border-radius: 7px 0 0 7px;
-            }
             @media(max-width: 1199px){
                 max-width: 400px;
             }
@@ -183,6 +165,83 @@
             img {
                 width: 28px;
                 height: 28px;
+            }
+        }
+    }
+}
+.searchViewBefore {
+    position: relative;
+    &_input {
+        display: flex;
+        button {
+            background: $colorSecondary;
+            padding: 0.5rem 1rem;
+            border-radius: 0 7px 7px 0;
+            &:hover, &:focus {
+                background: $colorSecondaryHover;
+            }
+            i {
+                margin: 0;
+                color: $colorText;
+                font-size: 1.2rem;
+            }
+        }
+        input {
+            padding: 0.5rem 1rem;
+            border-radius: 7px 0 0 7px;
+        }
+    }
+    &_selectbox {
+        // display: none;
+        position: absolute;
+        width: 100%;
+        min-width: 350px;
+        background: #fff;
+        left: 0;
+        top: 40px;
+        z-index: 999;
+        box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+        border-radius: 7px;
+        flex-direction: column;
+        &_item {
+            display: flex;
+            padding: 0.5rem 1rem;
+            font-family: $fontTitle;
+            &_image {
+                flex: 0 0 80px;
+            }
+            &_content {
+                margin-left: 0.75rem;
+                &_title {
+                    line-height: 1.4;
+                    color: $colorText;
+                    margin-bottom: 0.25rem;
+                }
+                &_price {
+                    color: $colorRed;
+                    letter-spacing: 0.5px;
+                    font-size: 1rem;
+                    display: flex;
+                    align-items: flex-end;
+                    &_old {
+                        margin-left: 0.5rem;
+                        font-size: 0.95rem;
+                        color: $bg-07;
+                        text-decoration: line-through;
+                    }
+                }
+            }
+            &:not(:first-child){
+                border-top: 1px dashed $bg-04;
+            }
+            &:last-child {
+                align-items: center;
+                justify-content: center;
+                color: $colorText; 
+                i {
+                    font-size: 0.9rem;
+                    margin-left: 0.5rem;
+                }
             }
         }
     }
