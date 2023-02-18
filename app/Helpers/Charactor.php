@@ -44,4 +44,13 @@ class Charactor {
         return $result;
     }
 
+    public static function convertStringSearch($string){
+        $output     = null;
+        if(!empty($string)){
+            $output = explode(' ', $string);
+            $output = implode('%', $output);
+        }
+        return $output;
+    }
+
 }

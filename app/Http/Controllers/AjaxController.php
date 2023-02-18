@@ -34,17 +34,18 @@ class AjaxController extends Controller {
 
     public static function searchProductAjax(Request $request){
         if(!empty($request->get('key_search'))){
+            $keySearch          = \App\Helpers\Charactor::convertStringSearch($request->get('key_search'));
             $products           = Product::select('product_info.*')
-                                ->join('seo', 'seo.id', '=', 'product_info.seo_id')
-                                ->where('name', 'like', '%'.$request->get('key_search').'%')
-                                ->skip(0)
-                                ->take(6)
-                                ->with('seo')
-                                ->orderBy('seo.ordering', 'DESC')
-                                ->get();
+                ->join('seo', 'seo.id', '=', 'product_info.seo_id')
+                ->where('name', 'like', '%'.$keySearch.'%')
+                ->skip(0)
+                ->take(6)
+                ->with('seo')
+                ->orderBy('seo.ordering', 'DESC')
+                ->get();
             $count              = Product::select('product_info.*')
-                                    ->where('name', 'like', '%'.$request->get('key_search').'%')
-                                    ->count();
+                ->where('name', 'like', '%'.$keySearch.'%')
+                ->count();
             $response           = null;
             if(!empty($products)&&$products->isNotEmpty()){
                 foreach($products as $product){
