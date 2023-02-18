@@ -1,30 +1,24 @@
-<div class="searchViewBefore">
-    <div class="searchViewBefore_input">
-        <input id="searchProductAjax_input" type="text" name="search" placeholder="Tìm kiếm" onkeyup="searchProductAjax(this)" autocomplete="off" />
-        <button type="submit" class="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </div>
-    <div id="js_searchProductAjax_idWrite" class="searchViewBefore_selectbox">
-        <div class="searchViewBefore_selectbox_item">
-            <div>
-                <img src="/storage/images/svg/icon-search-100.png" alt="" title="" style="width:120px;margin:0 auto;" />
-                <div>Kết quả tìm kiếm!</div>
+<form method="get" action="{{ route('main.searchProduct') }}">
+    <div class="searchViewBefore">
+        <div class="searchViewBefore_input">
+            <input id="searchProductAjax_input" type="text" name="key_search" placeholder="Tìm kiếm" value="{{ request('key_search') ?? null }}" onkeyup="searchProductAjax(this)" autocomplete="off" />
+            <button type="submit" class="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div id="js_searchProductAjax_idWrite" class="searchViewBefore_selectbox">
+            <div class="searchViewBefore_selectbox_item">
+                <div>
+                    <img src="/storage/images/svg/icon-search-100.png" alt="" title="" style="width:120px;margin:0 auto;" />
+                    <div>Nhập tìm kiếm của bạn!</div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 @push('scriptCustom')
     <script type="text/javascript">
-        // $(document).ready(function() {
-        //     const input         = $('#searchProductAjax_input');
-        //     const resultBox     = $('.searchViewBefore_selectbox');
-        //     input.on('focus', function() {
-        //         resultBox.show();
-        //     });
-        //     $('.searchViewBefore').mouseout(function() {
-        //         resultBox.hide();
-        //     });
-        // });
-        
+        $(window).ready(function(){
+            searchProductAjax($('#searchProductAjax_input'));
+        })
         /* tìm kiếm sản phẩm ajax */
         function searchProductAjax(elementButton){
             const valueElement = $(elementButton).val();
@@ -33,10 +27,10 @@
                 type        : 'get',
                 dataType    : 'html',
                 data        : {
-                    key     : valueElement
+                    key_search  : valueElement
                 },
                 success     : function(response){
-                    $('#js_searchProductAjax_idWrite').html(response);
+                    if(response!='') $('#js_searchProductAjax_idWrite').html(response);
                 }
             });
         }

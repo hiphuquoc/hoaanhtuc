@@ -39,8 +39,9 @@ Route::get('/', [HomeController::class, 'home'])->name('main.home');
 Route::get('/error', [\App\Http\Controllers\ErrorController::class, 'handle'])->name('error.handle');
 Route::get('/category', [HomeController::class, 'category'])->name('main.category');
 Route::get('/product', [HomeController::class, 'product'])->name('main.product');
+/* page */
 Route::get('/san-pham-khuyen-mai', [PagePublic::class, 'saleOff'])->name('main.saleOff');
-/* blog tổng */
+Route::get('/tim-kiem-san-pham', [PagePublic::class, 'searchProduct'])->name('main.searchProduct');
 Route::get('/tin-tuc', [BlogPublicController::class, 'index'])->name('main.blog');
 /* cart */
 Route::get('/gio-hang', [CartController::class, 'index'])->name('main.cart');

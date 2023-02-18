@@ -964,3 +964,27 @@
         }
     }
 }
+.keySearchBadge {
+    font-size: 0.95rem;
+    margin-left: 1rem;
+    &_item {
+        display: inline-block;
+        border-radius: 5px;
+        padding: 0.35rem 0.5rem 0.35rem 0.75rem;
+        background: $bg-07;
+        &_badge {
+            display: flex;
+            color: #fff;
+            cursor: pointer;
+            &:hover {
+                color: #fff;
+            }
+            &_action {
+                margin-left: 0.5rem;
+            }
+        }
+        &:hover {
+            background: $bg-08;
+        }
+    }
+}

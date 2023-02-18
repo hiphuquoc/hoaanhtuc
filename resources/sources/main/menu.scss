@@ -173,7 +173,7 @@
     position: relative;
     &:hover {
         .searchViewBefore_selectbox {
-            display: flex;
+            height: auto;
         }
     }
     &_input {
@@ -197,10 +197,12 @@
         }
     }
     &_selectbox {
-        display: none;
+        transition: all 0.5s;
         position: absolute;
+        overflow: hidden;
         width: 100%;
         min-width: 350px;
+        height: 0;
         background: #fff;
         left: 0;
         top: 40px;
@@ -248,6 +250,12 @@
                     margin-left: 0.5rem;
                 }
             }
+        }
+    }
+    @media(max-width: 766px){
+        &_selectbox {
+            position: fixed;
+            top: 50px;
         }
     }
 }
