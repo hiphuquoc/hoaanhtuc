@@ -159,10 +159,9 @@
 }
 .pageCartBox {
     display: flex;
-    // align-items: stretch;
     align-items: flex-start;
     &_left {
-        width: 100%;
+        width: calc(100% - 320px - 2rem);
         &_item {
             background: #fff;
             padding: 1rem 1.5rem;
@@ -178,14 +177,12 @@
     }
     ul {
         margin-left: 1.25rem;
-        // li {
-        //     &:not(:first-child){
-        //         margin-top: 
-        //     }
-        // }
     }
     @media(max-width: 1199px){
         flex-direction: column;
+        &_left {
+            width: 100%;
+        }
         &_right {
             flex: 0 0 fit-content;
             margin-left: auto;
