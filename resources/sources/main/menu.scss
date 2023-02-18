@@ -171,6 +171,11 @@
 }
 .searchViewBefore {
     position: relative;
+    &:hover {
+        .searchViewBefore_selectbox {
+            display: flex;
+        }
+    }
     &_input {
         display: flex;
         button {
