@@ -121,6 +121,7 @@
                         registry_email : valueEmail
                     },
                     success     : function(response){
+                        inputEmail.val('');
                         if(response==true) openCloseModal('modalRegistryEmailSuccess');
                     }
                 });
