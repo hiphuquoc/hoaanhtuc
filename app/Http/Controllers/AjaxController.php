@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\District;
 use App\Models\Product;
+use App\Models\RegistryEmail;
 // use App\Services\BuildInsertUpdateModel;
 
 class AjaxController extends Controller {
@@ -75,6 +76,17 @@ class AjaxController extends Controller {
             }
             echo $response;
         }
+    }
+
+    public static function registryEmail(Request $request){
+        $flag = false;
+        if(!empty($request->get('registry_email'))){
+            $idRegistryEmail    = RegistryEmail::insertItem([
+                'email'     => $request->get('registry_email')
+            ]);
+            if(!empty($idRegistryEmail)) $flag = true;
+        }
+        echo $flag;
     }
 
     // public function submitFormRequestWebsite(Request $request){

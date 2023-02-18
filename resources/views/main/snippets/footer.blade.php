@@ -26,15 +26,17 @@
     <div class="container">
         <div class="footerBox_item">
             <div>“Đặt sự hài lòng của khách hàng là ưu tiên số 1 trong mọi suy nghĩ hành động của mình” là sứ mệnh, là triết lý, chiến lược.. luôn cùng {{ config('main.company_name') }} tiến bước</div>
-            <div class="registryEmailBox">
-                <div class="registryEmailBox_text">
-                    Đăng ký nhận thông tin 
+            <form id="registryEmailForm" action="#" method="get">
+                <div class="registryEmailBox">
+                    <div class="registryEmailBox_text">
+                        Đăng ký nhận thông tin 
+                    </div>
+                    <div class="registryEmailBox_input">
+                        <input type="text" name="registry_email" placeholder="Email của bạn" required />
+                        <button type="button" class="button" onClick="submitFormRegistryEmail('registryEmailForm')"><i class="fa-solid fa-paper-plane"></i>Gửi</button>
+                    </div>
                 </div>
-                <div class="registryEmailBox_input">
-                    <input type="text" name="search" placeholder="Email của bạn">
-                    <button type="submit" class="button"><i class="fa-solid fa-paper-plane"></i>Gửi</button>
-                </div>
-            </div>
+            </form>
         </div>
         <div class="footerBox_item">
             <div class="footerBox_item_title">
@@ -99,3 +101,37 @@
         © 2023 - Bản quyền Website Kiên Giang - Thiết kế và phát triển bởi Phạm Văn Phú!
     </div>
 </div>
+
+@push('modal')
+    @include('main.modal.registryEmailSuccess')
+@endpush
+
+@push('scriptCustom')
+    <script type="text/javascript">
+        function submitFormRegistryEmail(idForm){
+            event.preventDefault();
+            const inputEmail = $('#'+idForm).find('[name*=registry_email]');
+            const valueEmail = inputEmail.val();
+            if(isValidEmail(valueEmail)){
+                $.ajax({
+                    url         : '{{ route("ajax.registryEmail") }}',
+                    type        : 'get',
+                    dataType    : 'html',
+                    data        : {
+                        registry_email : valueEmail
+                    },
+                    success     : function(response){
+                        if(response==true) openCloseModal('modalRegistryEmailSuccess');
+                    }
+                });
+            }else {
+                inputEmail.val('');
+                inputEmail.attr('placeholder', 'Email không hợp lệ!');
+            }
+        }
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+    </script>
+@endpush

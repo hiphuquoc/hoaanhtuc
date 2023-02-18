@@ -50,6 +50,7 @@ class PageController extends Controller{
 
     public static function searchProduct(Request $request){
         $keySearch      = $request->get('key_search') ?? null;
+        $keySearch      = \App\Helpers\Charactor::convertStringSearch($request->get('key_search'));
         /* thông tin Page */
         $pathUrl        = substr(parse_url(url()->current())['path'], 1);
         $item           = Page::select('*')

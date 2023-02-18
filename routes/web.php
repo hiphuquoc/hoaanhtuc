@@ -62,6 +62,7 @@ Route::get('/buildTocContentMain', [HomeController::class, 'buildTocContentMain'
 Route::get('/loadLoading', [AjaxController::class, 'loadLoading'])->name('ajax.loadLoading');
 Route::get('/loadDistrictByIdProvince', [AjaxController::class, 'loadDistrictByIdProvince'])->name('ajax.loadDistrictByIdProvince');
 Route::get('/searchProductAjax', [AjaxController::class, 'searchProductAjax'])->name('ajax.searchProductAjax');
+Route::get('/registryEmail', [AjaxController::class, 'registryEmail'])->name('ajax.registryEmail');
 /* login */
 Route::get('/admin', [LoginController::class, 'loginForm'])->name('admin.loginForm');
 Route::post('/loginAdmin', [LoginController::class, 'loginAdmin'])->name('admin.loginAdmin');

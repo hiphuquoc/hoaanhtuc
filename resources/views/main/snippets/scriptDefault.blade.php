@@ -467,4 +467,19 @@
             }
         });
     }
+    // /* toggle modal */
+    // function toggleModalWebsite(idElement){
+    //     const element   = $('#'+idElement);
+    //     const displayE  = element.css('display');
+    //     if(displayE=='none'){
+    //         /* hiển thị */
+    //         element.css('display', 'flex');
+    //         $('body').css('overflow', 'hidden');
+    //         $('#js_blurBackground').addClass('blurBackground');
+    //     }else {
+    //         element.css('display', 'none');
+    //         $('body').css('overflow', 'unset');
+    //         $('#js_blurBackground').removeClass('blurBackground');
+    //     }
+    // }
 </script>
