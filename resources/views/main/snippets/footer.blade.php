@@ -1,11 +1,24 @@
 @php
-    $pagePolicies = \App\Models\Page::select('page_info.*')
+    $pagePolicies   = \App\Models\Page::select('page_info.*')
                         ->whereHas('type', function($query){
                             $query->where('code', 'policy');
                         })
                         ->with('seo')
                         ->join('seo', 'seo.id', '=', 'page_info.seo_id')
                         ->orderBy('seo.ordering', 'DESC')
+                        ->get();
+    $categories     = \App\Models\Category::select('category_info.*')
+                        ->whereHas('seo', function($query){
+                            $query->where('level', '1');
+                        })
+                        ->whereHas('products', function(){
+                            /* có sản phẩm mới láy */
+                        })
+                        ->with('seo')
+                        ->join('seo', 'seo.id', '=', 'category_info.seo_id')
+                        ->orderBy('seo.ordering', 'DESC')
+                        ->skip(0)
+                        ->take(5)
                         ->get();
 @endphp
 
@@ -37,18 +50,24 @@
         </div>
         <div class="footerBox_item">
             <div class="footerBox_item_title">
-                Về {{ config('main.company_name') }}
+                Danh mục chính
             </div>
             <div class="footerBox_item_list">
-                <a href="#" class="footerBox_item_list_item">
-                    Giới thiệu
-                </a>
-                <a href="#" class="footerBox_item_list_item">
-                    Liên hệ
-                </a>
-                <a href="#" class="footerBox_item_list_item">
-                    Tin tức
-                </a>
+                <div class="categoryBoxFooter">
+                @foreach($categories as $category)
+                    @php
+                        $title = $category->name ?? $category->seo->title ?? null;
+                    @endphp
+                    <a href="/{{ $category->seo->slug_full ?? null }}" class="categoryBoxFooter_item">
+                        
+                        <div class="categoryBoxFooter_item_image">
+                            <img src="{{ Storage::url($category->icon) }}" alt="{{ $title }}" title="{{ $title }}" />
+                        </div>
+                        <div class="categoryBoxFooter_item_title">{{ $title }} <span>({{ $category->products->count() }})</span></div>
+                        
+                    </a>
+                @endforeach
+                </div>
             </div>
         </div>
         <div class="footerBox_item">

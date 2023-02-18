@@ -1,0 +1,33 @@
+.categoryBoxFooter {
+    &_item {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        &:hover {
+            color: $colorLv4;
+        }
+        &:not(:first-child){
+            margin-top: 0.75rem;
+        }
+        &_image {
+            flex: 0 0 40px;
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border-radius: 50%;
+            img {
+                width: 70%;
+            }
+        }
+        &_title {
+            margin-left: 0.75rem;
+            > span {
+                font-size: 1.1rem;
+                color: $colorLv4;
+            }
+        }
+    }
+
+}
