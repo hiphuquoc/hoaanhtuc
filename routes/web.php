@@ -60,7 +60,6 @@ Route::get('sitemap/{type}.xml', [SitemapController::class, 'child'])->name('sit
 Route::get('/buildTocContentMain', [HomeController::class, 'buildTocContentMain'])->name('main.buildTocContentMain');
 Route::get('/loadLoading', [AjaxController::class, 'loadLoading'])->name('ajax.loadLoading');
 Route::get('/loadDistrictByIdProvince', [AjaxController::class, 'loadDistrictByIdProvince'])->name('ajax.loadDistrictByIdProvince');
-Route::get('/setOptionProduct', [AjaxController::class, 'setOptionProduct'])->name('ajax.setOptionProduct');
 Route::get('/searchProductAjax', [AjaxController::class, 'searchProductAjax'])->name('ajax.searchProductAjax');
 Route::get('/registryEmail', [AjaxController::class, 'registryEmail'])->name('ajax.registryEmail');
 /* login */

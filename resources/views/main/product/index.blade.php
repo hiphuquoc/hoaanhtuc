@@ -69,27 +69,20 @@
             setOptionProduct();
         })
         /* thay đổi option sản phẩm */
-        function setOptionProduct(){
-            var data    =  window.location.search;
-            $.ajax({
-                url         : '{{ route("ajax.setOptionProduct") }}',
-                type        : 'get',
-                dataType    : 'html',
-                data        : data,
-                success     : function(response){
-                    if(response!=0){
-                        /* ========= xử lý của button && phần hiển thị giá */
-                        $(document).find('[data-product_price_id='+response+']').each(function(){
-                            /* xóa hết selected của button */
-                            $(this).parent().children().each(function(){
-                                $(this).removeClass('selected');
-                            })
-                            /* bật lại element được chọn cho button */
-                            $(this).addClass('selected');
-                        });
-                    }
-                    console.log(response);
-                }
+        function setOptionProduct(idPrice = ''){
+            if(idPrice==''){
+                var regex   = /product_price_id=(\d+)/;
+                var match   = regex.exec(window.location.search);
+                idPrice     = match[1];
+            }
+            /* ========= xử lý của button && phần hiển thị giá */
+            $(document).find('[data-product_price_id='+idPrice+']').each(function(){
+                /* xóa hết selected của button */
+                $(this).parent().children().each(function(){
+                    $(this).removeClass('selected');
+                })
+                /* bật lại element được chọn cho button */
+                $(this).addClass('selected');
             });
         }
     </script>
