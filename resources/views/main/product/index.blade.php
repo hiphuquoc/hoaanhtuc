@@ -42,7 +42,9 @@
         <!-- === END:: Header Top === -->
 
         <!-- === START:: Header Main === -->
-        @include('main.snippets.headerMain')
+        @include('main.cacheHTML.create', [
+            'content'   => 'main.snippets.headerMain'
+        ])
         <!-- === END:: Header Main === -->
         
         @include('main.template.breadcrumb', compact('breadcrumb'))
@@ -60,9 +62,4 @@
     <!-- === START:: Zalo Ring === -->
     {{-- @include('main.snippets.zaloRing') --}}
     <!-- === END:: Zalo Ring === -->
-@endpush
-@push('scriptCustom')
-    <script type="text/javascript">
-        
-    </script>
 @endpush

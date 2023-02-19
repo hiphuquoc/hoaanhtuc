@@ -30,7 +30,10 @@
         <!-- === END:: Header Top === -->
 
         <!-- === START:: Header Main === -->
-        @include('main.snippets.headerMain')
+        <!-- === START:: Header Main === -->
+        @include('main.cacheHTML.create', [
+            'content'   => 'main.snippets.headerMain'
+        ])
         <!-- === END:: Header Main === -->
         
         @include('main.template.breadcrumb', compact('breadcrumb'))

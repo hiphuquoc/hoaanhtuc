@@ -19,9 +19,9 @@ class ImageController extends Controller {
     public function list(Request $request){
         $params['search_name']  = $request->get('search_name') ?? null;
         $list                   = null;
-        // if(!empty($params['search_name'])){
+        if(!empty($params['search_name'])){
             $list               = glob(Storage::path(config('image.folder_upload')).'*'.$params['search_name'].'*');
-        // }
+        }
         return view('admin.image.list', compact('list', 'params'));
     }
 

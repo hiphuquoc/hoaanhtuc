@@ -4,6 +4,9 @@
 <script type="text/javascript">
     $(window).ready(function(){
         loadImage();
+        /* tải lại view sort cart */
+        viewSortCart();
+        /* hiệu ứng */
         $('.effectFadeIn').each(function(){
             $(this).css('opacity', 0);
         });
@@ -467,19 +470,31 @@
             }
         });
     }
-    // /* toggle modal */
-    // function toggleModalWebsite(idElement){
-    //     const element   = $('#'+idElement);
-    //     const displayE  = element.css('display');
-    //     if(displayE=='none'){
-    //         /* hiển thị */
-    //         element.css('display', 'flex');
-    //         $('body').css('overflow', 'hidden');
-    //         $('#js_blurBackground').addClass('blurBackground');
-    //     }else {
-    //         element.css('display', 'none');
-    //         $('body').css('overflow', 'unset');
-    //         $('#js_blurBackground').removeClass('blurBackground');
-    //     }
-    // }
+    /* tính năng registry email ở footer */
+    function submitFormRegistryEmail(idForm){
+            event.preventDefault();
+            const inputEmail = $('#'+idForm).find('[name*=registry_email]');
+            const valueEmail = inputEmail.val();
+            if(isValidEmail(valueEmail)){
+                $.ajax({
+                    url         : '{{ route("ajax.registryEmail") }}',
+                    type        : 'get',
+                    dataType    : 'html',
+                    data        : {
+                        registry_email : valueEmail
+                    },
+                    success     : function(response){
+                        inputEmail.val('');
+                        if(response==true) openCloseModal('modalRegistryEmailSuccess');
+                    }
+                });
+            }else {
+                inputEmail.val('');
+                inputEmail.attr('placeholder', 'Email không hợp lệ!');
+            }
+        }
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
 </script>

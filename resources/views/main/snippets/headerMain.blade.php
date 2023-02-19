@@ -1,6 +1,6 @@
 @php
-    $categories = \App\Models\Category::getTreeCategory();
-    $brands     = \App\Models\Brand::select('*')
+    $categories     = \App\Models\Category::getTreeCategory();
+    $brands         = \App\Models\Brand::select('*')
                         ->with('seo')
                         ->get();
 @endphp
@@ -106,11 +106,13 @@
                 </ul>
             </div>
             <div class="headerMain_item_menuRight">
-                <div id="js_viewSortCart_idWrite" class="headerMain_item_menuRight_item">
+                
                 @if($item->seo->slug_full!='gio-hang')
-                    @include('main.cart.cartSort', ['products' => null])
+                    <div id="js_viewSortCart_idWrite" class="headerMain_item_menuRight_item">
+                        @include('main.cart.cartSort', ['products' => null])
+                    </div>
                 @endif
-                </div>
+                
                 <div class="headerMain_item_menuRight_item">
                     <img src="{{ Storage::url('images/svg/icon-user.svg') }}" alt="" title="" />
                     <div>Đăng ký phân phối</div>
@@ -119,7 +121,3 @@
         </div>
     </div>
 </div>
-@push('modal')
-   {{-- @include('main.snippets.menuMobile') --}}
-
-@endpush

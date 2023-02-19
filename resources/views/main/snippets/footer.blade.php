@@ -1,4 +1,5 @@
 @php
+    /* lấy dữ liệu => thực thi */
     $pagePolicies   = \App\Models\Page::select('page_info.*')
                         ->whereHas('type', function($query){
                             $query->where('code', 'policy');
@@ -21,7 +22,6 @@
                         ->take(5)
                         ->get();
 @endphp
-
 <div class="footerBox">
     <div class="container">
         <div class="footerBox_item">
@@ -101,38 +101,3 @@
         © 2023 - Bản quyền Website Kiên Giang - Thiết kế và phát triển bởi Phạm Văn Phú!
     </div>
 </div>
-
-@push('modal')
-    @include('main.modal.registryEmailSuccess')
-@endpush
-
-@push('scriptCustom')
-    <script type="text/javascript">
-        function submitFormRegistryEmail(idForm){
-            event.preventDefault();
-            const inputEmail = $('#'+idForm).find('[name*=registry_email]');
-            const valueEmail = inputEmail.val();
-            if(isValidEmail(valueEmail)){
-                $.ajax({
-                    url         : '{{ route("ajax.registryEmail") }}',
-                    type        : 'get',
-                    dataType    : 'html',
-                    data        : {
-                        registry_email : valueEmail
-                    },
-                    success     : function(response){
-                        inputEmail.val('');
-                        if(response==true) openCloseModal('modalRegistryEmailSuccess');
-                    }
-                });
-            }else {
-                inputEmail.val('');
-                inputEmail.attr('placeholder', 'Email không hợp lệ!');
-            }
-        }
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-    </script>
-@endpush

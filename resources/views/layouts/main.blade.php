@@ -15,7 +15,9 @@
         @yield('content')
 
         <!-- === START:: Footer === -->
-        @include('main.snippets.footer')
+        @include('main.cacheHTML.create', [
+            'content'   => 'main.snippets.footer'
+        ])
         <!-- === END:: Footer === -->
 
         {{-- <div class="bottom">
@@ -46,6 +48,7 @@
     
     <!-- Modal -->
     @stack('modal')
+    @include('main.modal.registryEmailSuccess')
     <!-- === START:: Scripts Default === -->
     @include('main.snippets.scriptDefault')
     <!-- === END:: Scripts Default === -->

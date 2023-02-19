@@ -34,7 +34,6 @@ use App\Http\Controllers\Admin\BlogController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', [HomeController::class, 'home'])->name('main.home');
 Route::get('/error', [\App\Http\Controllers\ErrorController::class, 'handle'])->name('error.handle');
 Route::get('/category', [HomeController::class, 'category'])->name('main.category');

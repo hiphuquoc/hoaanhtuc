@@ -76,5 +76,9 @@ return [
                 'max'   => '9999999999999999999999'
             ]
         ]
+    ],
+    'cache'     => [
+        'extension'     => 'html',
+        'folderSave'    => 'public/caches/',
     ]
 ];

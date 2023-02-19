@@ -45,10 +45,3 @@
         @endif
     </div>
 </div>
-@pushonce('scriptCustom')
-    <script type="text/javascript">
-        $(window).ready(function(){
-            viewSortCart();
-        });
-    </script>
-@endpushonce
