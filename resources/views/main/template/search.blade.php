@@ -14,26 +14,3 @@
         </div>
     </div>
 </form>
-@push('scriptCustom')
-    <script type="text/javascript">
-        $(window).ready(function(){
-            searchProductAjax($('#searchProductAjax_input'));
-        })
-        /* tìm kiếm sản phẩm ajax */
-        function searchProductAjax(elementButton){
-            const valueElement = $(elementButton).val();
-            $.ajax({
-                url         : '{{ route("ajax.searchProductAjax") }}',
-                type        : 'get',
-                dataType    : 'html',
-                data        : {
-                    key_search  : valueElement
-                },
-                success     : function(response){
-                    if(response!='') $('#js_searchProductAjax_idWrite').html(response);
-                }
-            });
-        }
-
-    </script>
-@endpush

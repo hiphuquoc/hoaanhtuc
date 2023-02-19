@@ -6,6 +6,8 @@
         loadImage();
         /* tải lại view sort cart */
         viewSortCart();
+        /* tải tìm kiếm */
+        searchProductAjax($('#searchProductAjax_input'));
         /* hiệu ứng */
         $('.effectFadeIn').each(function(){
             $(this).css('opacity', 0);
@@ -496,5 +498,20 @@
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
+    }
+    /* tìm kiếm sản phẩm ajax */
+    function searchProductAjax(elementButton){
+        const valueElement = $(elementButton).val();
+        $.ajax({
+            url         : '{{ route("ajax.searchProductAjax") }}',
+            type        : 'get',
+            dataType    : 'html',
+            data        : {
+                key_search  : valueElement
+            },
+            success     : function(response){
+                if(response!='') $('#js_searchProductAjax_idWrite').html(response);
+            }
+        });
     }
 </script>
