@@ -88,6 +88,7 @@
                             $(this).addClass('selected');
                         });
                     }
+                    console.log(response);
                 }
             });
         }
