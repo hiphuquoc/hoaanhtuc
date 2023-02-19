@@ -94,17 +94,13 @@
                             @foreach($item->prices as $option)
                                 @php
                                     $selected = null;
-                                    if(!empty(request('product_price_id'))){
-                                        if(request('product_price_id')==$option->id) $selected = 'selected';
-                                    }else {
-                                        if($loop->index==0) $selected = 'selected';
-                                    }
+                                    if($loop->index==0) $selected = 'selected';
                                 @endphp
                                 <div id="js_addToCart_option_{{ $option->id }}" class="productDetailBox_detail_option_box_item {{ $selected }}"
                                     data-product_price_id="{{ $option->id }}" 
                                     data-option_name="{{ $option->name }}" 
                                     data-price="{{ $option->price }}"
-                                    onClick="chooseOption(this);">
+                                    onClick="setOptionProduct('{{ $option->id }}');">
                                     {{ $option->name }}
                                 </div>  
                             @endforeach

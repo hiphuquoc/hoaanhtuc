@@ -33,6 +33,12 @@ class AjaxController extends Controller {
         echo $response;
     }
 
+    public static function setOptionProduct(Request $request){
+        /* do bị cache nên phải gửi vào đây để tách lấy product_price_id */
+        $idProductPrice = $request->get('?product_price_id') ?? $request->get('product_price_id') ?? 0;
+        echo $idProductPrice;
+    }
+
     public static function searchProductAjax(Request $request){
         if(!empty($request->get('key_search'))){
             $keySearch          = \App\Helpers\Charactor::convertStringSearch($request->get('key_search'));

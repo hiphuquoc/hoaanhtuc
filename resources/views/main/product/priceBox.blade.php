@@ -1,20 +1,16 @@
-@php
-    $dataPrice  = $prices[0] ?? null;
-    if(!empty(request('product_price_id'))){
-        foreach($prices as $price){
-            if($price->id==request('product_price_id')) $dataPrice = $price;
-            break;
-        }
-    }
-@endphp
-
-@if(!empty($dataPrice))
-    <div class="productDetailBox_detail_price_real">{{ number_format($dataPrice->price) }}{!! config('main.currency_unit') !!}</div>
-    @if(!empty($dataPrice->price_before_promotion)&&$dataPrice->price_before_promotion!=$dataPrice->price)
-        <div class="productDetailBox_detail_price_old">{{ number_format($dataPrice->price_before_promotion) }}{!! config('main.currency_unit') !!}</div>
-    @endif
-    @if(!empty($dataPrice->sale_off))
-        <div class="productDetailBox_detail_price_saleoff">- {{ $dataPrice->sale_off }}%</div>
-    @endif
-@endif
+@foreach($prices as $price)
+    @php
+        $selected = null;
+        if($loop->index==0) $selected = 'selected';
+    @endphp
+    <div data-product_price_id="{{ $price->id }}" class="productDetailBox_detail_price_item {{ $selected }}">
+        <div class="productDetailBox_detail_price_item_real">{{ number_format($price->price) }}{!! config('main.currency_unit') !!}</div>
+        @if(!empty($price->price_before_promotion)&&$price->price_before_promotion!=$price->price)
+            <div class="productDetailBox_detail_price_item_old">{{ number_format($price->price_before_promotion) }}{!! config('main.currency_unit') !!}</div>
+        @endif
+        @if(!empty($price->sale_off))
+            <div class="productDetailBox_detail_price_item_saleoff">- {{ $price->sale_off }}%</div>
+        @endif
+    </div>
+@endforeach
 

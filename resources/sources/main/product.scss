@@ -145,31 +145,36 @@
             }
         }
         &_price {
-            display: flex;
-            align-items: center;
-            margin-top: 1.25rem;
-            > * {
-                &:not(:first-child){
-                    margin-left: 1.5rem;
+            &_item {
+                display: none;
+                align-items: center;
+                margin-top: 1.25rem;
+                > * {
+                    &:not(:first-child){
+                        margin-left: 1.5rem;
+                    }
                 }
-            }
-            &_real {
-                color: $colorLv1;
-                letter-spacing: 0.5px;
-                font-size: 1.5rem;
-                font-weight: 700;
-            }
-            &_old {
-                font-size: 1rem;
-                text-decoration: line-through;
-            }
-            &_saleoff {
-                color: #fff;
-                background: $colorLv2;
-                letter-spacing: 0.5px;
-                font-size: 1rem;
-                padding: 0.25rem 0.5rem;
-                border-radius: 7px;
+                &_real {
+                    color: $colorLv1;
+                    letter-spacing: 0.5px;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                }
+                &_old {
+                    font-size: 1rem;
+                    text-decoration: line-through;
+                }
+                &_saleoff {
+                    color: #fff;
+                    background: $colorLv2;
+                    letter-spacing: 0.5px;
+                    font-size: 1rem;
+                    padding: 0.25rem 0.5rem;
+                    border-radius: 7px;
+                }
+                &.selected {
+                    display: flex;
+                }
             }
         }
         &_checkout {

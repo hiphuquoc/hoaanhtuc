@@ -63,3 +63,33 @@
     {{-- @include('main.snippets.zaloRing') --}}
     <!-- === END:: Zalo Ring === -->
 @endpush
+@push('scriptCustom')
+    <script type="text/javascript">
+        $(window).ready(function(){
+            setOptionProduct();
+        })
+        /* thay đổi option sản phẩm */
+        function setOptionProduct(){
+            var data    =  window.location.search;
+            $.ajax({
+                url         : '{{ route("ajax.setOptionProduct") }}',
+                type        : 'get',
+                dataType    : 'html',
+                data        : data,
+                success     : function(response){
+                    if(response!=0){
+                        /* ========= xử lý của button && phần hiển thị giá */
+                        $(document).find('[data-product_price_id='+response+']').each(function(){
+                            /* xóa hết selected của button */
+                            $(this).parent().children().each(function(){
+                                $(this).removeClass('selected');
+                            })
+                            /* bật lại element được chọn cho button */
+                            $(this).addClass('selected');
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+@endpush

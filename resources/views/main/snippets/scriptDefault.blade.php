@@ -332,16 +332,6 @@
             $('body').css('overflow', 'hidden');
         }
     }
-    /* thay đổi option sản phẩm */
-    function chooseOption(element){
-        const parent = $(element).parent();
-        /* xóa hết selected */
-        parent.children().each(function(){
-            $(this).removeClass('selected');
-        })
-        /* bật lại cho element */
-        $(element).addClass('selected');
-    }
     /* tăng giảm số lượng input quantity */
     function plusMinusQuantity(idInput, action){
         const elementInput  = $('#'+idInput);
