@@ -73,7 +73,7 @@
             if(idPrice==''){
                 var regex   = /product_price_id=(\d+)/;
                 var match   = regex.exec(window.location.search);
-                idPrice     = match[1];
+                idPrice = match[1];
             }
             /* ========= xử lý của button && phần hiển thị giá */
             $(document).find('[data-product_price_id='+idPrice+']').each(function(){

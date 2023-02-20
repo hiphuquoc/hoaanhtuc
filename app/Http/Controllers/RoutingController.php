@@ -70,7 +70,7 @@ class RoutingController extends Controller{
                         /* thông tin category */
                         $item           = Category::select('*')
                                             ->where('seo_id', $checkExists->id)
-                                            ->with('seo', 'files')
+                                            ->with('seo', 'files', 'categoryBlogs.infoCategoryBlog.blogs.infoBlog.seo')
                                             ->first();
                         /* danh sách product => lấy riêng để dễ truyền vào template */
                         $arrayCategory  = Category::getArrayIdCategoryRelatedByIdCategory($item, [$item->id]);
@@ -94,9 +94,11 @@ class RoutingController extends Controller{
                                 $brands[]   = $product->brand;
                             }
                         }
+                        /* content */
+                        $content            = Blade::render(Storage::get(config('main.storage.contentCategory').$item->seo->slug.'.blade.php'));
                         /* breadcrumb */
                         $breadcrumb     = Url::buildBreadcrumb($checkExists->slug_full);
-                        $xhtml          = view('main.category.index', compact('item', 'products', 'breadcrumb', 'brands', 'categories'))->render();
+                        $xhtml          = view('main.category.index', compact('item', 'products', 'breadcrumb', 'brands', 'categories', 'content'))->render();
                         break;
                     case 'brand_info':
                         $flagMatch      = true;

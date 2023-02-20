@@ -66,9 +66,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/tin-tuc" title="Blog {{ config('main.company_name') }}">
+                        <a href="/blog-lam-dep" title="Blog làm đẹp">
                             <i class="fa-regular fa-bookmark"></i>
-                            <div>Tin tức</div>
+                            <div>Làm đẹp</div>
                         </a>
                     </li>
                     <li>

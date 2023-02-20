@@ -43,89 +43,34 @@
             </span>
             <input type="number" min="0" id="ordering" class="form-control" name="ordering" value="{{ old('ordering') ?? $item->seo->ordering ?? '' }}">
         </div>
-        {{-- <!-- One Row -->
-        <div class="formBox_full_item">
-            <label class="form-label inputRequired" for="location">Điểm đến Tour</label>
-            <select class="select2 form-select select2-hidden-accessible" id="location" name="location[]" multiple="true">
-                @if(!empty($tourLocations))
-                    @foreach($tourLocations as $location)
+        <!-- One Row -->
+        <div class="formBox_column2_item_row">
+            <span data-toggle="tooltip" data-placement="top" title="
+                Category này kết nối Blog tin tức nào?
+            ">
+                <i class="explainInput" data-feather='alert-circle'></i>
+                <label class="form-label" for="category_blog_info_id">Kết nối Chuyên mục blog</label>
+            </span>
+            <select class="select2 form-select select2-hidden-accessible" id="category_blog_info_id" name="category_blog_info_id[]" aria-hidden="true" multiple="true">
+                @if(!empty($categoryBlogs))
+                    @foreach($categoryBlogs as $c)
                         @php
-                            $selected   = null;
-                            if(!empty($item->locations)){
-                                foreach($item->locations as $l) {
-                                    if(!empty($l['tour_location_id'])&&$l['tour_location_id']==$location['id']) {
-                                        $selected = ' selected';
+                            $selected       = null;
+                            if(!empty($item->categoryBlogs)&&$item->categoryBlogs->isNotEmpty()){
+                                foreach($item->categoryBlogs as $cBlog){
+                                    if($c->id==$cBlog->infoCategoryBlog->id) {
+                                        $selected = 'selected';
                                         break;
                                     }
                                 }
                             }
                         @endphp
-                        <option value="{{ $location['id'] }}"{{ $selected }}>{{ $location['name'] }}</option>
+                        <option value="{{ $c->id }}" {{ $selected }}>{{ $c->name }}</option>
                     @endforeach
                 @endif
             </select>
         </div>
-        <!-- One Row -->
-        <div class="formBox_full_item">
-            <label class="form-label inputRequired" for="tour_departure_id">Điểm khởi hành</label>
-            <select class="select2 form-select select2-hidden-accessible" id="tour_departure_id" name="tour_departure_id">
-                <option value="0">- Lựa chọn -</option>
-                @if(!empty($tourDepartures))
-                    @foreach($tourDepartures as $departure)
-                        @php
-                            $selected   = null;
-                            if(!empty($item->tour_departure_id)&&$item->tour_departure_id==$departure->id) $selected = 'selected';
-                        @endphp
-                        <option value="{{ $departure['id'] }}"{{ $selected }}>{{ $departure['name'] }}</option>
-                    @endforeach
-                @endif
-            </select>
-        </div>
-        <!-- One Row -->
-        <div class="formBox_full_item">
-            <label class="form-label inputRequired" for="staff">Nhân viên tư vấn</label>
-            <select class="select2 form-select select2-hidden-accessible" id="staff" name="staff[]" multiple="true">
-                <option value="0">- Lựa chọn -</option>
-                @if(!empty($staffs))
-                    @foreach($staffs as $staff)
-                        @php
-                            $selected   = null;
-                            if(!empty($item->staffs)){
-                                foreach($item->staffs as $s) {
-                                    if(!empty($s['staff_info_id'])&&$s['staff_info_id']==$staff['id']) {
-                                        $selected = ' selected';
-                                        break;
-                                    }
-                                }
-                            }
-                        @endphp
-                        <option value="{{ $staff['id'] }}"{{ $selected }}>{{ $staff['firstname'] }} {{ $staff['lastname'] }} ({{ $staff['prefix_name'] }}. {{ $staff['lastname'] }})</option>
-                    @endforeach
-                @endif
-            </select>
-        </div>
-        <!-- One Row -->
-        <div class="formBox_full_item">
-            <label class="form-label inputRequired" for="partner">Đối tác cung cấp</label>
-            <select class="select2 form-select select2-hidden-accessible" id="partner" name="partner[]" multiple="true">
-                @if(!empty($partners))
-                    @foreach($partners as $partner)
-                        @php
-                            $selected   = null;
-                            if(!empty($item->partners)){
-                                foreach($item->partners as $p) {
-                                    if(!empty($p['partner_info_id'])&&$p['partner_info_id']==$partner['id']) {
-                                        $selected = ' selected';
-                                        break;
-                                    }
-                                }
-                            }
-                        @endphp
-                        <option value="{{ $partner['id'] }}"{{ $selected }}>{{ $partner['company_name'] }}</option>
-                    @endforeach
-                @endif
-            </select>
-        </div> --}}
+        
     </div>
 </div>
 

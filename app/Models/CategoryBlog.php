@@ -127,7 +127,11 @@ class CategoryBlog extends Model {
     //     return $item;
     // }
 
-    public function seo() {
+    public function blogs(){
+        return $this->hasMany(\App\Models\RelationCategoryBlogInfoBlogInfo::class, 'category_blog_info_id', 'id');
+    }
+
+    public function seo(){
         return $this->hasOne(\App\Models\Seo::class, 'id', 'seo_id');
     }
 

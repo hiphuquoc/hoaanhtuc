@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\BlogController as BlogPublicController;
 use App\Http\Controllers\RoutingController;
 use App\Http\Controllers\PageController as PagePublic;
 use App\Http\Controllers\CartController;
@@ -41,7 +40,6 @@ Route::get('/product', [HomeController::class, 'product'])->name('main.product')
 /* page */
 Route::get('/san-pham-khuyen-mai', [PagePublic::class, 'saleOff'])->name('main.saleOff');
 Route::get('/tim-kiem-san-pham', [PagePublic::class, 'searchProduct'])->name('main.searchProduct');
-Route::get('/tin-tuc', [BlogPublicController::class, 'index'])->name('main.blog');
 /* cart */
 Route::get('/gio-hang', [CartController::class, 'index'])->name('main.cart');
 Route::get('/addToCart', [CartController::class, 'addToCart'])->name('main.addToCart');
@@ -57,7 +55,7 @@ Route::get('/viewConfirm', [OrderController::class, 'viewConfirm'])->name('main.
 Route::get('sitemap.xml', [SitemapController::class, 'main'])->name('sitemap.main');
 Route::get('sitemap/{type}.xml', [SitemapController::class, 'child'])->name('sitemap.child');
 /* AJAX */
-Route::get('/buildTocContentMain', [HomeController::class, 'buildTocContentMain'])->name('main.buildTocContentMain');
+Route::get('/buildTocContentMain', [AjaxController::class, 'buildTocContentMain'])->name('main.buildTocContentMain');
 Route::get('/loadLoading', [AjaxController::class, 'loadLoading'])->name('ajax.loadLoading');
 Route::get('/loadDistrictByIdProvince', [AjaxController::class, 'loadDistrictByIdProvince'])->name('ajax.loadDistrictByIdProvince');
 Route::get('/searchProductAjax', [AjaxController::class, 'searchProductAjax'])->name('ajax.searchProductAjax');

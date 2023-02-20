@@ -101,7 +101,7 @@
                     <a href="/san-pham-khuyen-mai">Sản phẩm khuyến mãi</a>
                 </li>
                 <li>
-                    <a href="/tin-tuc">Tin tức</a>
+                    <a href="/blog-lam-dep">Làm đẹp</a>
                 </li>
                 </ul>
             </div>

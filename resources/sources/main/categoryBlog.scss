@@ -215,19 +215,20 @@
                 flex-wrap: wrap;
                 &_image {
                     width: 100%;
-                    margin-bottom: 0.75rem;
+                    margin-bottom: 0.5rem;
                     flex: unset;
                 }
                 &_content {
                     margin-left: 0;
                     &_title {
                         h2, h3 {
-                            margin-bottom: 0.5rem;
+                            margin-bottom: 0.25rem;
                         }
                     }
                 }
             }
             &_right {
+                margin: 0.5rem 0 0 0;
                 &_item {
                     &_image {
                         flex: 0 0 100px;
@@ -251,12 +252,12 @@
         }
         &_image {
             display: flex;
-            flex: 0 0 260px;
+            flex: 0 0 300px;
+            aspect-ratio: 750/460;
             img {
                 width: 100%;
                 border-radius: 5px;
                 object-fit: cover;
-                height: 160px;
                 margin: 0;
             }
         }
@@ -267,9 +268,10 @@
             &_title {
                 // height: 50px;
                 display: flex;
+                margin: 0 0 0.5rem 0;
                 h2 {
-                    font-size: 1.25rem !important;
-                    margin: 0 0 0.5rem 0;
+                    font-size: 1.25rem;
+                    margin: 0;
                     color: $colorTitle;
                     &:hover {
                         color: $colorLv1;
@@ -295,74 +297,43 @@
                 margin-top: 0.25rem;
             }
         }
-        @media (min-width: 991px) and (max-width: 1199px) {
+        @media (max-width: 1199px) {
             &_content {
                 &_title {
                     h2 {
-                        font-size: 1.2rem !important;
+                        font-size: 1.2rem;
                     }
                 }
-            }
-        }
-        @media (min-width: 768px) and (max-width: 990px){
-            &_content {
-                &_title {
-                    h2 {
-                        font-size: 1.2rem !important;
-                    }
-                }
-            }
-        }
-        @media (min-width: 578px) and (max-width: 767px){
-            &_content {
-                &_title {
-                    h2 {
-                        font-size: 1.2rem !important;
-                    }
-                }
-                &_subtitle {
-                    font-size: 0.9rem !important;
-                    margin-bottom: 0.5rem;
-                    &_author {
-                        display: none;
-                    }
-                }
-            }
-            &_image {
-                flex: 0 0 240px;
             }
         }
         @media (max-width: 577px) {
             flex-wrap: wrap;
             border-radius: 5px;
             &:not(:first-child){
-                margin-top: 1.5rem;
+                margin-top: 1.25rem;
                 border: none;
                 padding-top: 0;
             }
             &_image {
                 flex: 0 0 100%;
-                height: unset;
-                img {
-                    height: 215px !important;
-                }
             }
             &_content {
-                padding: 0.5rem 0;
+                padding-top: 0.5rem;
                 margin-left: 0;
                 background: #fff;
                 border-radius: 0 0 5px 5px;
                 &_title {
+                    margin: 0 0 0.25rem 0;
                     h2 {
-                        font-size: 1.15rem !important;
+                        font-size: 1.15rem;
                     }
                 }
                 &_subtitle {
-                    font-size: 0.9rem !important;
-                    margin-bottom: 0.5rem;
+                    font-size: 0.9rem;
+                    margin-bottom: 0;
                 }
                 &_des {
-                    font-size: 0.95rem !important;
+                    font-size: 0.95rem;
                 }
             }
         }

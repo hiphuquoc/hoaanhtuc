@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 use App\Services\BuildInsertUpdateModel;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Helpers\Upload;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Seo;
 use App\Models\Category;
+use App\Models\CategoryBlog;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Models\RelationCategoryInfoCategoryBlogInfo;
 
 class CategoryController extends Controller {
 
@@ -42,10 +45,17 @@ class CategoryController extends Controller {
         $parents            = Category::select('*')
                                 ->where('id', '!=', $idNot)
                                 ->get();
+        /* category blog */
+        $categoryBlogs      = CategoryBlog::all();
+        /* content */
+        $content            = null;
+        if(!empty($item->seo->slug)){
+            $content        = Storage::get(config('main.storage.contentCategory').$item->seo->slug.'.blade.php');
+        }
         /* type */
         $type               = !empty($item) ? 'edit' : 'create';
         $type               = $request->get('type') ?? $type;
-        return view('admin.category.view', compact('item', 'type', 'parents', 'message'));
+        return view('admin.category.view', compact('item', 'type', 'parents', 'categoryBlogs', 'message', 'content'));
     }
 
     public function create(CategoryRequest $request){
@@ -73,6 +83,19 @@ class CategoryController extends Controller {
                 'description'   => $request->get('description'),
                 'icon'          => $iconPath
             ]);
+            /* insert relation_category_info_category_blog_id */
+            if(!empty($request->get('category_blog_info_id'))){
+                foreach($request->get('category_blog_info_id') as $idCategoryBlogInfo){
+                    RelationCategoryInfoCategoryBlogInfo::insertItem([
+                        'category_info_id'      => $idCategory,
+                        'category_blog_info_id' => $idCategoryBlogInfo
+                    ]);
+                }
+            }
+            /* lưu content vào file */
+            $content            = $request->get('content') ?? null;
+            $content            = ImageController::replaceImageInContentWithLoading($content);
+            if(!empty($content)) Storage::put(config('main.storage.contentCategory').$request->get('slug').'.blade.php', $content);
             /* insert slider và lưu CSDL */
             if($request->hasFile('slider')&&!empty($idCategory)){
                 $name           = !empty($request->get('slug')) ? $request->get('slug') : time();
@@ -139,6 +162,26 @@ class CategoryController extends Controller {
             ];
             if(!empty($iconPath)) $arrayUpdate['icon'] = $iconPath;
             Category::updateItem($idCategory, $arrayUpdate);
+            /* insert relation_category_info_category_blog_id */
+            RelationCategoryInfoCategoryBlogInfo::select('*')
+                ->where('category_info_id', $idCategory)
+                ->delete();
+            if(!empty($request->get('category_blog_info_id'))){
+                foreach($request->get('category_blog_info_id') as $idCategoryBlogInfo){
+                    RelationCategoryInfoCategoryBlogInfo::insertItem([
+                        'category_info_id'      => $idCategory,
+                        'category_blog_info_id' => $idCategoryBlogInfo
+                    ]);
+                }
+            }
+            /* lưu content vào file */
+            $content            = $request->get('content') ?? null;
+            $content            = ImageController::replaceImageInContentWithLoading($content);
+            if(!empty($content)) {
+                Storage::put(config('main.storage.contentCategory').$request->get('slug').'.blade.php', $content);
+            }else {
+                Storage::delete(config('main.storage.contentCategory').$request->get('slug').'.blade.php');
+            }
             /* insert slider và lưu CSDL */
             if($request->hasFile('slider')&&!empty($idCategory)){
                 $name           = !empty($request->get('slug')) ? $request->get('slug') : time();

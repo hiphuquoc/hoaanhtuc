@@ -89,6 +89,14 @@ class AjaxController extends Controller {
         echo $flag;
     }
 
+    public function buildTocContentMain(Request $request){
+        $xhtml       = null;
+        if(!empty($request->get('data'))){
+            $xhtml   = view('main.template.tocContentMain', ['data' => $request->get('data')])->render();
+        }
+        echo $xhtml;
+    }
+
     // public function submitFormRequestWebsite(Request $request){
     //     $dataForm       = [];
     //     foreach($request->get('data') as $value){

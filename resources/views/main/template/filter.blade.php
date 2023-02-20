@@ -56,6 +56,7 @@
             </div>
         </div>
     </div>
+
 </div>
 @push('scriptCustom')
     <script type="text/javascript">

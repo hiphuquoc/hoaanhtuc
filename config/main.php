@@ -40,8 +40,9 @@ return [
         'https://youtube.com/hoaanhtuc'
     ],
     'storage'   => [
-        'contentPage'   => 'public/contents/pages/',
-        'contentBlog'   => 'public/contents/blogs/',
+        'contentPage'       => 'public/contents/pages/',
+        'contentBlog'       => 'public/contents/blogs/',
+        'contentCategory'   => 'public/contents/categories/',
     ],
     'filter'    => [
         'price' => [

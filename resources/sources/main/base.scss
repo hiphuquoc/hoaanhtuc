@@ -492,15 +492,15 @@ blockquote{
 
 .imageBox {
   max-width: 660px;
-  background: $bg-03;
+  background: $bg-02;
   font-size: 0.95rem;
-  border-radius: 5px;
+  border-radius: 7px;
   margin: 1rem auto 1.25rem auto;
-  border: 1px solid $bg-03;
+  border: 1px solid $bg-05;
   img {
       width: 100%;
       object-fit: cover;
-      border-radius: 5px 5px 0 0;
+      border-radius: 7px 7px 0 0;
       margin: 0;
   }
   &_note {
@@ -563,9 +563,15 @@ blockquote{
     padding: 0 1.5rem;
     @media (max-width: 767px) {
         padding: 0 1rem;
+        &.withBackground {
+          padding: 0;
+        } 
     }
     @media (max-width: 567px) {
         padding: 0 0.75rem;
+        &.withBackground {
+          padding: 0;
+        } 
     }
 }
 
