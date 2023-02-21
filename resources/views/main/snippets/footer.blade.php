@@ -33,7 +33,7 @@
                     </div>
                     <div class="registryEmailBox_input">
                         <input type="text" name="registry_email" placeholder="Email của bạn" required />
-                        <button type="button" class="button" onClick="submitFormRegistryEmail('registryEmailForm')"><i class="fa-solid fa-paper-plane"></i>Gửi</button>
+                        <button type="button" class="button" onClick="submitFormRegistryEmail('registryEmailForm')" aria-label="Gửi email đăng ký nhận tin"><i class="fa-solid fa-paper-plane"></i>Gửi</button>
                     </div>
                 </div>
             </form>

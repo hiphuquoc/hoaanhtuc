@@ -120,7 +120,7 @@
                             </div>                 
                         </div>
                         <div class="productDetailBox_detail_checkout_button">
-                            <button type="button" class="button maxLine_1" onClick="addToCart();">Thêm vào giỏ hàng</button>
+                            <button type="button" class="button maxLine_1" onClick="addToCart();" aria-label="Thêm vào giỏ hàng">Thêm vào giỏ hàng</button>
                         </div>
                     </div>
                     <!-- mô tả ưu điểm shop -->

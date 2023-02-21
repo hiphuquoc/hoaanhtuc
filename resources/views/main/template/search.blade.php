@@ -2,7 +2,7 @@
     <div class="searchViewBefore">
         <div class="searchViewBefore_input">
             <input id="searchProductAjax_input" type="text" name="key_search" placeholder="Tìm kiếm" value="{{ request('key_search') ?? null }}" onkeyup="searchProductAjax(this)" autocomplete="off" />
-            <button type="submit" class="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button type="submit" class="button" aria-label="tìm kiếm sản phẩm"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div id="js_searchProductAjax_idWrite" class="searchViewBefore_selectbox">
             <div class="searchViewBefore_selectbox_item">

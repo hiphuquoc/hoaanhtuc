@@ -12,49 +12,61 @@
             <thead>
                 <tr>
                     <th style="width:60px;"></th>
-                    <th style="width:150px;">Ảnh</th>
                     <th class="text-center">Thông tin</th>
-                    <th class="text-center" style="width:230px;">Khác</th>
+                    <th class="text-center" style="width:320px;">Giá</th>
                     <th class="text-center" width="60px">-</th>
                 </tr>
             </thead>
             <tbody>
                 @if(!empty($list)&&$list->isNotEmpty())
                     @foreach($list as $item)
-                        <tr id="ship_booking_209">
+                        <tr id="item_{{ $item->id }}">
                             <td class="text-center">{{ ($loop->index + 1) }}</td>
-                            <td class="text-center"><img src="{!! Storage::url($item->seo->image_small).'?v='.time() !!}" style="width:150px;" /></td>
                             <td>
                                 <div class="oneLine">
                                     <strong>Tiêu đề:</strong> {{ $item->name ?? $item->seo->title ?? null }}
                                 </div>
                                 <div class="oneLine">
-                                    <strong>Mô tả:</strong> {{ $item->description ?? $item->seo->description ?? null }}
+                                    <strong>Dường dẫn tĩnh:</strong> {{ $item->seo->slug_full }}
                                 </div>
                                 @if(!empty($item->categories))
                                     <div class="onLine" style="margin-top:0.25rem;">
                                         @php
                                             $xhtmlCategory          = null;
                                             foreach($item->categories as $category){
-                                                $xhtmlCategory  .= '<div class="badge bg-success" style="margin-left:0.25rem;">'.$category->infoCategory->name.'</div>';
+                                                $xhtmlCategory  .= '<div class="badge bg-primary" style="margin-left:0.25rem;">'.$category->infoCategory->name.'</div>';
                                             }
                                         @endphp 
                                         <strong>Danh mục:</strong> {!! $xhtmlCategory !!}
                                     </div>
                                 @endif
                                 <div class="onLine" style="margin-top:0.25rem;">
-                                    <strong>Nhãn hàng:</strong> <div class="badge bg-primary">{{ $item->brand->name }}</div>
+                                    <strong>Nhãn hàng:</strong> <div class="badge bg-success">{{ $item->brand->name }}</div>
                                 </div>
                             </td>
                             <td>
-                                <div class="oneLine">
-                                    <strong>Đánh giá:</strong> {{ $item->seo->rating_aggregate_star }} sao / {{ $item->seo->rating_aggregate_count }}
-                                </div>
-                                <div class="oneLine">
-                                    <i class="fa-solid fa-plus"></i>{{ date('H:i \n\g\à\y d-m-Y', strtotime($item->seo->created_at)) }}
-                                </div>
-                                <div class="oneLine">
-                                    <i class="fa-solid fa-pencil"></i>{{ date('H:i \n\g\à\y d-m-Y', strtotime($item->seo->updated_at)) }}
+                                <div class="priceProductBox">
+                                    @foreach($item->prices as $price)
+                                        <div class="priceProductBox_item">
+                                            <div class="priceProductBox_item_image">
+                                                @if(!empty($price->files[0]->file_path)&&file_exists(Storage::path($price->files[0]->file_path)))
+                                                    <img src="{{  Storage::url($price->files[0]->file_path) }}" />
+                                                    @if($price->files->count()>1)
+                                                        <div class="priceProductBox_item_image_count">{{ $price->files->count() }}</div>
+                                                    @endif
+                                                @else 
+                                                    <img src="{{  config('image.default_square') }}" />
+                                                @endif
+                                            </div>
+                                            <div class="priceProductBox_item_content">
+                                                <div><span class="highLight">{{ number_format($price->price) }}</span> /{{ $price->name }}</div>
+                                                <div>Lợi nhuận: <b>{{ number_format($price->price - $price->price_origin) }}</b></div>
+                                                @if(!empty($price->sale_off))
+                                                    <div>Khuyến mãi <span class="saleOff">-{{ $price->sale_off }}%</span></div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </td>
                             <td style="vertical-align:top;display:flex;font-size:0.95rem;">

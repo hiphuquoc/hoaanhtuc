@@ -21,7 +21,7 @@
             <tbody>
                 @if(!empty($list)&&$list->isNotEmpty())
                     @foreach($list as $item)
-                        <tr id="ship_booking_209">
+                        <tr id="item_{{ $item->id }}">
                             <td class="text-center">{{ ($loop->index + 1) }}</td>
                             <td class="text-center"><img src="{!! Storage::url($item->seo->image_small).'?v='.time() !!}" style="width:150px;" /></td>
                             <td>
@@ -72,7 +72,7 @@
                                     </a>
                                 </div>
                                 <div class="icon-wrapper iconAction">
-                                    <div class="actionDelete" onclick="deleteItem('209');">
+                                    <div class="actionDelete" onclick="deleteItem({{ $item->id }});">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-square">
                                             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                                             <line x1="9" y1="9" x2="15" y2="15"></line>
@@ -101,19 +101,19 @@
 </a>
     
 @endsection
-@push('scripts-custom')
+@push('scriptCustom')
     <script type="text/javascript">
         function deleteItem(id){
-            // if(confirm('{{ config("admin.alert.confirmRemove") }}')) {
+            if(confirm('{{ config("admin.alert.confirmRemove") }}')) {
                 $.ajax({
-                    url         : "",
-                    type        : "GET",
+                    url         : "{{ route('admin.page.deleteItem') }}",
+                    type        : "get",
                     dataType    : "html",
                     data        : { id : id }
                 }).done(function(data){
-                    if(data==true) $('#tourLocation-'+id).remove();
+                    if(data==true) $('#item_'+id).remove();
                 });
-            // }
+            }
         }
 
         function submitForm(idForm){

@@ -76,7 +76,11 @@
                             <!-- content -->
                             <div class="productGridBox_item_content">
                                 <a href="/{{ $product->seo->slug_full }}?product_price_id={{ $price->id }}" class="productGridBox_item_content_title maxLine_2">
-                                    <h3>{{ $productName }}</h3>
+                                    @if(!empty($headingTitle)&&$headingTitle=='h2')
+                                        <h2>{{ $productName }}</h2>
+                                    @else 
+                                        <h3>{{ $productName }}</h3>
+                                    @endif
                                 </a>
                                 <div class="productGridBox_item_content_price">
                                     <!-- giá -->

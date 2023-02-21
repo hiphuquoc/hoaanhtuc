@@ -8,7 +8,7 @@
     <div class="container">
         <div class="headerMain_item menuTop">
             <div class="headerMain_item_logo">
-                <a href="/" class="logoMain">
+                <a href="/" class="logoMain" aria-label="Trang chủ {{ config('main.company_name') }}">
                     @if(URL::current()==env('APP_URL'))
                         <h1 style="font-size:0.1rem;">Trang chủ {{ config('main.company_name') }}</h1>
                     @endif

@@ -23,9 +23,9 @@ $color-secondary-07     : rgba(244, 208, 63, 0.7);
 $color-secondary-08     : rgba(244, 208, 63, 0.8);
 $color-secondary-09     : rgba(244, 208, 63, 0.9);
 $color-secondary-hover  : rgb(241, 196, 15);
-$color-price: rgb(255, 90, 50);
-$color-red: #E74C3C;
-$color-red-hover: #D04637;
+$colorPrice: rgb(255, 90, 50);
+$colorRed: #E74C3C;
+$colorRed-hover: #D04637;
 $color-green: rgb(38, 207, 142);
 
 $bg-1: 			#212529;
@@ -264,7 +264,7 @@ table:not(.sendEmail) {
     &:after {
         margin-left: 0.5rem;
         content: '*';
-        color: $color-price;
+        color: $colorPrice;
         font-weight: bold;
     }
 }
@@ -397,9 +397,9 @@ label.error {
 
 .actionDelete {
     cursor: pointer;
-    color: $color-red !important;
+    color: $colorRed !important;
     &:hover {
-        color: $color-red-hover;
+        color: $colorRed-hover;
     }
 }
 
@@ -464,7 +464,7 @@ label.error {
     font-weight: 600;
     letter-spacing: 0.3px;
     > li {
-        color: $color-red;
+        color: $colorRed;
     }
 }
 
@@ -575,7 +575,7 @@ html .content {
     height: 37px;
     align-self: flex-end;
     text-align: center;
-    background: $color-red;
+    background: $colorRed;
     line-height: 35px;
     font-size: 1.2rem;
     color: #fff;
@@ -779,7 +779,7 @@ html .content {
                     }
                     &.remove {
                         &:hover {
-                            background: $color-red;
+                            background: $colorRed;
                             color: #f1f1f1;
                         }   
                     }
@@ -934,7 +934,7 @@ html .content {
     }
     &.error {
         .toastBox_title {
-            color: $color-red;
+            color: $colorRed;
             &:before {
                 @include fontAwesome;
                 content: '\f00d';
@@ -1002,4 +1002,49 @@ html .content {
             }
         }
     }
+}
+.priceProductBox {
+    &_item {
+        display: flex;
+        align-items: stretch;
+        &:not(:first-child){
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed $bg-06;
+        }
+        &_image {
+            flex: 0 0 80px;
+            position: relative;
+            img {
+                width: 100% !important;
+            }
+            &_count {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 25px;
+                aspect-ratio: 1/1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background: rgba(0,0,0,0.5);
+                color: #fff;
+                font-size: 0.8rem;
+            }
+        }
+        &_content {
+            margin-left: 0.75rem;
+        }
+    }
+}
+.saleOff {
+    margin-right: 0.5rem;
+    background: $colorRed;
+    padding: 0.2rem 0.25rem;
+    font-size: .8rem;
+    color: #fff;
+    border-radius: 5px;
+    height: 20px;
+    line-height: 20px;
 }

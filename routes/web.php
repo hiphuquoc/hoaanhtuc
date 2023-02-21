@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoutingController;
-use App\Http\Controllers\PageController as PagePublic;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
@@ -93,6 +92,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/view', [PageController::class, 'view'])->name('admin.page.view');
         Route::post('/create', [PageController::class, 'create'])->name('admin.page.create');
         Route::post('/update', [PageController::class, 'update'])->name('admin.page.update');
+        Route::get('/deleteItem', [PageController::class, 'deleteItem'])->name('admin.page.deleteItem');
     });
     /* ===== Category Blog ===== */
     Route::prefix('categoryBlog')->group(function(){

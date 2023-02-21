@@ -39,7 +39,7 @@ class Product extends Model {
                         ->with(['files' => function($query){
                             $query->where('relation_table', 'product_info');
                         }])
-                        ->with('seo', 'prices', 'contents', 'brand', 'categories')
+                        ->with('seo', 'prices.files', 'contents', 'brand', 'categories')
                         ->paginate($params['paginate']);
         return $result;
     }

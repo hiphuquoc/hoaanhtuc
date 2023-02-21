@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 use App\Helpers\Url;
 use App\Models\Product;
 use App\Models\Page;
-use PDO;
 
 class PageController extends Controller{
 

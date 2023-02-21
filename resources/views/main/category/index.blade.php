@@ -96,7 +96,10 @@
                                 </div>
                             </div>
                             <div class="productGridFlexBox">
-                                @include('main.template.productGrid', compact('products'))
+                                @include('main.template.productGrid', [
+                                    'product'       => $product,
+                                    'headingTitle'  => 'h2'
+                                ])
                                 @include('main.template.productGridLoading')
                                 <div id="js_filterProduct_hidden"></div>
                             </div>

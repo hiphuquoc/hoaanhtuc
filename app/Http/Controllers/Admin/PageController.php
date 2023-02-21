@@ -165,4 +165,31 @@ class PageController extends Controller {
         $list               = Page::getList($params);
         return view('admin.page.list', compact('list', 'viewPerPage', 'params'));
     }
+
+    public static function deleteItem(Request $request){
+        if(!empty($request->get('id'))){
+            try {
+                DB::beginTransaction();
+                $id         = $request->get('id');
+                $info       = Page::select('*')
+                                ->where('id', $id)
+                                ->with('seo')
+                                ->first();
+                /* delete bảng seo */
+                Seo::find($info->seo->id)->delete();
+                /* xóa ảnh đại diện trong thư mục */
+                $imageSmallPath     = Storage::path($info->seo->image_small);
+                if(file_exists($imageSmallPath)) @unlink($imageSmallPath);
+                $imagePath          = Storage::path($info->seo->image);
+                if(file_exists($imagePath)) @unlink($imagePath);
+                /* xóa category_blog_info */
+                $info->delete();
+                DB::commit();
+                return true;
+            } catch (\Exception $exception){
+                DB::rollBack();
+                return false;
+            }
+        }
+    }
 }
