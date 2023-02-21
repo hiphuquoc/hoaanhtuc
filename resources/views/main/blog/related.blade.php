@@ -12,7 +12,7 @@
                 <div class="relatedBox_box_item">
                     <div class="relatedBox_box_item_image">
                         <a href="{{ !empty($blog->seo->slug_full) ? url($blog->seo->slug_full) : url($blog->slug_full) }}" title="{{ $title }}">
-                            <img src="{{ config('image.loading_main') }}" data-src="{{ $image }}" alt="{{ $title }}" title="{{ $title }}" />
+                            <img src="{{ Storage::url(config('image.loading_main_gif_small')) }}" data-src="{{ $image }}" alt="{{ $title }}" title="{{ $title }}" />
                         </a>
                     </div>
                     <div class="relatedBox_box_item_content">

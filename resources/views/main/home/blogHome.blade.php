@@ -12,7 +12,7 @@
                     $title      = $blog->name ?? $blog->seo->title ?? null;
                 @endphp
                 <a href="/{{ $blog->seo->slug_full ?? null }}" class="blogHomeBox_box_item" title="{{ $title }}">
-                    <img src="{{ Storage::url($blog->seo->image_small) }}" alt="{{ $title }}" title="{{ $title }}" />
+                    <img src="{{ Storage::url(config('image.loading_main_gif_small')) }}" data-src="{{ Storage::url($blog->seo->image_small) }}" alt="{{ $title }}" title="{{ $title }}" />
                     <div class="blogHomeBox_box_item_content">
                         <div class="blogHomeBox_box_item_content_title">
                             <h3 class="maxLine_2">{{ $title }}</h3>

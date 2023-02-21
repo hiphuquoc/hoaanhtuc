@@ -28,8 +28,7 @@
     <!-- === START:: Header Top === -->
     @include('main.snippets.headerTop')
     <!-- === END:: Header Top === -->
-
-    <!-- === START:: Header Main === -->
+    
     <!-- === START:: Header Main === -->
     @include('main.cacheHTML.create', [
         'content'   => 'main.snippets.headerMain'
@@ -61,8 +60,12 @@
                                 </span>
                             </div>
                         </div>
+                        <!-- toc content -->
+                        <div id="tocContentMain"></div>
                         <!-- Content -->
-                        {!! $content ?? null !!}
+                        <div id="js_buildTocContentMain_element">
+                            {!! $content ?? null !!}
+                        </div>
                         <!-- related box -->
                         @include('main.blog.related', compact('blogRelates'))
                     </div>
@@ -73,36 +76,11 @@
             </div>
         </div>
     </div>
-
-    {{-- <div class="pageContent">
-        <div class="sectionBox">
-            <div class="container">
-                <div class="pageContent_body">
-                    <div id="js_buildTocContentSidebar_element" class="pageContent_body_content">
-                        <!-- title -->
-                        <h1 class="titlePage">{{ $item->name ?? null }}</h1>
-                        <!-- rating -->
-                        @include('main.template.rating', compact('item'))
-                        <!-- tocContent main -->
-                        <div id="tocContentMain" style="margin-top:1rem;"></div>
-                        <!-- content -->
-                        <div class="contentShip">
-                            <!-- Nội dung tùy biến -->
-                            {!! $content ?? null !!}
-                        </div>
-                        <!-- related box -->
-                        @include('main.blog.related', compact('blogRelates'))
-                    </div>
-                    <div class="pageContent_body_sidebar">
-                        @include('main.blog.sidebar')
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 @endsection
-@push('scripts-custom')
+@push('scriptCustom')
     <script type="text/javascript">
-        buildTocContentMain('js_buildTocContentSidebar_element');
+        $(window).ready(function(){
+            buildTocContentMain('js_buildTocContentMain_element');
+        })
     </script>
 @endpush

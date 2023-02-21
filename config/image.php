@@ -18,5 +18,7 @@ return [
         'default'               => ['copy_url', 'change_image'],
         'manager-upload'        => ['copy_url', 'change_name', 'change_image', 'delete']
     ],
-    'loading_main'          => '/storage/images/svg/loading_plane_bge9ecef.svg'
+    'loading_main_css'          => '/storage/images/svg/loading_plane_bge9ecef.svg',
+    'loading_main_gif'          => 'public/images/loading-gif-1-min.gif',
+    'loading_main_gif_small'    => 'public/images/loading-gif-1-200.gif'
 ];

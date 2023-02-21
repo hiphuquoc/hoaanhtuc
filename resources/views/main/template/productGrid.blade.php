@@ -34,11 +34,14 @@
                         <!-- one price && file -->
                         @php
                             $keyIdPrice = 'js_changeOption_'.$price->id.$file->id;
+                            /* lấy ảnh small */
+                            $fileInfo   = pathinfo($file->file_path);
+                            $imageSmall = $fileInfo['dirname'].'/'.$fileInfo['filename'].'-small'.'.'.$fileInfo['extension'];
                         @endphp
                         <div id="{{ $keyIdPrice }}" class="{{ $i==0 ? 'show' : 'hide' }}">
                             <a href="/{{ $product->seo->slug_full }}?product_price_id={{ $price->id }}" class="productGridBox_item_image">
                                 <!-- ảnh -->
-                                <img src="{{ Storage::url($file->file_path) }}" alt="{{ $productName }}" title="{{ $productName }}" />
+                                <img src="{{ Storage::url(config('image.loading_main_gif_small')) }}" data-src="{{ Storage::url($imageSmall) }}" alt="{{ $productName }}" title="{{ $productName }}" />
                                 <!-- rating và số lượng đã bán -->
                                 <div class="productGridBox_item_image_rating">
                                     @if(!empty($product->seo->rating_aggregate_star))
@@ -61,9 +64,12 @@
                                         $selected   = null;
                                         if($keyIdPrice==$keyIdFile) $selected = 'selected';
                                         if($loop->index==5) break;
+                                        /* lấy ảnh mini */
+                                        $fileInfo   = pathinfo($image->file_path);
+                                        $imageMini  = $fileInfo['dirname'].'/'.$fileInfo['filename'].'-mini'.'.'.$fileInfo['extension'];
                                     @endphp
                                     <div class="productGridBox_item_imageList_item {{ $selected }}" onClick="changeOption('{{ $keyIdFile }}');">
-                                        <img src="{{ Storage::url($image->file_path) }}" alt="{{ $productName }}" title="{{ $productName }}" />
+                                        <img src="{{ Storage::url(config('image.loading_main_gif_small')) }}" data-src="{{ Storage::url($imageMini) }}" alt="loading cart" title="loading cart" />
                                     </div>
                                 @endforeach
                             </div>

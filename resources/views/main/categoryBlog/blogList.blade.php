@@ -7,7 +7,7 @@
         @endphp
         <div class="articleBox_item">
             <a href="/{{ $blog->seo->slug_full ?? null }}" title="{{ $title }}" class="articleBox_item_image">
-                <img src="{{ config('image.loading_main') }}" data-src="{{ $image }}" alt="{{ $title }}" title="{{ $title }}" />
+                <img src="{{ Storage::url(config('image.loading_main_gif')) }}" data-src="{{ $image }}" alt="{{ $title }}" title="{{ $title }}" />
             </a>
             <div class="articleBox_item_content">
                 <a href="/{{ $blog->seo->slug_full ?? null }}" title="{{ $title }}" class="articleBox_item_content_title">

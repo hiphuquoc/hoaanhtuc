@@ -225,7 +225,7 @@ class ImageController extends Controller {
             $tmp            = [];
             foreach($dataImage as $image){
                 $dataSrc    = $image['data-src'] ?? $image['src'];
-                $tmp        = '<img src="'.config('image.loading_main').'" data-src="'.$dataSrc.'" alt="'.$image['alt'].'" title="'.$image['title'].'" style="width:100%;" />';
+                $tmp        = '<img src="'.Storage::url(config('image.loading_main_gif')).'" data-src="'.$dataSrc.'" alt="'.$image['alt'].'" title="'.$image['title'].'" style="width:100%;" />';
                 $content    = str_replace($image['source'], $tmp, $content);
             }
         }

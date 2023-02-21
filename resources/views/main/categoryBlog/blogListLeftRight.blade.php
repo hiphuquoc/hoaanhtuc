@@ -15,7 +15,7 @@
             <div class="blogListLeftRight_box">
                 <div class="blogListLeftRight_box_left">
                     <a href="/{{ $infoCategory->childs[0]->seo->slug_full ?? null }}" title="{{ $title }}" class="blogListLeftRight_box_left_image">
-                        <img src="{{ config('image.loading_main') }}" data-src="{{ $image }}" alt="{{ $title }}" title="{{ $title }}" />
+                        <img src="{{ Storage::url(config('image.loading_main_gif')) }}" data-src="{{ $image }}" alt="{{ $title }}" title="{{ $title }}" />
                     </a>
                     <div class="blogListLeftRight_box_left_content">
                         <a href="/{{ $infoCategory->childs[0]->seo->slug_full ?? null }}" title="{{ $title }}" class="blogListLeftRight_box_left_content_title">
@@ -39,7 +39,7 @@
                         @endphp
                         <div class="blogListLeftRight_box_right_item">
                             <a href="/{{ $infoCategory->childs[$i]->seo->slug_full ?? null }}" title="{{ $title }}" class="blogListLeftRight_box_right_item_image">
-                                <img src="{{ config('image.loading_main') }}" data-src="{{ $image }}" alt="{{ $title }}" title="{{ $title }}" />
+                                <img src="{{ Storage::url(config('image.loading_main_gif')) }}" data-src="{{ $image }}" alt="{{ $title }}" title="{{ $title }}" />
                             </a>
                             <div class="blogListLeftRight_box_right_item_content">
                                 <a href="/{{ $infoCategory->childs[$i]->seo->slug_full ?? null }}" title="{{ $title }}">
