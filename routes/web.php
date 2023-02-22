@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\CategoryBlogController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\CacheController;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,6 +134,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/removeImage', [ImageController::class, 'removeImage'])->name('admin.image.removeImage');
 
         // Route::get('/toolRename', [ImageController::class, 'toolRename'])->name('admin.image.toolRename');
+    });
+    /* ===== CACHE ===== */
+    Route::prefix('cache')->group(function(){
+        Route::get('/clearCacheHtml', [CacheController::class, 'clear'])->name('admin.cache.clearCache');
     });
 });
 /* ROUTING */
