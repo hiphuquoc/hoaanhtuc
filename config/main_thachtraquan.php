@@ -2,29 +2,29 @@
 
 return [
     'currency_unit'         => '<sup>đ</sup>',
-    'author_name'           => 'Hoaanhtuc',
-    'founder_name'          => 'Hoaanhtuc',
-    'founder_address'       => 'Ấp Hòa An B, xã Ngọc Hòa, Giồng Riềng',
-    'founding'              => '2023-01-30',
-    'company_name'          => 'Hoaanhtuc',
-    'hotline'               => '0819.443.755',
-    'email'                 => 'hoaanhtucshop@gmail.com',
-    'address'               => 'Ấp Hòa An B, xã Ngọc Hòa, Giồng Riềng',
+    'author_name'           => 'Thachtraquan',
+    'founder_name'          => 'Thachtraquan',
+    'founder_address'       => '165 Quang Trung, Rạch Giá',
+    'founding'              => '2023-02-22',
+    'company_name'          => 'Thachtraquan',
+    'hotline'               => '0917.111.505',
+    'email'                 => 'thachtraquan@gmail.com',
+    'address'               => '165 Quang Trung, Rạch Giá',
     'company_description'   => 'Giới thiệu dịch vụ',
     'logo_750x460'          => 'public/images/upload/trang-diem-750.webp',
     'logo_main'             => 'images/upload/logo-hoaanhtuc-type-manager-upload.webp',
     'contacts'          => [
         [
             'type'      => 'customer service',
-            'phone'     => '0819443755'
+            'phone'     => '0917111505'
         ],
         [
             'type'      => 'technical support',
-            'phone'     => '0968617168'
+            'phone'     => '0917111505'
         ],
         [
             'type'      => 'sales',
-            'phone'     => '0819443755'
+            'phone'     => '0917111505'
         ]
     ],
     'products'          => [
@@ -34,10 +34,10 @@ return [
         ]
     ],
     'socials'           => [
-        'https://facebook.com/hoaanhtuc',
-        'https://twitter.com/hoaanhtuc',
-        'https://pinterest.com/hoaanhtuc',
-        'https://youtube.com/hoaanhtuc'
+        'https://facebook.com/thachtraquan',
+        'https://twitter.com/thachtraquan',
+        'https://pinterest.com/thachtraquan',
+        'https://youtube.com/thachtraquan'
     ],
     'storage'   => [
         'contentPage'       => 'public/contents/pages/',
