@@ -34,10 +34,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color: $colorLv1;
+        h2, h3, h4 {
+            color: $colorLv2;
+        }
         &::after {
             content: '\f107';
             @include fontAwesome;
+            color: $bg-07;
 
         }
     }
@@ -98,8 +101,8 @@
         }
     }
     .highLight {
-        font-weight: 600;
-        color: $colorLv4;
+        font-family: $fontTitle;
+        color: $colorYellowLv4;
     }
 }
 .productDetailBox {
@@ -131,7 +134,7 @@
                     font-size: 0.9rem;
                     display: inline-block;
                     background: $bg-02;
-                    color: $colorDesc;
+                    @include colorOpacity('color', $colorLv1, 0.8);
                     padding: 0.25rem 0.5rem;
                     border-radius: 7px;
                     margin-top: 0.5rem;
@@ -155,18 +158,19 @@
                     }
                 }
                 &_real {
-                    color: $colorLv1;
+                    color: $colorPrice;
                     letter-spacing: 0.5px;
                     font-size: 1.5rem;
                     font-weight: 700;
                 }
                 &_old {
+                    @include colorOpacity('color', $colorLv1, 0.6);
                     font-size: 1rem;
                     text-decoration: line-through;
                 }
                 &_saleoff {
                     color: #fff;
-                    background: $colorLv2;
+                    background: $colorSLv3;
                     letter-spacing: 0.5px;
                     font-size: 1rem;
                     padding: 0.25rem 0.5rem;
@@ -191,11 +195,11 @@
                     width: 100%;
                     font-size: 1rem;
                     height: 45px;
-                    background: $colorSecondary;
+                    background: $colorSLv2;
                     color: #fff;
                     font-family: $fontText;
                     &:hover, &:focus {
-                        background: $colorSecondaryHover;
+                        background: $colorSLv1;
                     }
                     @media(max-width: 576px){
                         height: 42px;
@@ -272,7 +276,7 @@
                 }
             }
             &_on {
-                color: $colorYellow;
+                color: $colorYellowLv2;
             }
         }
         &_total {
@@ -385,7 +389,7 @@
     &_title {
         margin-bottom: 1.5rem;
         h2, h3 {
-            color: $colorLv1;
+            color: $colorLv2;
             text-transform: uppercase;
             font-family: $fontText;
             font-weight: bold;

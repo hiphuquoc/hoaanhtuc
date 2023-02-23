@@ -1,7 +1,7 @@
 .cartBox {
     position: relative;
     text-transform: none;
-    color: $colorText;
+    @include colorOpacity('color', $colorLv1, 0.8);
     display: flex;
     color: inherit;
     height: inherit;
@@ -15,19 +15,19 @@
         position: relative;
         width: 28px;
         height: 28px;
-        color: $colorLv2;
+        color: #fff;
         &:hover {
-            color: $colorLv2;
+            color: #fff;
         }
         img {
             width: inherit;
             height: inherit;
         }
         &_number {
+            @include colorOpacity('background', $colorSLv2, 0.8);
             position: absolute;
             top: -15px;
             right: -15px;
-            background: $colorSecondary-08;
             padding: 0.1rem 0.65rem;
             border-radius: 50%;
             font-size: 0.8rem;
@@ -44,14 +44,14 @@
         display: none;
         width: 480px;
         background: #fff;
-        color: $colorText;
+        @include colorOpacity('color', $colorLv1, 0.8);
         position: absolute;
         top: 40px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 1;
         box-shadow: 1px 1px 10px rgb(0 0 0 / 20%);
-        border-top: 2px solid $colorSecondary;
+        border-top: 2px solid $colorSLv2;
         &_item {
             display: flex;
             color: inherit;
@@ -85,7 +85,7 @@
                 }
                 &_price {
                     font-weight: normal;
-                    color: $colorText;
+                    @include colorOpacity('color', $colorLv1, 0.8);
                     letter-spacing: 0.5px;
                     margin-bottom: 0.5rem;
                 }
@@ -96,7 +96,7 @@
                     &_total {
                         font-weight: normal;
                         > span {
-                            color: $colorRed;
+                            color: $colorPrice;
                             font-weight: bold;
                         }
                     }
@@ -121,7 +121,7 @@
                 justify-content: flex-end;
                 align-items: flex-end;
                 > span {
-                    color: $colorRed;
+                    color: $colorPrice;
                     font-size: 1.1rem;
                     letter-spacing: 0.5px;
                     margin-left: 0.5rem;
@@ -135,11 +135,11 @@
                     display: flex;
                     width: 100%;
                     justify-content: center;
-                    background: $colorSecondaryHover;
+                    background: $colorSLv1;
                     color: #fff;
                     font-weight: 500;
                     &:hover, &:focus {
-                        background: $colorSecondary;
+                        background: $colorSLv2;
                     }
                 }
             }
@@ -218,7 +218,7 @@
             display: flex;
             justify-content: space-between;
             &_number {
-                color: $colorRed;
+                color: $colorPrice;
                 font-size: 1.2rem;
                 letter-spacing: 0.5px;
                 margin-left: 0.5rem;
@@ -226,9 +226,9 @@
         }
     }
     &_notice {
-        color: $colorText;
+        @include colorOpacity('color', $colorLv1, 0.8);
         font-size: 1rem;
-        background: $colorSecondary-02;
+        @include colorOpacity('background', $colorSLv2, 0.2);
         padding: 0.25rem 0.5rem;
         font-size: 0.95rem;
         margin-top: 0.75rem;
@@ -280,6 +280,7 @@
         font-size: 0.95rem;
         font-weight: bold;
         margin-bottom: 0.5rem;
+        @include colorOpacity('color', $colorLv1, 0.6);
     }
     &_body {
         display: flex;
@@ -312,7 +313,7 @@
                         line-height: 1.4;
                         font-weight: bold;
                         margin-bottom: 0.5rem;
-                        color: $colorText;
+                        color: $colorLv2;
                         font-family: $fontTitle;
                     }
                     &_option {
@@ -330,7 +331,7 @@
                     align-items: center;
                     &_percent {
                         margin-right: 0.5rem;
-                        background: $colorRed;
+                        background: $colorSLv3;
                         padding: 0 0.25rem;
                         font-size: 0.7rem;
                         color: #fff;
@@ -341,12 +342,13 @@
                     &_number {
                         text-decoration: line-through;
                         font-size: 0.9rem;
+                        @include colorOpacity('color', $colorLv1, 0.6);
                     }
                 }
             }
             &_money {
                 font-weight: bold;
-                color: $colorRed;
+                color: $colorPrice;
                 letter-spacing: 0.5px;
                 display: flex;
                 flex-direction: column;

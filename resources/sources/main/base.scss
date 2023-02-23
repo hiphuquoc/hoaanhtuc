@@ -1,45 +1,3 @@
-$colorLv1   : #9e1e1f;
-$colorLv2   : #ed1c24;
-$colorLv2-01 : rgba(237,26,38,0.1);
-$colorLv2-02 : rgba(237,26,38,0.2);
-$colorLv2-03 : rgba(237,26,38,0.3);
-$colorLv2-04 : rgba(237,26,38,0.4);
-$colorLv2-05 : rgba(237,26,38,0.5);
-$colorLv2-06 : rgba(237,26,38,0.6);
-$colorLv2-07 : rgba(237,26,38,0.7);
-$colorLv2-08 : rgba(237,26,38,0.8);
-$colorLv2-09 : rgba(237,26,38,0.9);
-$colorLv3   : #A1E3D8;
-$colorLv4   : #F7FF93;
-$colorSecondary       : #fcaf17;
-$colorSecondary-01    : rgba(252,175,23,0.1);
-$colorSecondary-02    : rgba(252,175,23,0.2);
-$colorSecondary-03    : rgba(252,175,23,0.3);
-$colorSecondary-04    : rgba(252,175,23,0.4);
-$colorSecondary-05    : rgba(252,175,23,0.5);
-$colorSecondary-06    : rgba(252,175,23,0.6);
-$colorSecondary-07    : rgba(252,175,23,0.7);
-$colorSecondary-08    : rgba(252,175,23,0.8);
-$colorSecondary-09    : rgba(252,175,23,0.9);
-$colorSecondaryHover  : #F0A000;
-
-$bg-1: 			#212529;
-$bg-09: 		#343a40;
-$bg-08: 		#495057;
-$bg-07: 		#6c757d;
-$bg-06: 		#adb5bd;
-$bg-05: 		#ced4da;
-$bg-04: 		#dee2e6;
-$bg-03: 		#e9ecef;
-$bg-02: 		#EDF2F7;
-
-$colorTitle : #345;
-$colorText  : #456;
-$colorDesc  : #567;
-$colorTextHightlight  : #183153;
-$colorYellow : #fac126;
-$colorRed   : #ed1c24;
-$colorSuccess : #06d6a0;
 $fontText   : "SVN-Gilroy", tahoma, serif;
 $fontTitle  : "SVN-Gilroy Bold", tahoma, serif;
 
@@ -127,7 +85,7 @@ $fontTitle  : "SVN-Gilroy Bold", tahoma, serif;
         position: absolute;
         top: 0;
         left: 0;
-        background: rgba(0,0,0,0.8);
+        @include colorOpacity('background', $colorLv1, 0.7);
         padding: 0.1rem 0.5rem;
         display: flex;
         color: #fff;
@@ -151,7 +109,7 @@ $fontTitle  : "SVN-Gilroy Bold", tahoma, serif;
         position: absolute;
         top: 0;
         right: 0;
-        background: $colorLv2;
+        background: $colorSLv3;
         padding: 0.1rem 0.5rem;
         display: flex;
         color: #fff;
@@ -181,7 +139,7 @@ $fontTitle  : "SVN-Gilroy Bold", tahoma, serif;
 
           }
           &.selected, &:hover {
-              border: 1px solid $colorLv2;
+              border: 1px solid $colorSLv3;
           }
       }
     }
@@ -192,13 +150,13 @@ $fontTitle  : "SVN-Gilroy Bold", tahoma, serif;
           font-family: $fontTitle;
           font-size: 1.05rem;
           margin-bottom: 0 !important;
-          color: $colorTitle;
+          @include colorOpacity('color', $colorLv1, 0.9);
           line-height: 1.5;
         }
       }
       &_price {
         margin-bottom: 0.5rem;
-        color: $colorLv2;
+        color: $colorPrice;
         font-size: 1.2rem;
         font-weight: bold;
         letter-spacing: 1px;
@@ -207,7 +165,7 @@ $fontTitle  : "SVN-Gilroy Bold", tahoma, serif;
         > span {
             font-size: 1rem;
             font-weight: normal;
-            color: $colorText;
+            @include colorOpacity('color', $colorLv1, 0.6);
             text-decoration: line-through;
             margin-left: 1rem;
         }
@@ -242,7 +200,7 @@ $fontTitle  : "SVN-Gilroy Bold", tahoma, serif;
 @mixin highLight {
   font-size: 1.2rem;
   font-weight: 700;
-  color: $colorLv1;
+  color: $colorSLv1;
 }
 
 *, ::after, ::before {
@@ -260,7 +218,7 @@ body {
     line-height: 1.68rem;
     font-weight: 500;
     font-family: $fontText;
-    color: $colorText;
+    @include colorOpacity('color', $colorLv1, 0.9);
     @media(max-width: 1199px){
       font-size: 0.975rem;
     }
@@ -304,9 +262,9 @@ ul {
 }
 
 h1 {
+  color: $colorLv2;
   font-family: $fontTitle;
   font-size: 1.5rem;
-  color: $colorTitle;
   margin-bottom: 1rem;
   line-height: 1.4;
   @media(max-width: 1199px){
@@ -327,6 +285,7 @@ h2 {
   font-family: $fontTitle;
   margin-bottom: 0.75rem;
   font-size: 1.3rem;
+  color: $colorLv2;
 //   line-height: 2.2rem;
 //   @media(max-width: 990px){
 //     font-size: 1.5rem;
@@ -583,7 +542,7 @@ blockquote{
 
 .button {
   padding: 0.5rem 2rem;
-  background: $colorSecondaryHover;
+  background: $colorSLv1;
   display: inline-block;
   font-family: $fontTitle;
   font-weight: 500;
@@ -598,7 +557,7 @@ blockquote{
   &:focus, &:hover {
     color: #fff;
     outline: none;
-    background: $colorSecondary;
+    background: $colorSLv2;
   }
   i {
     margin-left: -0.25rem;
@@ -606,15 +565,15 @@ blockquote{
   }
   &.cancel {
     background: $bg-04;
-    color: $colorText;
+    @include colorOpacity('color', $colorLv1, 0.8);
     &:hover {
       outline: none;
       background: $bg-05;
     }
   }
   &.secondary {
-    background: $colorSecondary;
-    color: $colorText;
+    background: $colorSLv2;
+    @include colorOpacity('color', $colorLv1, 0.8);
   }
 }
 
@@ -681,17 +640,17 @@ label {
     margin-bottom: 0.5rem;
   }
   &Secondary {
-    background: $bg-02;
+    @include colorOpacity('background', $colorSLv3, 0.1);
     &.selected {
-        background: $bg-07;
+        background: $colorSLv3;
         color: #fff;
         &:hover {
-            background: $bg-07;
+            background: $colorSLv3;
             color: #fff;
         }
     }
     &:hover {
-        background: $colorSecondary-01;
+        @include colorOpacity('background', $colorSLv3, 0.2);
     }
   }
 }

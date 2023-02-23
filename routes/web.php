@@ -7,6 +7,7 @@ use App\Http\Controllers\RoutingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PageController as PagePublic;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\SitemapController;
 

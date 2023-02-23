@@ -1,3 +1,4 @@
+@import 'color_hoaanhtuc.scss';
 @import 'base.scss';
 @import 'menu.scss';
 @import 'sidebar.scss';
@@ -14,24 +15,26 @@
     display: flex;
     width: 200px;
     aspect-ratio: 290/100;
-    background: url('https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manager-upload.webp') no-repeat;
+    background: url('https://quynhnhu.test/storage/images/upload/logo-hoaanhtuc-type-manager-upload.webp') no-repeat;
     background-size: 100% 100%;
 }
 .hotlineBox {
     font-size: 1.2rem;
-    color: $colorLv1;
-    font-family: $fontTitle;
+    font-weight: bold;
     display: flex;
     align-items: center;
     color: inherit;
+    &_hotline {
+        color: $colorLv2;
+    }
     i {
         font-size: 1rem;
         margin-right: 0.5rem;
     }
     &:after {
         content: 'hotline';
-        background: $colorSecondary;
-        color: $colorText;
+        background: $colorSLv2;
+        color: #fff;
         padding: 0 0.5rem;
         border-radius: 10px;
         font-size: 0.95rem;
@@ -60,9 +63,9 @@
             button {
                 border-radius: 100px;
                 color: transparent;
-                width: 50px;
-                height: 4px;
-                background: $colorSecondary-06;
+                width: 40px;
+                height: 3px;
+                @include colorOpacity('background', $colorSLv4, 0.5);
                 outline: none;
                 border: none;
                 cursor: pointer;
@@ -73,7 +76,7 @@
             }
             &.slick-active {
                 button {
-                    background: $colorLv4;
+                    background: $colorSLv4;
                 }
             }
         }
@@ -88,11 +91,11 @@
         border: none;
         cursor: pointer;
         border-radius: 5px;
-        color: $colorDesc;
-        background: $colorLv4;
+        @include colorOpacity('color', $colorLv1, 0.8);
+        background: $colorSLv4;
         opacity: 0.6;
         &:hover {
-            opacity: 1;
+            opacity: 0.8;
         }
         &.slick-prev {
             left: 10px;
@@ -107,8 +110,8 @@
             bottom: 0;
             li {
                 button {
-                    width: 40px;
-                    height: 3.5px;
+                    width: 35px;
+                    height: 2.5px;
                 }
             }
         }
@@ -140,7 +143,7 @@
     }
 }
 .bannerSecondaryBox {
-    background: $colorLv1;
+    background: $colorLv2;
     color: #fff;
     padding: 0.5rem 0;
     .container {
@@ -152,10 +155,12 @@
         display: flex;
         align-items: center;
         width: 100%;
+        opacity: 0.9;
         &:not(:first-child){
             margin-left: 1rem;
             padding-left: 1rem;
-            border-left: 2px dashed $colorLv2-03;
+            border-left: 2px dashed;
+            @include colorOpacity('border-color', $colorLv4, 0.3);
         }
         &_icon {
             flex: 0 0 60px;
@@ -165,10 +170,9 @@
         &_text {
             width: 100%;
             margin-left: 1rem;
-            
             line-height: 1.5;
             &_title {
-                color: $colorLv4;
+                color: $colorYellowLv4;
                 font-family: $fontTitle;
                 margin-bottom: 0.25rem;
             }
@@ -191,7 +195,8 @@
             &:nth-child(n + 3){
                 margin-top: 0.5rem;
                 padding-top: 0.5rem;
-                border-top: 2px dashed $colorLv2-03;
+                border-top: 2px dashed;
+                @include colorOpacity('border-color', $colorLv4, 0.3);
             }
             &_icon {
                 flex: 0 0 50px;
@@ -212,89 +217,6 @@
                 &_desc {
                     display: none;
                 }
-            }
-        }
-    }
-}
-.categoryGridBox {
-    .container {
-        position: relative;
-        display: flex;
-        align-items: flex-start;
-        // &:after {
-        //     content: '';
-        //     position: absolute;
-        //     width: 100px;
-        //     height: 100%;
-        //     top: 0;
-        //     right: 0;
-        //     background: linear-gradient(270deg, $bg-02 20%, transparent);
-        //     z-index: 1;
-        // }
-    }
-    &_item {
-        width: 100%;
-        color: $colorLv1;
-        &:hover {
-            color: $colorLv2;
-            .categoryGridBox_item_icon {
-                border: 2px dashed $colorLv2;
-            }
-        }
-        &:not(:first-child){
-            margin-left: 2rem;
-        }
-        &_icon {
-            background: $colorSecondary-01;
-            width: 100%;
-            border-radius: 50%;
-            padding: 1.5rem;
-            margin-bottom: 0.5rem;
-            border: 2px solid #fff;
-            transition: all 0.5s;
-            aspect-ratio: 1 / 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            img {
-                width: 100%;
-                display: flex;
-                margin: 0 auto;
-            }
-        }
-        &_title {
-            text-align: center;
-            font-weight: 700;
-            line-height: 1.4;
-            color: $colorText;
-        }
-    }
-    @include slickArrowCircle;
-    @media(max-width: 1199px){
-        &_item {
-            &:not(:first-child){
-                margin-left: 1.75rem;
-            }
-        }
-    }
-    @media(max-width: 990px){
-        &_item {
-            &:not(:first-child){
-                margin-left: 1.5rem;
-            }
-        }
-    }
-    @media(max-width: 766px){
-        &_item {
-            &:not(:first-child){
-                margin-left: 1.25rem;
-            }
-        }
-    }
-    @media(max-width: 576px){
-        &_item {
-            &:not(:first-child){
-                margin-left: 1rem;
             }
         }
     }
@@ -348,7 +270,7 @@
             text-transform: uppercase;
             font-family: $fontText;
             margin-bottom: 0 !important;
-            color: $colorLv1;
+            color: $colorLv2;
         }
     }
     &_box {
@@ -443,7 +365,7 @@
                 content: '\f106';
                 @include fontAwesome;
                 font-size: 1rem;
-                color: $colorDesc;
+                @include colorOpacity('color', $colorLv1, 0.8);
             }
         }
         &_box {
@@ -468,12 +390,12 @@
                         width: 22px;
                         height: 22px;
                         border-radius: 5px;
-                        border: 1px solid $colorLv1;
+                        border: 1px solid $colorSLv1;
                         display: inline-block;
                     }
                     &.selected {
                         &:before {
-                            background: $colorLv2;
+                            background: $colorSLv2;
                         }
                         &:after {
                             content: '\f00c';
@@ -495,7 +417,7 @@
     justify-content: space-between;
     align-items: flex-end;
     
-    color: $colorDesc;
+    @include colorOpacity('color', $colorLv1, 0.8);
     margin-bottom: 1rem;
     margin-top: -0.25rem;
     &_left {
@@ -515,7 +437,7 @@
             
             select {
                 padding: 0;
-                color: $colorDesc;
+                @include colorOpacity('color', $colorLv1, 0.8);
                 border: none;
             }
         }
@@ -579,7 +501,7 @@
             text-transform: uppercase;
             font-family: $fontText;
             margin-bottom: 0 !important;
-            color: $colorLv1;
+            color: $colorLv2;
         }
     }
     &_description {
@@ -597,7 +519,7 @@
                     transition: all 0.5s;
                 }
                 h3, h4 {
-                    color: $colorLv4;
+                    color: $colorSLv4;
                 }
             }
             img {
@@ -625,7 +547,7 @@
                         content: '';
                         height: 100%;
                         width: 3px;
-                        border-left: 3px solid $colorLv4;
+                        border-left: 3px solid $colorSLv4;
                         position: absolute;
                         top: 0;
                         left: 0;
@@ -688,20 +610,21 @@
         margin-bottom: 1rem;
         text-transform: uppercase;
         font-size: 1.1rem;
-        color: $colorLv4;
+        color: $colorSLv4;
         font-family: $fontTitle;
     }
     &_input {
         display: flex;
         button {
-            background: $colorSecondary;
+            background: $colorSLv2;
             border-radius: 0 7px 7px 0;
-            color: $colorText;
+            @include colorOpacity('color', $colorLv1, 0.8);
             display: flex;
             align-items: center;
             padding: 0.5rem 1rem;
+            color: #fff;
             &:hover, &:focus {
-                background: $colorSecondaryHover;
+                background: $colorSLv1;
             }
             i {
                 margin-right: 0.5rem;
@@ -738,7 +661,7 @@
     justify-content: flex-end;
 }
 .footerBox {
-    background: $colorLv1;
+    background: $colorLv2;
     color: #fff;
     padding: 2.5rem 0;
     font-size: 0.95rem;
@@ -755,7 +678,7 @@
             font-family: $fontTitle;
             font-size: 1.1rem;
             text-transform: uppercase;
-            color: $colorLv4;
+            color: $colorSLv4;
             margin-bottom: 0.75rem;
         }
         &_list {
@@ -768,8 +691,14 @@
             }
             a {
                 &:hover {
-                    color: $colorLv4;
+                    color: $colorSLv4;
                 }
+            }
+        }
+        .hotlineBox {
+            &_hotline {
+                color: $colorSLv4;
+                font-family: $fontTitle;
             }
         }
     }
@@ -815,17 +744,16 @@
     }
 }
 .copyright {
-    background: $colorSecondary-03;
+    @include colorOpacity('background', $colorSLv2, 0.3);
     padding: 0.5rem 0;
     font-size: 0.9rem;
     line-height: 1.5;
 }
 .gotoTop {
     align-self: flex-end;
-    
     border: none;
     outline: none;
-    background-color: $colorLv2-06;
+    @include colorOpacity('background-color', $colorLv2, 0.4);
     color: #fff;
     cursor: pointer;
     border-radius: 4px;
@@ -840,7 +768,7 @@
       height: 100%;
     }
     &:hover {
-        background: $colorLv2-08;
+        @include colorOpacity('background-color', $colorLv2, 0.5);
     }
     @media(max-width: 767px){
         margin-right: 0.5rem;
@@ -895,7 +823,7 @@
                     font-family: $fontTitle;
                     font-size: 1.05rem;
                     line-height: 1.45;
-                    color: $colorTitle;
+                    @include colorOpacity('color', $colorLv2, 0.9);
                     margin-bottom: 0.5rem;
                 }
                 &_type {
@@ -903,7 +831,7 @@
                     
                 }
                 &_price {
-                    color: $colorLv2;
+                    color: $colorPrice;
                     font-size: 1.2rem;
                     font-weight: bold;
                     letter-spacing: 1px;
@@ -915,15 +843,15 @@
             > * {
                 display: flex;
                 justify-content: center;
-                background: $colorSecondaryHover;
+                background: $colorSLv1;
                 color: #fff;
                 &:focus {
                     color: #fff;
-                    background: $colorSecondaryHover;
+                    background: $colorSLv1;
                 }
                 &:hover {
                     color: #fff;
-                    background: $colorSecondary;
+                    background: $colorSLv2;
                 }
             }
         }
@@ -931,7 +859,7 @@
     .highLight {
         font-size: 1.3rem;
         font-weight: bold;
-        color: $colorLv1;
+        color: $colorSLv1;
     }
     @media(max-width: 576px){
         &_box {
@@ -986,7 +914,7 @@
         display: inline-block;
         border-radius: 5px;
         padding: 0.35rem 0.5rem 0.35rem 0.75rem;
-        background: $bg-07;
+        background: $colorSLv3;
         &_badge {
             display: flex;
             color: #fff;

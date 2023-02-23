@@ -1,10 +1,93 @@
+.categoryGridBox {
+    .container {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        // &:after {
+        //     content: '';
+        //     position: absolute;
+        //     width: 100px;
+        //     height: 100%;
+        //     top: 0;
+        //     right: 0;
+        //     background: linear-gradient(270deg, $bg-02 20%, transparent);
+        //     z-index: 1;
+        // }
+    }
+    &_item {
+        width: 100%;
+        color: $colorLv1;
+        &:hover {
+            color: $colorLv2;
+            .categoryGridBox_item_icon {
+                border: 2px dashed $colorSLv2;
+            }
+        }
+        &:not(:first-child){
+            margin-left: 2rem;
+        }
+        &_icon {
+            @include colorOpacity('background', $colorSLv2, 0.1);
+            width: 100%;
+            border-radius: 50%;
+            padding: 1.5rem;
+            margin-bottom: 0.5rem;
+            border: 2px solid #fff;
+            transition: all 0.5s;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+                width: 100%;
+                display: flex;
+                margin: 0 auto;
+            }
+        }
+        &_title {
+            text-align: center;
+            font-weight: 700;
+            line-height: 1.4;
+            @include colorOpacity('color', $colorLv1, 0.9);
+        }
+    }
+    @include slickArrowCircle;
+    @media(max-width: 1199px){
+        &_item {
+            &:not(:first-child){
+                margin-left: 1.75rem;
+            }
+        }
+    }
+    @media(max-width: 990px){
+        &_item {
+            &:not(:first-child){
+                margin-left: 1.5rem;
+            }
+        }
+    }
+    @media(max-width: 766px){
+        &_item {
+            &:not(:first-child){
+                margin-left: 1.25rem;
+            }
+        }
+    }
+    @media(max-width: 576px){
+        &_item {
+            &:not(:first-child){
+                margin-left: 1rem;
+            }
+        }
+    }
+}
 .categoryBoxFooter {
     &_item {
         display: flex;
         align-items: center;
         color: #fff;
         &:hover {
-            color: $colorLv4;
+            color: $colorSLv4;
         }
         &:not(:first-child){
             margin-top: 0.75rem;
@@ -25,7 +108,7 @@
             margin-left: 0.75rem;
             > span {
                 font-size: 1.1rem;
-                color: $colorLv4;
+                color: $colorSLv4;
             }
         }
     }
@@ -72,6 +155,7 @@
         font-size: 1.25rem;
         cursor: pointer;
         border-bottom: 1px solid $bg-04;
+        color: $colorLv2;
         &_icon {
             &::before {
                 @include fontAwesome;
@@ -188,7 +272,7 @@
     &_item {
         display: flex;
         flex-direction: column;
-        color: $colorText;
+        @include colorOpacity('color', $colorLv1, 0.8);
         &:hover {
             .categorySidebarBox_item {
                 &_image {
@@ -213,6 +297,7 @@
                 font-size: 1.05rem;
                 font-family: $fontTitle;
                 margin-bottom: 0;
+                color: $colorLv2;
             }
         }
         &:not(:first-child){
@@ -224,9 +309,9 @@
             padding-top: 0.5rem;
             text-align: right;
             a {
-                color: $colorLv1;
+                color: $colorSLv2;
                 &:hover {
-                    font-weight: bold;
+                    color: $colorSLv1;
                 }
             }
             i {

@@ -17,7 +17,7 @@
         //     content: '\f106';
         //     @include fontAwesome;
         //     font-size: 1rem;
-        //     color: $colorDesc;
+        //     @include colorOpacity('color', $colorLv1, 0.8);
         // }
     }
     &_box {
@@ -38,19 +38,20 @@
                 i {
                     margin-left: 0.5rem;
                     font-size: 0.4rem;
+                    color: $bg-07;
                 }
             }
             h2, h3, h4 {
                 font-size: 1rem;
                 font-weight: 500;
-                color: $colorTitle;
+                @include colorOpacity('color', $colorLv1, 0.9);
                 margin: 0;
             }
             i {
                 width: 25px;
                 margin-right: 0.5rem;
                 font-size: 0.8rem;
-                color: $colorLv1;
+                color: $bg-07;
                 text-align: center;
             }
         }
@@ -60,7 +61,7 @@
 .sidebarListBox {
     &_item {
         display: flex;
-        color: $colorText;
+        @include colorOpacity('color', $colorLv1, 0.8);
         &:not(:first-child){
             margin-top: 0.5rem;
             padding-top: 0.5rem;

@@ -59,9 +59,9 @@
         margin: 0 auto;
         a {
             font-weight: 600;
-            color: $colorText;
+            @include colorOpacity('color', $colorLv1, 0.8);
             &:hover {
-                color: $colorSecondary;
+                color: $colorSLv2;
             }
             i {
                 margin-right: 0.5rem;

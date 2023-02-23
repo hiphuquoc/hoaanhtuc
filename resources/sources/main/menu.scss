@@ -7,7 +7,8 @@
     }
 }
 .headerMain {
-    background: linear-gradient(180deg, $colorSecondary-02, transparent);
+    // background: linear-gradient(180deg, rgba(255,121,63,0.3), transparent);
+    background: linear-gradient(180deg, $colorGradient,transparent);
     .container {
         display: flex;
         flex-direction: column;
@@ -104,16 +105,16 @@
                     }
                     > a, > div {
                         font-weight: 700;
-                        color: $colorLv1;
+                        color: $colorLv2;
                         text-transform: uppercase;
                         &:hover {
-                            color: $colorLv2;
+                            color: $colorSLv1;
                         }
                         &.hasChild {
                             &:after {
                                 content: '\f107';
                                 @include fontAwesome;
-                                color: $colorText;
+                                @include colorOpacity('color', $colorLv2, 0.5);
                                 font-size: 0.8rem;
                                 margin-left: 0.5rem;
                                 vertical-align: top;
@@ -128,7 +129,7 @@
                     // &:not(:first-child){
                     //     > a, > div:not(.megaMenu,.normalMenu) {
                     //         > * {
-                    //             border-left: 1px solid $colorSecondary;
+                    //             border-left: 1px solid $colorSLv2;
                     //             padding-left: 1.25rem;
                     //             color: #fff;
                     //         }
@@ -148,12 +149,12 @@
             &_item {
                 display: flex;
                 align-items: flex-start;
-                color: $colorLv1;
+                color: $colorLv2;
                 height: inherit;
                 > * {
                     text-transform: uppercase;
                     font-weight: 600;
-                    color: $colorLv1;
+                    color: $colorLv2;
                     &:not(:first-child){
                         margin-left: 0.5rem;
                     }
@@ -179,16 +180,16 @@
     &_input {
         display: flex;
         button {
-            background: $colorSecondary;
+            background: $colorSLv2;
             padding: 0.5rem 1rem;
             border-radius: 0 7px 7px 0;
             &:hover, &:focus {
-                background: $colorSecondaryHover;
+                background: $colorSLv1;
             }
             i {
                 margin: 0;
-                color: $colorText;
-                font-size: 1.2rem;
+                color: #fff;
+                font-size: 1rem;
             }
         }
         input {
@@ -221,19 +222,20 @@
                 margin-left: 0.75rem;
                 &_title {
                     line-height: 1.4;
-                    color: $colorText;
+                    color: $colorLv2;
                     margin-bottom: 0.25rem;
                 }
                 &_price {
-                    color: $colorRed;
+                    color: $colorPrice;
                     letter-spacing: 0.5px;
                     font-size: 1rem;
                     display: flex;
                     align-items: flex-end;
                     &_old {
+                        font-family: $fontText;
+                        font-weight: normal;
                         margin-left: 0.5rem;
                         font-size: 0.95rem;
-                        color: $bg-07;
                         text-decoration: line-through;
                     }
                 }
@@ -244,7 +246,7 @@
             &:last-child {
                 align-items: center;
                 justify-content: center;
-                color: $colorText; 
+                @include colorOpacity('color', $colorLv1, 0.8); 
                 i {
                     font-size: 0.9rem;
                     margin-left: 0.5rem;
@@ -270,7 +272,7 @@ $heightMenu : 40px;
     font-size: 1rem;
     font-family: $fontText;
     box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
-    border-top: 2px solid $colorSecondary;
+    border-top: 2px solid $colorSLv2;
     top: $heightMenu;
     z-index: 100;
     &_title, &_content {
@@ -287,13 +289,15 @@ $heightMenu : 40px;
         &:first-child {
             ul {
                 > li:not(:last-child) {
-                    border-bottom: 1px dashed $colorLv2-04;
+                    border-bottom: 1px dashed;
+                    @include colorOpacity('border-color', $colorLv2, 0.4);
                 }
             }
         }
     }
     &_title {
-        border-right: 1px solid $colorLv2-02;
+        border-right: 1px solid;
+        @include colorOpacity('border-color', $colorLv2, 0.2);
         > ul {
             > li {
                 font-family: $fontTitle;
@@ -316,7 +320,7 @@ $heightMenu : 40px;
                 }
 
                 &:hover {
-                    background: $colorLv2-01;
+                    @include colorOpacity('background', $colorLv2, 0.1);
                     cursor: pointer;
                     a {
                         color: $colorLv2;
@@ -324,7 +328,7 @@ $heightMenu : 40px;
                 }
 
                 &.selected {
-                    background: $colorLv2-01;
+                    @include colorOpacity('background', $colorLv2, 0.1);
                     cursor: pointer;
 
                     > a, > div {
@@ -362,7 +366,7 @@ $heightMenu : 40px;
 
                     > li {
                         &:hover {
-                            background: $colorLv2-01;
+                            @include colorOpacity('background', $colorLv2, 0.1);
                         }
 
                         a {
@@ -373,7 +377,8 @@ $heightMenu : 40px;
                 }
 
                 &:not(:first-child){
-                    border-left: 1px solid $colorLv2-04;
+                    border-left: 1px solid;
+                    @include colorOpacity('border-color', $colorLv2, 0.4);
                 }
             }
 
@@ -389,7 +394,7 @@ $width_normalMenu : 250px;
     font-family: $fontTitle;
     background: #fff;
     box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
-    border-top: 2px solid $colorSecondary;
+    border-top: 2px solid $colorSLv2;
     position: absolute;
     width: $width_normalMenu;
     z-index: 1;
@@ -433,7 +438,7 @@ $width_normalMenu : 250px;
             }
             
             &:hover {
-                background: $colorLv2-01;
+                @include colorOpacity('background', $colorLv2, 0.1);
                 ul {
                     display: block;
                 }
@@ -442,12 +447,13 @@ $width_normalMenu : 250px;
             > a, > div {
                 display: block;
                 padding: 6px 10px;
-                color: $colorText;
+                color: $colorLv1;
                 font-weight: 500;
                 i {
                     font-size: 0.85rem;
                     float: right;
                     margin-top: 8px;
+                    @include colorOpacity('color', $colorLv2, 0.5);
                 }
             }
             
@@ -460,22 +466,23 @@ $width_normalMenu : 250px;
                 background: #fff;
                 box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
                 display: none;
-                border-top: 2px solid $colorSecondary;
+                border-top: 2px solid $colorSLv2;
                 
                 li {
                     list-style: none;
-                    border-bottom: 1px dashed $colorLv2-04;
+                    border-bottom: 1px dashed;
+                    @include colorOpacity('border-color', $colorLv2, 0.4);
                     cursor: pointer;
                     position: relative;
                     
                     &:hover {
-                        background: $colorLv2-01;
+                        @include colorOpacity('background', $colorLv2, 0.1);
                     }
                     
                     a {
                         display: block;
                         padding: 6px 10px;
-                        color: $colorText;
+                        @include colorOpacity('color', $colorLv1, 0.8);
                         font-weight: 500;
                         
                     }
@@ -520,6 +527,7 @@ $width_normalMenu : 250px;
         margin-left: 1rem;
         border-radius: 7px;
         border: 1px solid $bg-04;
+        color: $bg-07;
     }
     &_menu {
         position: fixed;
@@ -555,7 +563,7 @@ $width_normalMenu : 250px;
                 padding: 10px 15px;
                 font-size: 16px;
                 cursor: pointer;
-                color: #678;
+                color: $bg-07;
                 text-shadow: 1px 1px 1px $bg-03;
             }
 
@@ -575,6 +583,7 @@ $width_normalMenu : 250px;
                     right: 0.5rem;
                     top: 50%;
                     transform: translateY(-50%);
+                    color: $bg-07;
                 }
                 &.open {
                     &:after {
@@ -590,7 +599,7 @@ $width_normalMenu : 250px;
                     list-style: none;
                     font-size: 15.5px;
                     > a, > div {
-                        color: #567 !important;
+                        color: $colorLv2 !important;
                         display: flex;
                         align-items: center;
                         padding: 10px 0;
@@ -601,7 +610,7 @@ $width_normalMenu : 250px;
                         i {
                             margin-right: 20px;
                             font-size: 16px;
-                            color: #789;
+                            color: $bg-07 !important;
                             width: 15px;
                             &:last-child{
                                 margin-left: auto;
