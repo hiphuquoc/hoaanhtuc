@@ -11,16 +11,18 @@ class Order extends Model {
     protected $fillable     = [
         'code',
         'customer_info_id', 
+        'order_status_id',
         'product_count',
         'product_cash',
-        'total',
-        'payment_mothod',
-        'ship_name',
-        'ship_phone',
-        'ship_address',
-        'ship_province',
-        'ship_district',
         'ship_cash',
+        'total',
+        'payment_method_info_id',
+        'name',
+        'phone',
+        'address',
+        'province_info_id',
+        'district_info_id',
+        'ship_note',
         'note'
     ];
     public $timestamps = true;
@@ -32,7 +34,7 @@ class Order extends Model {
                             $query->where('name', 'like', '%'.$params['search_name'].'%');
                         })
                         ->orderBy('created_at', 'DESC')
-                        ->with('seo')
+                        ->with('status', 'customer', 'products.infoProduct', 'products.infoPrice.files', 'paymentMethod')
                         ->paginate($params['paginate']);
         return $result;
     }
@@ -58,7 +60,27 @@ class Order extends Model {
         return $flag;
     }
 
+    public function status() {
+        return $this->hasOne(\App\Models\OrderStatus::class, 'id', 'order_status_id');
+    }
+
+    public function customer() {
+        return $this->hasOne(\App\Models\Customer::class, 'id', 'customer_info_id');
+    }
+
     public function products() {
         return $this->hasMany(\App\Models\OrderProduct::class, 'order_info_id', 'id');
+    }
+
+    public function paymentMethod() {
+        return $this->hasOne(\App\Models\PaymentMethod::class, 'id', 'payment_method_info_id');
+    }
+
+    public function province() {
+        return $this->hasOne(\App\Models\Province::class, 'id', 'province_info_id');
+    }
+
+    public function district() {
+        return $this->hasOne(\App\Models\District::class, 'id', 'district_info_id');
     }
 }

@@ -107,6 +107,7 @@ class BuildInsertUpdateModel {
         $result['address']                  = $dataForm['address'];
         $result['province_info_id']         = $dataForm['province_info_id'];
         $result['district_info_id']         = $dataForm['district_info_id'];
+        $result['ship_note']                = $dataForm['ship_note'] ?? null;
         $result['note']                     = $dataForm['note'] ?? null;
         return $result;
     }

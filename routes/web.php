@@ -6,7 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoutingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderController as OrderPublic;
 use App\Http\Controllers\PageController as PagePublic;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\SitemapController;
@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\CategoryBlogController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CacheController;
 
 /*
@@ -50,8 +51,8 @@ Route::get('/viewSortCart', [CartController::class, 'viewSortCart'])->name('main
 /* check out */
 Route::get('/thanh-toan', [CheckoutController::class, 'index'])->name('main.checkout');
 /* order */
-Route::post('/order', [OrderController::class, 'create'])->name('main.order');
-Route::get('/viewConfirm', [OrderController::class, 'viewConfirm'])->name('main.viewConfirm');
+Route::post('/order', [OrderPublic::class, 'create'])->name('main.order');
+Route::get('/viewConfirm', [OrderPublic::class, 'viewConfirm'])->name('main.viewConfirm');
 /* sitemap */
 Route::get('sitemap.xml', [SitemapController::class, 'main'])->name('sitemap.main');
 Route::get('sitemap/{type}.xml', [SitemapController::class, 'child'])->name('sitemap.child');
@@ -111,6 +112,15 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update', [BlogController::class, 'update'])->name('admin.blog.update');
         /* Delete AJAX */
         Route::get('/delete', [BlogController::class, 'delete'])->name('admin.blog.delete');
+    });
+    /* ===== Order ===== */
+    Route::prefix('order')->group(function(){
+        Route::get('/', [OrderController::class, 'list'])->name('admin.order.list');
+        Route::get('/view', [OrderController::class, 'view'])->name('admin.order.view');
+        Route::get('/viewExport', [OrderController::class, 'viewExport'])->name('admin.order.viewExport');
+        // Route::post('/create', [OrderController::class, 'create'])->name('admin.order.create');
+        /* Delete AJAX */
+        // Route::get('/delete', [BlogController::class, 'delete'])->name('admin.blog.delete');
     });
     /* setting */
     Route::prefix('setting')->group(function(){

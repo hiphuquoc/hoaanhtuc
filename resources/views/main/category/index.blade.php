@@ -97,7 +97,7 @@
                             </div>
                             <div class="productGridFlexBox">
                                 @include('main.template.productGrid', [
-                                    'product'       => $product,
+                                    'product'       => $product ?? null,
                                     'headingTitle'  => 'h2'
                                 ])
                                 @include('main.template.productGridLoading')
@@ -108,7 +108,7 @@
                         <div class="categoryWithFilterBox_filter">
             
                             @include('main.template.filter', [
-                                'categories'        => $categories,
+                                'categories'        => $categories ?? null,
                                 'brands'            => $brands ?? $item
                             ])
             

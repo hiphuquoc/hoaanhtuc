@@ -1048,3 +1048,60 @@ html .content {
     height: 20px;
     line-height: 20px;
 }
+.productListBox {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4;
+    &_item {
+        display: flex;
+        align-items: stretch;
+        &:not(:first-child){
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed $bg-06;
+        }
+        > * {
+            &:not(:first-child){
+                margin-left: 0.75rem;
+            }
+        }
+        &_image {
+            flex: 0 0 65px;
+            position: relative;
+            img {
+                width: 100% !important;
+                object-fit: cover;
+            }
+            &_quantity {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                background: $bg-07;
+                border-radius: 50%;
+                color: #fff;
+                font-size: 0.85rem;
+                font-weight: bold;
+                aspect-ratio: 1/1;
+                width: 27px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        &_content {
+            width: 100%;
+            &_title {
+                font-family: $fontTitle;
+                margin-bottom: 0.25rem;
+            }
+        }
+        &_price {
+            flex: 0 0 80px;
+            font-family: $fontTitle;
+            text-align: right;
+        }
+    }
+}
+
+@import 'order.scss';

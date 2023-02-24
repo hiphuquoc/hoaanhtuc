@@ -98,6 +98,7 @@
                                     </label>
                                 @endif
                                 <input type="hidden" name="ship_cash" value="{{ $shipCash }}" />
+                                <input type="hidden" name="ship_note" value="Miễn phí đối với đơn hàng trên 498k" />
                             </div>
                         </div>
                     </div>

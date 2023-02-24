@@ -2,6 +2,11 @@
 return [
     'left-menu-admin'   => [
         [
+            'name'      => 'Quản lí đơn',
+            'route'     => 'admin.order.list',
+            'icon'      => '<i class="fa-regular fa-file-lines"></i>'
+        ],
+        [
             'name'      => 'Sản phẩm',
             'route'     => '',
             'icon'      => '<i class="fa-solid fa-box-open"></i>',

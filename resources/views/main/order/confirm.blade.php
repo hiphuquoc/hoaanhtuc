@@ -58,6 +58,10 @@
                     </div>
                 </div>
 
+                {{-- @php
+                    dd($order->toArray());
+                @endphp --}}
+
                 <!-- chi tiết thanh toán -->
                 <div class="detailPayment" style="margin-top:1rem;">
                     <div class="detailPayment_item">
@@ -70,9 +74,13 @@
                     </div>
                     <div class="detailPayment_item">
                         <div>Hình thức thanh toán</div> 
-                        <div>Thanh toán khi nhận hàng (COD)</div>
+                        <div>{{ $order->paymentMethod->name ?? 'Không xác định' }}</div>
                     </div>
                 </div>
+
+                @php
+                    // dd($order);
+                @endphp
 
                 <!-- thông tin giao hàng -->
                 <div class="confirmSectionBox">
@@ -82,31 +90,39 @@
                     <div class="confirmSectionBox_body">
                         <div class="confirmSectionBox_body_item">
                             <div>Người nhận:</div>
-                            <div>Phạm Văn Phú</div>
+                            <div>{{ $order->customer->name }}</div>
                         </div>
                         <div class="confirmSectionBox_body_item">
                             <div>Số điện thoại:</div>
-                            <div>0968617168</div>
+                            <div>{{ $order->customer->phone }}</div>
                         </div>
                         <div class="confirmSectionBox_body_item">
                             <div>Địa chỉ:</div>
-                            <div>443 Mạc Cửu, Phường Vĩnh Thanh, Rạch Giá, Kiên Giang.</div>
+                            @php
+                                $fullAddress = [];
+                                if(!empty($order->address)) $fullAddress[] = $order->address;
+                                if(!empty($order->district->district_name)) $fullAddress[] = $order->district->district_name;
+                                if(!empty($order->province->province_name)) $fullAddress[] = $order->province->province_name;
+                                $fullAddress = implode(', ', $fullAddress);
+                            @endphp
+                            <div>{{ $fullAddress }}</div>
                         </div>
                     </div>
                 </div>
                 <!-- vận chuyển -->
-                <div class="confirmSectionBox">
-                    <div class="confirmSectionBox_title">
-                        Phương thức vận chuyển
+                @if(!empty($order->ship_note))
+                    <div class="confirmSectionBox">
+                        <div class="confirmSectionBox_title">
+                            Phương thức vận chuyển
+                        </div>
+                        <div class="confirmSectionBox_body">
+                            <div>{{ $order->ship_note }}</div>
+                        </div>
                     </div>
-                    <div class="confirmSectionBox_body">
-                        <div>Miễn phí vận chuyển đơn 498k</div>
-                    </div>
-                </div>
-                
+                @endif
             </div>
             <div class="pageCheckout_content_box_footer">
-                Sau khi hoàn tất đơn hàng khoảng 60-90 phút (trong giờ hành chính), {{ config('main.company_name') }} sẽ nhanh chóng gọi điện xác nhận lại thời gian giao hàng với bạn.<br/>
+                Quý khách sẽ nhận được hàng trong khoảng thời gian từ 2 - 3 ngày kể từ ngày xác nhận đơn hàng này.<br/>
                 {{ config('main.company_name') }} xin cảm ơn!
             </div>
         </div>
@@ -114,12 +130,14 @@
 </div>
 </div>
 
-<div class="buttonBoxPageConfirm">
-    <div class="buttonBoxPageConfirm_box">
-        <a href="/"><i class="fa-solid fa-arrow-left"></i>Tiếp tục mua sắm</a> 
-        <div class="button" onClick="printContent('js_printContent');"><i class="fa-solid fa-print"></i>In đơn hàng</div>
+@if(!empty($action)&&$action==true)
+    <div class="buttonBoxPageConfirm">
+        <div class="buttonBoxPageConfirm_box">
+            <a href="/"><i class="fa-solid fa-arrow-left"></i>Tiếp tục mua sắm</a> 
+            <div class="button" onClick="printContent('js_printContent');"><i class="fa-solid fa-print"></i>In đơn hàng</div>
+        </div>
     </div>
-</div>
+@endif
 
 <script type="text/javascript">
     function printContent(el){

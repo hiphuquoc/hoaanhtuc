@@ -74,9 +74,9 @@ class OrderController extends Controller{
         if(!empty($request->get('code'))){
             $order          = Order::select('*')
                                 ->where('code', $request->get('code'))
-                                ->with('products.infoProduct', 'products.infoPrice')
+                                ->with('products.infoProduct', 'products.infoPrice', 'paymentMethod')
                                 ->first();
-            return view('main.order.confirm', compact('order'));
+            return view('main.order.confirm', ['order' => $order, 'action' => true]);
         }
     }
 
