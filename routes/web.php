@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BrandController;
@@ -66,6 +67,7 @@ Route::get('/registryEmail', [AjaxController::class, 'registryEmail'])->name('aj
 Route::get('/admin', [LoginController::class, 'loginForm'])->name('admin.loginForm');
 Route::post('/loginAdmin', [LoginController::class, 'loginAdmin'])->name('admin.loginAdmin');
 Route::get('/createUser', [LoginController::class, 'create'])->name('admin.createUser');
+
 Route::middleware(['auth'])->group(function () {
     /* product */
     Route::prefix('product')->group(function(){
@@ -125,6 +127,14 @@ Route::middleware(['auth'])->group(function () {
     /* setting */
     Route::prefix('setting')->group(function(){
         Route::get('/view', [SettingController::class, 'view'])->name('admin.setting.view');
+    });
+    /* theme */
+    Route::prefix('theme')->group(function(){
+        Route::get('/view', [ThemeController::class, 'view'])->name('admin.theme.view');
+        Route::post('/create', [ThemeController::class, 'create'])->name('admin.theme.create');
+        Route::post('/update', [ThemeController::class, 'update'])->name('admin.theme.update');
+        Route::get('/list', [ThemeController::class, 'list'])->name('admin.theme.list');
+        Route::get('/{id}/setColor', [ThemeController::class, 'setColor'])->name('admin.theme.setColor');
     });
     /* slider */
     Route::prefix('slider')->group(function(){

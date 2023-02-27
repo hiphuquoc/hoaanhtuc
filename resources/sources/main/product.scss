@@ -35,7 +35,7 @@
         justify-content: space-between;
         align-items: center;
         h2, h3, h4 {
-            color: $colorLv2;
+            color: $colorLv1;
         }
         &::after {
             content: '\f107';
@@ -102,7 +102,7 @@
     }
     .highLight {
         font-family: $fontTitle;
-        color: $colorYellowLv4;
+        color: $colorTextLight;
     }
 }
 .productDetailBox {
@@ -134,14 +134,14 @@
                     font-size: 0.9rem;
                     display: inline-block;
                     background: $bg-02;
-                    @include colorOpacity('color', $colorLv1, 0.8);
+                    @include colorOpacity('color', $colorText, 0.8);
                     padding: 0.25rem 0.5rem;
                     border-radius: 7px;
                     margin-top: 0.5rem;
                     margin-left: 0.25rem;
                     cursor: pointer;
                     &.selected {
-                        background: $colorLv1;
+                        background: $colorText;
                         color: #fff;
                     }
                 }
@@ -164,13 +164,13 @@
                     font-weight: 700;
                 }
                 &_old {
-                    @include colorOpacity('color', $colorLv1, 0.6);
+                    @include colorOpacity('color', $colorText, 0.6);
                     font-size: 1rem;
                     text-decoration: line-through;
                 }
                 &_saleoff {
                     color: #fff;
-                    background: $colorSLv3;
+                    background: $colorLabel;
                     letter-spacing: 0.5px;
                     font-size: 1rem;
                     padding: 0.25rem 0.5rem;
@@ -256,7 +256,7 @@
         > span {
             font-family: $fontTitle;
             font-size: 1.1rem;
-            color: $colorLv1;
+            color: $colorText;
             margin: 0 0.25rem;
         }
     }
@@ -276,14 +276,14 @@
                 }
             }
             &_on {
-                color: $colorYellowLv2;
+                color: $colorStar;
             }
         }
         &_total {
             > span {
                 font-family: $fontTitle;
                 font-size: 1.1rem;
-                color: $colorLv1;
+                color: $colorText;
                 margin: 0 0.25rem;
             }
         }
@@ -389,7 +389,7 @@
     &_title {
         margin-bottom: 1.5rem;
         h2, h3 {
-            color: $colorLv2;
+            color: $colorLv1;
             text-transform: uppercase;
             font-family: $fontText;
             font-weight: bold;
@@ -460,7 +460,7 @@
 .viewMoreText {
     cursor: pointer;
     text-align: right;
-    color: $colorLv1;
+    color: $colorText;
     &:after {
         content: '\f107';
         @include fontAwesome;

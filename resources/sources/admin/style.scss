@@ -87,6 +87,10 @@ $folderFont : '/fonts/';
 	src:url($folderFont+"svn-gilroy_semibold.ttf")
 }
 
+:root {
+    --bs-primary: red !important;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -173,16 +177,18 @@ table:not(.sendEmail) {
 }
 
 .iconAction {
-    width: 40px;
     text-align: center;
     &:not(:first-child){
-        margin-left: 0.2rem;
+        margin-left: 1rem;
     }
     a {
         color: $color-primary;
         &:hover {
             color: $color-primary-hover;
         }
+    }
+    i {
+        font-size: 1.5rem;
     }
 }
 
@@ -1100,6 +1106,107 @@ html .content {
             flex: 0 0 80px;
             font-family: $fontTitle;
             text-align: right;
+        }
+    }
+}
+.themeListBox {
+    &_title {
+        font-weight: bold;
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px dashed $bg-07;
+        display: flex;
+        justify-content: space-between;
+        &_status {
+            color:rgb(38, 207, 142);
+            margin-left: 0.5rem;
+            &:before {
+                content: '\f00c';
+                @include fontAwesome;
+                margin-right: 0.25rem;
+            }
+        }
+        &_action {
+            display: flex;
+            font-size: 0.95rem;
+        }
+    }
+    &_color {
+        display: flex;
+        padding: 1rem;
+        &_column {
+            display: flex;
+            flex-direction: column;
+            width: calc(25% - 1.125rem);
+            &_item {
+                display: flex;
+                align-items: center;
+                &_colorBox {
+                    flex: 0 0 100px;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #fff;
+                    text-shadow: 2px 0 #333, -2px 0 #333, 0 2px #333, 0 -2px #333,
+                    1px 1px #333, -1px -1px #333, 1px -1px #333, -1px 1px #333;
+                }
+                &_title {
+                    min-width: 140px;
+                }
+            }
+        }
+    }
+}
+.viewColorBox {
+    &_item {
+        display: flex;
+        align-items: center;
+        &_title {
+            flex: 0 0 140px;
+        }
+        &_colorBox {
+            width: 100%;
+            position: relative;
+            > label {
+                position: absolute;
+                top: 50%;
+                right: 5px;
+                transform: translateY(-50%);
+                color: #fff;
+                text-shadow: 2px 0 #333, -2px 0 #333, 0 2px #333, 0 -2px #333,
+                1px 1px #333, -1px -1px #333, 1px -1px #333, -1px 1px #333;
+                cursor: pointer;
+            }
+            input {
+                width: 100%;
+                height: 40px;
+                border: none !important;
+                outline: none !important;
+                display: flex;
+                cursor: pointer;
+                &:focus {
+                    border: none;
+                    outline: none;
+                }
+                // &:-moz-color-swatch {
+                //     border: none;
+                // }
+                // &:-webkit-color-swatch-wrapper {
+                //     padding: 0;
+                //     margin: 0;
+                //     background: none;
+                //     border: none;
+                // }
+            }
+            // input::-webkit-color-swatch-wrapper {
+            //     padding: 2rem;
+            //     margin: 0;
+            //     background: none;
+            // }
+            // input::-webkit-color-swatch {
+            //     border: none;
+            // }
         }
     }
 }

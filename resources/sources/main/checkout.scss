@@ -35,7 +35,7 @@
                 border-top: 1px solid $bg-05;
                 padding-top: 1rem;
                 font-size: 1rem;
-                @include colorOpacity('color', $colorLv1, 0.6);
+                @include colorOpacity('color', $colorText, 0.6);
             }
         }
     }
@@ -182,7 +182,7 @@
         font-size: 1.2rem;
         font-weight: bold;
         margin-bottom: 1rem;
-        color: $colorLv2;
+        color: $colorLv1;
     }
     &_body {
 
@@ -208,7 +208,7 @@
         font-size: 1.2rem;
         font-weight: bold;
         margin-bottom: 1rem;
-        color: $colorLv2;
+        color: $colorLv1;
     }
     &_body {
         display: flex;
@@ -238,7 +238,7 @@
                     position: absolute;
                     top: -5px;
                     right: -5px;
-                    background: $colorSLv3;
+                    background: $colorLabel;
                     border-radius: 50%;
                     color: #fff;
                     font-size: 0.85rem;
@@ -279,7 +279,7 @@
             font-size: 1.2rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
-            color: $colorLv2;
+            color: $colorLv1;
         }
         &_input {
             width: 100%;
@@ -331,7 +331,7 @@
             border: none;
             a {
                 font-weight: 600;
-                @include colorOpacity('color', $colorLv1, 0.8);
+                @include colorOpacity('color', $colorText, 0.8);
                 &:hover {
                     color: $colorSLv2;
                 }

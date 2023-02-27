@@ -50,15 +50,26 @@ $opacity-to-hex: (
     #{$property}: unquote($color + map-get($opacity-to-hex, $opacity)) $important;
 }
 /* ===== */
-$colorLv1       : #160303;
-$colorLv2       : #9e1e1f;
-$colorLv3       : #ed1c24;
-$colorLv4       : #2C74B3;
+$colorLv1       : #9e1e1f;
+$colorLv2       : #ed1c24;
 /* ===== */
 $colorSLv1      : #F0A000;
 $colorSLv2      : #fcaf17;
-$colorSLv3      : #617A9F;
-$colorSLv4      : #F7FF93;
+/* ===== */
+$colorButtonLv1 : #FF6E31;
+$colorButtonLv2 : #ff793f;
+/* ===== */
+$colorTextLight : #F7FF93;
+/* ===== */
+$colorText      : #160303;
+/* ===== */
+$colorLabel     : #617A9F;
+/* ===== */
+$colorGradient          : rgba(252, 175, 23, 0.2);
+$colorPrice     : #ed1c24;
+$colorStar      : #fcaf17;
+$colorSuccess   : #06d6a0;
+$colorRed       : #ed1c24;
 /* ===== */
 $bg-1           : #212529;
 $bg-09          : #343a40;
@@ -69,17 +80,5 @@ $bg-05          : #ced4da;
 $bg-04          : #dee2e6;
 $bg-03          : #e9ecef;
 $bg-02          : #EDF2F7;
-
-$colorYellowLv1         : #F0A000;
-$colorYellowLv2         : #fcaf17;
-$colorYellowLv3         : #fac126;
-$colorYellowLv4         : #F7FF93;
-
-$colorRed               : #ed1c24;
-$colorSuccess           : #06d6a0;
-
-$colorPrice             : $colorLv3;
-$colorGradient          : rgba(252, 175, 23, 0.2);
-// $colorGradient          : rgba(240,160,0,0.3);
 
 

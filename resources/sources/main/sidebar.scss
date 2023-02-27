@@ -17,7 +17,7 @@
         //     content: '\f106';
         //     @include fontAwesome;
         //     font-size: 1rem;
-        //     @include colorOpacity('color', $colorLv1, 0.8);
+        //     @include colorOpacity('color', $colorText, 0.8);
         // }
     }
     &_box {
@@ -44,7 +44,7 @@
             h2, h3, h4 {
                 font-size: 1rem;
                 font-weight: 500;
-                @include colorOpacity('color', $colorLv1, 0.9);
+                @include colorOpacity('color', $colorText, 0.9);
                 margin: 0;
             }
             i {
@@ -61,7 +61,7 @@
 .sidebarListBox {
     &_item {
         display: flex;
-        @include colorOpacity('color', $colorLv1, 0.8);
+        @include colorOpacity('color', $colorText, 0.8);
         &:not(:first-child){
             margin-top: 0.5rem;
             padding-top: 0.5rem;
@@ -75,7 +75,7 @@
             margin-right: 0.5rem;
         }
         &.selected {
-            color: $colorLv2;
+            color: $colorLv1;
         }
     }
 }

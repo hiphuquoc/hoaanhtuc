@@ -74,7 +74,7 @@
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            color: $colorLv1;
+            color: $colorText;
             &_item {
                 &:not(:last-child){
                     margin-right: 1.5rem;
@@ -105,7 +105,7 @@
                     }
                     > a, > div {
                         font-weight: 700;
-                        color: $colorLv2;
+                        color: $colorLv1;
                         text-transform: uppercase;
                         &:hover {
                             color: $colorSLv1;
@@ -114,7 +114,7 @@
                             &:after {
                                 content: '\f107';
                                 @include fontAwesome;
-                                @include colorOpacity('color', $colorLv2, 0.5);
+                                @include colorOpacity('color', $colorLv1, 0.5);
                                 font-size: 0.8rem;
                                 margin-left: 0.5rem;
                                 vertical-align: top;
@@ -149,12 +149,12 @@
             &_item {
                 display: flex;
                 align-items: flex-start;
-                color: $colorLv2;
+                color: $colorLv1;
                 height: inherit;
                 > * {
                     text-transform: uppercase;
                     font-weight: 600;
-                    color: $colorLv2;
+                    color: $colorLv1;
                     &:not(:first-child){
                         margin-left: 0.5rem;
                     }
@@ -222,7 +222,7 @@
                 margin-left: 0.75rem;
                 &_title {
                     line-height: 1.4;
-                    color: $colorLv2;
+                    color: $colorLv1;
                     margin-bottom: 0.25rem;
                 }
                 &_price {
@@ -246,7 +246,7 @@
             &:last-child {
                 align-items: center;
                 justify-content: center;
-                @include colorOpacity('color', $colorLv1, 0.8); 
+                @include colorOpacity('color', $colorText, 0.8); 
                 i {
                     font-size: 0.9rem;
                     margin-left: 0.5rem;
@@ -290,14 +290,14 @@ $heightMenu : 40px;
             ul {
                 > li:not(:last-child) {
                     border-bottom: 1px dashed;
-                    @include colorOpacity('border-color', $colorLv2, 0.4);
+                    @include colorOpacity('border-color', $colorLv1, 0.4);
                 }
             }
         }
     }
     &_title {
         border-right: 1px solid;
-        @include colorOpacity('border-color', $colorLv2, 0.2);
+        @include colorOpacity('border-color', $colorLv1, 0.2);
         > ul {
             > li {
                 font-family: $fontTitle;
@@ -320,19 +320,19 @@ $heightMenu : 40px;
                 }
 
                 &:hover {
-                    @include colorOpacity('background', $colorLv2, 0.1);
+                    @include colorOpacity('background', $colorLv1, 0.1);
                     cursor: pointer;
                     a {
-                        color: $colorLv2;
+                        color: $colorLv1;
                     }
                 }
 
                 &.selected {
-                    @include colorOpacity('background', $colorLv2, 0.1);
+                    @include colorOpacity('background', $colorLv1, 0.1);
                     cursor: pointer;
 
                     > a, > div {
-                        color: $colorLv2;
+                        color: $colorLv1;
                     }
                 }
             }
@@ -355,7 +355,7 @@ $heightMenu : 40px;
 
                 a {
                     font-weight: normal;
-                    color: $colorLv2;
+                    color: $colorLv1;
                     border: none;
                     box-shadow: none;
                 }
@@ -366,7 +366,7 @@ $heightMenu : 40px;
 
                     > li {
                         &:hover {
-                            @include colorOpacity('background', $colorLv2, 0.1);
+                            @include colorOpacity('background', $colorLv1, 0.1);
                         }
 
                         a {
@@ -378,7 +378,7 @@ $heightMenu : 40px;
 
                 &:not(:first-child){
                     border-left: 1px solid;
-                    @include colorOpacity('border-color', $colorLv2, 0.4);
+                    @include colorOpacity('border-color', $colorLv1, 0.4);
                 }
             }
 
@@ -438,7 +438,7 @@ $width_normalMenu : 250px;
             }
             
             &:hover {
-                @include colorOpacity('background', $colorLv2, 0.1);
+                @include colorOpacity('background', $colorLv1, 0.1);
                 ul {
                     display: block;
                 }
@@ -447,13 +447,13 @@ $width_normalMenu : 250px;
             > a, > div {
                 display: block;
                 padding: 6px 10px;
-                color: $colorLv1;
+                color: $colorText;
                 font-weight: 500;
                 i {
                     font-size: 0.85rem;
                     float: right;
                     margin-top: 8px;
-                    @include colorOpacity('color', $colorLv2, 0.5);
+                    @include colorOpacity('color', $colorLv1, 0.5);
                 }
             }
             
@@ -471,18 +471,18 @@ $width_normalMenu : 250px;
                 li {
                     list-style: none;
                     border-bottom: 1px dashed;
-                    @include colorOpacity('border-color', $colorLv2, 0.4);
+                    @include colorOpacity('border-color', $colorLv1, 0.4);
                     cursor: pointer;
                     position: relative;
                     
                     &:hover {
-                        @include colorOpacity('background', $colorLv2, 0.1);
+                        @include colorOpacity('background', $colorLv1, 0.1);
                     }
                     
                     a {
                         display: block;
                         padding: 6px 10px;
-                        @include colorOpacity('color', $colorLv1, 0.8);
+                        @include colorOpacity('color', $colorText, 0.8);
                         font-weight: 500;
                         
                     }
@@ -502,7 +502,7 @@ $width_normalMenu : 250px;
         background: #fff;
         border: 1px solid $bg-03;
         &:hover {
-            border: 1px solid $colorLv1;
+            border: 1px solid $colorText;
         }
         
         &:nth-child(6n + 1){
@@ -599,7 +599,7 @@ $width_normalMenu : 250px;
                     list-style: none;
                     font-size: 15.5px;
                     > a, > div {
-                        color: $colorLv2 !important;
+                        color: $colorLv1 !important;
                         display: flex;
                         align-items: center;
                         padding: 10px 0;

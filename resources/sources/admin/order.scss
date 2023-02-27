@@ -1,5 +1,5 @@
-$colorLv2       : #9e1e1f;
-$colorSLv3      : #617A9F;
+$colorLv1       : #9e1e1f;
+$colorLabel      : #617A9F;
 
 .pageCheckout {
     display: flex;
@@ -180,7 +180,7 @@ $colorSLv3      : #617A9F;
         font-size: 1.2rem;
         font-weight: bold;
         margin-bottom: 0.5rem;
-        color: $colorLv2;
+        color: $colorLv1;
     }
     &_body {
         line-height: 1.8;
@@ -204,7 +204,7 @@ $colorSLv3      : #617A9F;
         font-size: 1.2rem;
         font-weight: bold;
         margin-bottom: 1rem;
-        color: $colorLv2;
+        color: $colorLv1;
     }
     &_body {
         display: flex;
@@ -234,7 +234,7 @@ $colorSLv3      : #617A9F;
                     position: absolute;
                     top: -5px;
                     right: -5px;
-                    background: $colorSLv3;
+                    background: $colorLabel;
                     border-radius: 50%;
                     color: #fff;
                     font-size: 0.85rem;
@@ -283,7 +283,7 @@ $colorSLv3      : #617A9F;
                 letter-spacing: 0.5px;
             }
             &.priceTotal {
-                color: $colorLv2;
+                color: $colorLv1;
                 font-size: 1.2rem;
             }
             &.button {

@@ -77,6 +77,18 @@ return [
             // ]
         ],
         [
+            'name'      => 'Cài đặt',
+            'route'     => '',
+            'icon'      => '<i class="fa-solid fa-gear"></i>',
+            'child'     => [
+                [
+                    'name'  => '1. Giao diện',
+                    'route' => 'admin.theme.list',
+                    'icon'  => '<i data-feather=\'circle\'></i>'
+                ]
+            ]
+        ],
+        [
             'name'      => 'Xóa cache',
             'route'     => 'admin.cache.clearCache',
             'icon'      => '<i class="fa-sharp fa-solid fa-xmark"></i>'

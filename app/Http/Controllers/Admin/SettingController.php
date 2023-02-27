@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
- 
-
+use App\Jobs\BuildScss;
+use App\Models\Theme;
 
 class SettingController extends Controller {
 
@@ -15,5 +15,4 @@ class SettingController extends Controller {
             Cookie::queue($request->get('name'), $request->get('default'), 86400);
         }
     }
-    
 }

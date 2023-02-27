@@ -14,7 +14,7 @@
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.25rem;
-            color: $colorLv2;
+            color: $colorLv1;
         }
     }
     &_form {
@@ -59,7 +59,7 @@
             font-size: 1.4rem;
             font-weight: bold;
             font-family: $fontTitle;
-            color: $colorLv1;
+            color: $colorText;
             text-align: center;
         }
         &_body {
@@ -88,7 +88,7 @@
             }
             .button {
                 &:hover {
-                    background: $colorLv1;
+                    background: $colorText;
                 }
             }
         }

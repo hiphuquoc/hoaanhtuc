@@ -3,7 +3,7 @@
     justify-content: space-between;
     margin-top: -0.5rem;
     margin-bottom: 0.25rem;
-    @include colorOpacity('color', $colorLv1, 0.6);
+    @include colorOpacity('color', $colorText, 0.6);
     &_info {
         display: flex;
         > * {
@@ -61,18 +61,18 @@
                 padding: 0.75rem 0;
                 &_title {
                     h3 {
-                        @include colorOpacity('color', $colorLv1, 0.9);
+                        @include colorOpacity('color', $colorText, 0.9);
                         font-size: 1.1rem;
                         margin-bottom: 0.5rem;
                         font-family: $fontTitle;
                         &:hover {
-                            color: $colorLv1;
+                            color: $colorText;
                         }
                     }
                 }
                 &_time {
                     font-size: 0.95rem;
-                    @include colorOpacity('color', $colorLv1, 0.8);
+                    @include colorOpacity('color', $colorText, 0.8);
                     margin-bottom: 0.25rem;
                     i {
                         margin-right: 0.5rem;

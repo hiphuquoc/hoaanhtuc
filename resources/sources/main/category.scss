@@ -16,9 +16,9 @@
     }
     &_item {
         width: 100%;
-        color: $colorLv1;
+        color: $colorText;
         &:hover {
-            color: $colorLv2;
+            color: $colorLv1;
             .categoryGridBox_item_icon {
                 border: 2px dashed $colorSLv2;
             }
@@ -48,7 +48,7 @@
             text-align: center;
             font-weight: 700;
             line-height: 1.4;
-            @include colorOpacity('color', $colorLv1, 0.9);
+            @include colorOpacity('color', $colorText, 0.9);
         }
     }
     @include slickArrowCircle;
@@ -87,7 +87,7 @@
         align-items: center;
         color: #fff;
         &:hover {
-            color: $colorSLv4;
+            color: $colorTextLight;
         }
         &:not(:first-child){
             margin-top: 0.75rem;
@@ -108,7 +108,7 @@
             margin-left: 0.75rem;
             > span {
                 font-size: 1.1rem;
-                color: $colorSLv4;
+                color: $colorTextLight;
             }
         }
     }
@@ -155,7 +155,7 @@
         font-size: 1.25rem;
         cursor: pointer;
         border-bottom: 1px solid $bg-04;
-        color: $colorLv2;
+        color: $colorLv1;
         &_icon {
             &::before {
                 @include fontAwesome;
@@ -170,7 +170,7 @@
             display: flex;
             margin-top: 0.5rem;
             font-size: 1rem !important;
-            color: $colorLv1;
+            color: $colorText;
             > * {
                 font-size: 1rem !important;
             }
@@ -272,7 +272,7 @@
     &_item {
         display: flex;
         flex-direction: column;
-        @include colorOpacity('color', $colorLv1, 0.8);
+        @include colorOpacity('color', $colorText, 0.8);
         &:hover {
             .categorySidebarBox_item {
                 &_image {
@@ -297,7 +297,7 @@
                 font-size: 1.05rem;
                 font-family: $fontTitle;
                 margin-bottom: 0;
-                color: $colorLv2;
+                color: $colorLv1;
             }
         }
         &:not(:first-child){
