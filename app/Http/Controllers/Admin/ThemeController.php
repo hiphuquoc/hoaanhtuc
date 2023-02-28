@@ -114,42 +114,79 @@ class ThemeController extends Controller {
     }
 
     public static function setColor($id = null){
-        /* trường hợp chỉ định 1 id theme */
-        if(!empty($id)){
-            $infoTheme      = Theme::select('*')
-                                ->where('id', $id)
-                                ->first();
-            $typeTheme      = $infoTheme->type;
-            /* chuyển tất cả các theme cùng loại khác sang non-active */
-            $themes         = Theme::select('*')
-                            ->where('type', $typeTheme)
-                            ->get();
-            foreach($themes as $theme){
-                Theme::updateItem($theme->id, ['status' => 0]);
-            }
-            /* active theme được chỉ định */
-            Theme::updateItem($id, ['status' => 1]);
-        }else { /* trường hợp không chỉ định */
-            /* lấy thông tin theme đang được active */
-            $infoTheme      = Theme::select('*')
-                                ->where('type', 'white')
-                                ->where('status', 1)
-                                ->with('colors')
-                                ->first();
-        }
-        /* tiến hành set color */
-        if(!empty($infoTheme->colors)&&$infoTheme->colors->isNotEmpty()){
-            /* tạo nội dung file color.scss */
-            $content    = null;
-            foreach($infoTheme->colors as $color){
-                if(!empty($color->name)&&!empty($color->value)){
-                    $content .= '$'.$color->name.':'.$color->value.';';
+        $content        = null;
+        /* lấy đường dẫn file vite */
+        $fileVite       = null;
+        $fileManifest   = './build/manifest.json';
+        $contentManifest = file_get_contents($fileManifest);
+        $key            = 'resources/sources/main/style.scss';
+        $pattern        = '/"' . preg_quote($key, '/') . '":\s*{\s*"file":\s*"([^"]+)/';
+        if (preg_match($pattern, $contentManifest, $matches)) $fileVite = $matches[1];
+        if(!empty($fileVite)){
+            $tmp        = pathinfo($fileVite);
+            $fileViteNew = $tmp['dirname'].'/style-'.\App\Helpers\Charactor::randomString(10).'.css';
+            $contentManifest = str_replace($fileVite, $fileViteNew, $contentManifest);
+            file_put_contents($fileManifest, $contentManifest);
+            $fileVite   = './build/'.$fileVite;
+            $fileViteNew = './build/'.$fileViteNew;
+            if(file_exists(public_path($fileVite))) {
+                /* kiểm tra file map tồn tại không */
+                $fileMap        = './build/assets/style-main.css';
+                if(file_exists(public_path($fileMap))){
+                    /* file gốc build ở development => lưu lại để làm map replace */
+                    $content    = file_get_contents($fileMap);
+                }else {
+                    /* lần đầu chưa có file map => lấy file được buidl từ hệ thống dùng => copy ra lưu lại file map */
+                    $content    = file_get_contents($fileVite);
+                    /* copy ra một file làm file map */
+                    if (copy($fileVite, $fileMap)) chmod($fileMap, 0777);
                 }
+                /* lấy ra tất cả các màu cần thay thế */
+                $fileColor      = '../resources/sources/main/color.scss';
+                $contentColor   = file_get_contents($fileColor);
+                $matches        = [];
+                preg_match_all('/(\$[a-zA-Z0-9_]+)\s*:\s*#([a-zA-Z0-9]{6})/', $contentColor, $matches);
+                $arrayColorSource  = [];
+                foreach ($matches[1] as $index => $varName) {
+                    $arrayColorSource[substr($varName, 1)] = '#' . $matches[2][$index];
+                }
+                /* tiến hành thay thế */
+                foreach($arrayColorSource as $key => $value){
+                    /* lấy thông tin theme đang được active */
+                    if(!empty($id)){
+                        $infoTheme      = Theme::select('*')
+                            ->where('id', $id)
+                            ->first();
+                        $typeTheme      = $infoTheme->type;
+                        /* chuyển tất cả các theme cùng loại khác sang non-active */
+                        $themes         = Theme::select('*')
+                                        ->where('type', $typeTheme)
+                                        ->get();
+                        foreach($themes as $theme){
+                            Theme::updateItem($theme->id, ['status' => 0]);
+                        }
+                        /* active theme được chỉ định */
+                        Theme::updateItem($id, ['status' => 1]);
+                    }else {
+                        $infoTheme      = Theme::select('*')
+                            ->where('type', 'white')
+                            ->where('status', 1)
+                            ->with('colors')
+                            ->first();
+                    }
+                    foreach($infoTheme->colors as $color){
+                        if($key==$color->name){
+                            $content = str_replace($value, $color->value, $content);
+                            break;
+                        }
+                    }
+                }
+                /* xóa file vite được build cũ */
+                if(file_exists(public_path($fileVite))) @unlink(public_path($fileVite));
+                /* ghi vào file */
+                file_put_contents($fileViteNew, $content);
+                chmod($fileViteNew, 0777);
             }
-            /* ghi vào file color.scss */
-            file_put_contents('../resources/sources/main/color.scss', $content);
-            /* chạy command */
-            BuildScss::dispatch()->onConnection('database');
         }
         return redirect()->route('admin.theme.list');
     }

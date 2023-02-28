@@ -68,6 +68,8 @@ Route::get('/admin', [LoginController::class, 'loginForm'])->name('admin.loginFo
 Route::post('/loginAdmin', [LoginController::class, 'loginAdmin'])->name('admin.loginAdmin');
 Route::get('/createUser', [LoginController::class, 'create'])->name('admin.createUser');
 
+
+
 Route::middleware(['auth'])->group(function () {
     /* product */
     Route::prefix('product')->group(function(){

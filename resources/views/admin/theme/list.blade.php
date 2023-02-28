@@ -9,7 +9,7 @@
         @php
             $active         = null;
             $actionActive   = '<div class="icon-wrapper iconAction">
-                                    <a href="'.route('admin.theme.setColor', ['id' => $theme->id]).'" target="_blank">
+                                    <a href="'.route('admin.theme.setColor', ['id' => $theme->id]).'">
                                         <i class="fa-solid fa-check"></i>
                                         <div>Active</div>
                                     </a>
