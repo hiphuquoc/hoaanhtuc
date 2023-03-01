@@ -35,7 +35,7 @@ $urlLogo : "https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manag
     }
     &:after {
         content: 'hotline';
-        background: $colorSLv2;
+        background: $colorSLv1;
         color: #fff;
         padding: 0 0.5rem;
         border-radius: 10px;
@@ -122,11 +122,12 @@ $urlLogo : "https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manag
 }
 .breadcrumbBox {
     padding-top: 0.5rem;
+    @include colorOpacity('color', $colorText, 0.7);
+    font-family: $fontTitle;
     .container {
-        
         overflow: hidden;
         a {
-            color: $colorText;
+            @include colorOpacity('color', $colorText, 0.7);
             &:hover {
                 color: $colorLv1;
             }
@@ -272,7 +273,7 @@ $urlLogo : "https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manag
             text-transform: uppercase;
             font-family: $fontText;
             margin-bottom: 0 !important;
-            color: $colorLv1;
+            color: $colorText;
         }
     }
     &_box {
@@ -397,7 +398,8 @@ $urlLogo : "https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manag
                     }
                     &.selected {
                         &:before {
-                            background: $colorSLv2;
+                            // background: $colorSLv2;
+                            @include colorOpacity('background', $colorSLv1, 0.6);
                         }
                         &:after {
                             content: '\f00c';
@@ -418,8 +420,7 @@ $urlLogo : "https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manag
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    
-    @include colorOpacity('color', $colorText, 0.8);
+    @include colorOpacity('color', $colorText, 0.7);
     margin-bottom: 1rem;
     margin-top: -0.25rem;
     &_left {
@@ -436,7 +437,6 @@ $urlLogo : "https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manag
                     margin-left: 0.5rem;
                 }
             }
-            
             select {
                 padding: 0;
                 @include colorOpacity('color', $colorText, 0.8);
@@ -503,7 +503,7 @@ $urlLogo : "https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manag
             text-transform: uppercase;
             font-family: $fontText;
             margin-bottom: 0 !important;
-            color: $colorLv1;
+            color: $colorText;
         }
     }
     &_description {
@@ -618,7 +618,7 @@ $urlLogo : "https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manag
     &_input {
         display: flex;
         button {
-            background: $colorSLv2;
+            background: $colorButtonLv1;
             border-radius: 0 7px 7px 0;
             @include colorOpacity('color', $colorText, 0.8);
             display: flex;
@@ -626,7 +626,7 @@ $urlLogo : "https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manag
             padding: 0.5rem 1rem;
             color: #fff;
             &:hover, &:focus {
-                background: $colorSLv1;
+                background: $colorButtonLv2;
             }
             i {
                 margin-right: 0.5rem;
@@ -825,12 +825,12 @@ $urlLogo : "https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manag
                     font-family: $fontTitle;
                     font-size: 1.05rem;
                     line-height: 1.45;
-                    @include colorOpacity('color', $colorLv1, 0.9);
+                    color: $colorText;
                     margin-bottom: 0.5rem;
                 }
                 &_type {
                     margin-bottom: 0.5rem;
-                    
+                    @include colorOpacity('color', $colorText, 0.7);
                 }
                 &_price {
                     color: $colorPrice;
@@ -845,15 +845,15 @@ $urlLogo : "https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manag
             > * {
                 display: flex;
                 justify-content: center;
-                background: $colorSLv1;
+                background: $colorButtonLv1;
                 color: #fff;
                 &:focus {
                     color: #fff;
-                    background: $colorSLv1;
+                    background: $colorButtonLv1;
                 }
                 &:hover {
                     color: #fff;
-                    background: $colorSLv2;
+                    background: $colorButtonLv1;
                 }
             }
         }
@@ -861,7 +861,7 @@ $urlLogo : "https://hoaanhtuc.vn/storage/images/upload/logo-hoaanhtuc-type-manag
     .highLight {
         font-size: 1.3rem;
         font-weight: bold;
-        color: $colorSLv1;
+        color: $colorLv1;
     }
     @media(max-width: 576px){
         &_box {

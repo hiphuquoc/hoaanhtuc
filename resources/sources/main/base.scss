@@ -25,7 +25,7 @@ $opacity-to-hex: (
 @mixin colorOpacity($property, $color, $opacity, $important:null) {
     #{$property}: unquote($color + map-get($opacity-to-hex, $opacity)) $important;
 }
-$colorGradient  : rgba(240,160,0,0.3);
+$colorGradient  : rgba(240,160,0,0.2);
 $bg-1           : #212529;
 $bg-09          : #343a40;
 $bg-08          : #495057;
@@ -113,6 +113,11 @@ $fontTitle  : "SVN-Gilroy Bold", tahoma, serif;
       border-radius: inherit;
       display: flex;
       aspect-ratio: 1/1;
+      transition: all 0.3s;
+      padding: 0.5rem;
+      &:hover {
+        padding: 0rem;
+      }
       img {
         border-radius: inherit;
         width: 100%;
@@ -165,16 +170,17 @@ $fontTitle  : "SVN-Gilroy Bold", tahoma, serif;
           aspect-ratio: 1/1;
           border-radius: 50%;
           cursor: pointer;
+          overflow: hidden;
           &:not(:first-child){
               margin-left: 0.5rem;
           }
           img {
-              width: 100%;
-              height: 100%;
-              display: flex;
-              border-radius: inherit;
-              object-fit: cover;
-
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: all 0.3;
+            border-radius: inherit;
+            object-fit: cover;
           }
           &.selected, &:hover {
               border: 1px solid $colorLabel;
@@ -238,7 +244,7 @@ $fontTitle  : "SVN-Gilroy Bold", tahoma, serif;
 @mixin highLight {
   font-size: 1.2rem;
   font-weight: 700;
-  color: $colorSLv1;
+  color: $colorLv1;
 }
 
 *, ::after, ::before {
@@ -300,7 +306,7 @@ ul {
 }
 
 h1 {
-  color: $colorLv1;
+  color: $colorText;
   font-family: $fontTitle;
   font-size: 1.5rem;
   margin-bottom: 1rem;

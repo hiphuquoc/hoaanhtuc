@@ -59,7 +59,7 @@
                                 <div class="formBox_column2_item_row">
                                     <div class="form-check form-check-success">
                                         <input type="checkbox" class="form-check-input" id="status" name="status" {{ !empty($item->status) ? 'checked' : null }} onClick="return false;">
-                                        <label class="form-check-label" for="status">Đang hoạt động</label>
+                                        <label class="form-check-label" for="status">Kích hoạt</label>
                                     </div>
                                 </div>
                             </div>
@@ -240,8 +240,5 @@
             // }
         }
 
-        function submitForm(idForm){
-            $('#'+idForm).submit();
-        }
     </script>
 @endpush

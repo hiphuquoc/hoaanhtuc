@@ -3,7 +3,7 @@
     justify-content: space-between;
     margin-top: -0.5rem;
     margin-bottom: 0.25rem;
-    @include colorOpacity('color', $colorText, 0.6);
+    @include colorOpacity('color', $colorText, 0.7);
     &_info {
         display: flex;
         > * {
@@ -13,6 +13,9 @@
             i {
                 margin-right: 0.25rem;
             }
+        }
+        i {
+            @include colorOpacity('color', $colorText, 0.2);
         }
     }
     @media(max-width: 576px){

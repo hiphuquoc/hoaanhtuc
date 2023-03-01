@@ -12,6 +12,7 @@
             font-family: $fontTitle;
             margin-bottom: 0;
             margin-top: 0;
+            color: $colorText;
         }
         // &:after {
         //     content: '\f106';
@@ -26,7 +27,7 @@
         border-radius: 5px;
         &_item {
             display: flex;
-            padding: 0.65rem;
+            padding: 0.65rem 0.5rem;
             align-items: center;
             &:not(:first-child){
                 border-top: 1px dashed $bg-05;
@@ -51,7 +52,7 @@
                 width: 25px;
                 margin-right: 0.5rem;
                 font-size: 0.8rem;
-                color: $bg-07;
+                @include colorOpacity('color', $colorText, 0.2);
                 text-align: center;
             }
         }

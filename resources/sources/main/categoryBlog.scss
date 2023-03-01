@@ -1,45 +1,3 @@
-// .categoryBlogWithSidebarBox {
-//     display: flex;
-//     &_box {
-//         width: 100%;
-//     }
-//     &_sidebar {
-//         flex: 0 0 320px;
-//         margin-left: 2.5rem;
-//     }
-
-// }
-
-.ratingBox {
-	font-size: 0.925rem;
-    display:flex;
-    margin-bottom: 0.5rem;
-	&_star {
-        min-width: 100px;
-		&_on {
-			color: $colorSLv2 !important;
-		}
-		&_off {
-			color: #789;
-		}
-	}
-	&_text {
-		font-weight: normal;
-		color: #789;
-        margin-left: 1rem;
-        a {
-            font-size: 15px;
-            color: $colorText;
-            &:hover {
-                color: $colorLv1;
-            }
-        }
-	}
-    @media (max-width: 577px){
-        margin-bottom: 0.25rem;
-    }
-}
-
 .blogListLeftRight {
     margin-top: 1rem;
     padding-bottom: 1rem;
@@ -79,7 +37,7 @@
                     h2, h3 {
                         font-size: 1.2rem;
                         margin-bottom: 0.75rem;
-                        @include colorOpacity('color', $colorLv1, 0.9);
+                        color: $colorText;
                         &:hover {
                             color: $colorLv1;
                         }
@@ -87,7 +45,7 @@
                 }
                 &_time {
                     font-size: 0.95rem;
-                    @include colorOpacity('color', $colorText, 0.6);
+                    @include colorOpacity('color', $colorText, 0.7);
                     margin-bottom: 0.25rem;
                     i {
                         margin-right: 0.5rem;
@@ -95,7 +53,7 @@
                     }
                 }
                 &_desc {
-                    @include colorOpacity('color', $colorText, 0.8);
+                    @include colorOpacity('color', $colorText, 0.7);
                     font-size: 1rem;
                 }
             }
@@ -128,16 +86,16 @@
                     // display: flex;
                     h2, h3 {
                         font-size: 1.05rem;
-                        @include colorOpacity('color', $colorLv1, 0.9);
+                        color: $colorText;
                         margin-bottom: 0.5rem;
                         margin-top: -0.25rem;
                         &:hover {
-                            color: $colorText;
+                            color: $colorLv1;
                         }
                     }
                     &_time {
                         font-size: 0.95rem;
-                        @include colorOpacity('color', $colorText, 0.6);
+                        @include colorOpacity('color', $colorText, 0.7);
                         i {
                             margin-right: 0.5rem;
                             color: $bg-07;
@@ -166,7 +124,7 @@
             cursor: pointer;
             &:hover {
                 color: $colorSLv1;
-                @include colorOpacity('background', $colorSLv2, 0.1);
+                @include colorOpacity('background', $colorSLv1, 0.1);
             }
             i {
                 margin-right: 0.5rem;
@@ -175,7 +133,7 @@
         .highLight {
             font-size: 1.2rem;
             font-weight: bold;
-            color: $colorSLv1;
+            color: $colorLv1;
         }
     }
     @media(max-width: 767px){
@@ -275,7 +233,7 @@
                 h2 {
                     font-size: 1.25rem;
                     margin: 0;
-                    @include colorOpacity('color', $colorLv1, 0.9);
+                    color: $colorText;
                     &:hover {
                         color: $colorLv1;
                     }
@@ -284,7 +242,7 @@
             &_subtitle {
                 font-size: 0.9rem;
                 margin-bottom: 0.25rem;
-                @include colorOpacity('color', $colorText, 0.6);
+                @include colorOpacity('color', $colorText, 0.7);
                 > * {
                     &:not(:first-child){
                         margin-left: 1.2rem;
@@ -296,7 +254,6 @@
                 }
             }
             &_des {
-                @include colorOpacity('color', $colorText, 0.8);
                 font-size: 1rem;
                 margin-top: 0.25rem;
             }

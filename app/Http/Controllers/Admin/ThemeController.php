@@ -175,6 +175,10 @@ class ThemeController extends Controller {
                             ->first();
                     }
                     foreach($infoTheme->colors as $color){
+                        // if($key==$color->name&&$color->name=='colorPrice'){
+                        //     dd($value.' + '.$color->value);
+                        // }
+
                         if($key==$color->name){
                             $content = str_replace($value, $color->value, $content);
                             break;
