@@ -758,13 +758,6 @@ label {
   }
 }
 /* form */
-.formBox {
-  &_item {
-    &:not(:first-child){
-      margin-top: 0.5rem;
-    }
-  }
-}
 .inputRequired {
   &:after {
     content: '\f621';

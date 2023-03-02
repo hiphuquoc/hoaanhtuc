@@ -600,4 +600,32 @@
             }
         });
     }
+    /* validate form khi nhập */
+    function validateWhenType(elementInput, type = 'empty'){
+        const idElement         = $(elementInput).attr('id');
+        const parent            = $(document).find('[for*="'+idElement+'"]').parent();
+        /* validate empty */
+        if(type=='empty'){
+            const valueElement  = $.trim($(elementInput).val());
+            if(valueElement!=''&&valueElement!='0'){
+                parent.removeClass('validateErrorEmpty');
+                parent.addClass('validateSuccess');
+            }else {
+                parent.removeClass('validateSuccess');
+                parent.addClass('validateErrorEmpty');
+            }
+        }
+        /* validate phone */ 
+        if(type=='phone'){
+            const valueElement = $.trim($(elementInput).val());
+            if(valueElement.length>=10&&/^\d+$/.test(valueElement)){
+                parent.removeClass('validateErrorPhone');
+                parent.addClass('validateSuccess');
+            }else {
+                parent.removeClass('validateSuccess');
+                parent.addClass('validateErrorPhone');
+            }
+        }
+        
+    }
 </script>

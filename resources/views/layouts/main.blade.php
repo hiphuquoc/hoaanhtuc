@@ -49,6 +49,7 @@
     <!-- Modal -->
     @stack('modal')
     @include('main.modal.registryEmailSuccess')
+    @include('main.modal.registrySeller')
     <!-- === START:: Scripts Default === -->
     @include('main.snippets.scriptDefault')
     <!-- === END:: Scripts Default === -->

@@ -113,7 +113,7 @@
                     </div>
                 @endif
                 
-                <div class="headerMain_item_menuRight_item">
+                <div class="headerMain_item_menuRight_item js_toggleModalRegistrySeller">
                     <img src="{{ Storage::url('images/svg/icon-user.svg') }}" alt="" title="" />
                     <div>Đăng ký phân phối</div>
                 </div>
