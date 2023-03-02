@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\District;
 use App\Models\Product;
 use App\Models\RegistryEmail;
-// use App\Services\BuildInsertUpdateModel;
+use App\Services\BuildInsertUpdateModel;
 
 class AjaxController extends Controller {
 
-    // public function __construct(BuildInsertUpdateModel $BuildInsertUpdateModel){
-    //     $this->BuildInsertUpdateModel  = $BuildInsertUpdateModel;
-    // }
+    public function __construct(BuildInsertUpdateModel $BuildInsertUpdateModel){
+        $this->BuildInsertUpdateModel  = $BuildInsertUpdateModel;
+    }
 
     public static function loadLoading(){
         $xhtml      = view('main.template.loading')->render();
@@ -87,6 +87,11 @@ class AjaxController extends Controller {
             if(!empty($idRegistryEmail)) $flag = true;
         }
         echo $flag;
+    }
+
+    public function registrySeller(Request $request){
+        $insertSeller = $this->BuildInsertUpdateModel->buildArrayTableSellerInfo($request->all());
+        dd($insertSeller);
     }
 
     public function buildTocContentMain(Request $request){

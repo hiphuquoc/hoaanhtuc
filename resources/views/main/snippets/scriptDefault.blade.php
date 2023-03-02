@@ -628,4 +628,36 @@
         }
         
     }
+    /* load quận/huyện */
+    function loadDistrictByIdProvince(elementProvince, idWrite){
+        const valueProvince = $(elementProvince).val();
+        $.ajax({
+            url         : '{{ route("ajax.loadDistrictByIdProvince") }}',
+            type        : 'get',
+            dataType    : 'html',
+            data        : {
+                province_info_id : valueProvince
+            },
+            success     : function(response){
+                $('#'+idWrite).html(response);
+            }
+        });
+    }
+    /* validate form */
+    function validateForm(idForm){
+        let error       = [];
+        /* input required không được bỏ trống */
+        $('#'+idForm).find('input[required]').each(function(){
+            /* đưa vào mảng */
+            if($(this).val()==''){
+                error.push($(this).attr('name'));
+            }
+        })
+        /* select */
+        $('#'+idForm).find('select[required]').each(function(){
+            console.log($(this).val());
+            if($(this).val()==0) error.push($(this).attr('name'));
+        })
+        return error;
+    }
 </script>

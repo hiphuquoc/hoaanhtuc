@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="formBox_item inputWithLabelInside">
                                     <label class="inputRequired" for="province_info_id">Tỉnh thành</label>
-                                    <select id="province_info_id" name="province_info_id" class="select2" onChange="validateWhenType(this);loadDistrictByIdProvince(this, 'district_info_id');">
+                                    <select id="province_info_id" name="province_info_id" class="select2" onChange="validateWhenType(this);loadDistrictByIdProvince(this, 'district_info_id');" required>
                                         <option value="0" selected>- Vui lòng chọn -</option>
                                         @foreach($provinces as $province)
                                             <option value="{{ $province->id }}">{{ $province->province_name }}</option>
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="formBox_item inputWithLabelInside">
                                     <label class="inputRequired" for="district_info_id">Quận huyện</label>
-                                    <select id="district_info_id" name="district_info_id" class="select2" onChange="validateWhenType(this)">
+                                    <select id="district_info_id" name="district_info_id" class="select2" onChange="validateWhenType(this)" required>
                                         <option value="0" selected>- Vui lòng chọn -</option>
                                         <option value="1">Giá trị 1</option>
                                     </select>
@@ -206,52 +206,80 @@
 <script src="{{ asset('sources/admin/app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
 <script src="{{ asset('sources/admin/app-assets/js/scripts/forms/form-select2.min.js') }}"></script>
 <script type="text/javascript">
-function loadDistrictByIdProvince(elementProvince, idWrite){
-    const valueProvince = $(elementProvince).val();
-    $.ajax({
-        url         : '{{ route("ajax.loadDistrictByIdProvince") }}',
-        type        : 'get',
-        dataType    : 'html',
-        data        : {
-            province_info_id : valueProvince
-        },
-        success     : function(response){
-            $('#'+idWrite).html(response);
-        }
-});
-}
-function submitForm(idForm){
-    event.preventDefault();
-    const error     = validateForm(idForm);
-    if(error==''){
-        $('#'+idForm).submit(); 
-    }else {
-        /* thêm class thông báo lỗi cho label của input */
-        for(let i = 0;i<error.length;++i){
-            const idInput = $('#'+idForm).find('[name='+error[i]+']').attr('id');
-            if(idInput!=''){
-                const elementLabel = $('#'+idForm).find('[for='+idInput+']');
-                elementLabel.addClass('error');
+    function submitForm(idForm){
+        event.preventDefault();
+        const error     = validateForm(idForm);
+        if(error==''){
+            $('#'+idForm).submit(); 
+        }else {
+            /* thêm class thông báo lỗi cho label của input */
+            for(let i = 0;i<error.length;++i){
+                const idInput = $('#'+idForm).find('[name='+error[i]+']').attr('id');
+                if(idInput!=''){
+                    const elementLabel = $('#'+idForm).find('[for='+idInput+']');
+                    elementLabel.addClass('error');
+                }
             }
         }
     }
-}
-
-function validateForm(idForm){
-    let error       = [];
-    /* input required không được bỏ trống */
-    $('#'+idForm).find('input[required]').each(function(){
-        /* đưa vào mảng */
-        if($(this).val()==''){
-            error.push($(this).attr('name'));
+    /* validate form khi nhập */
+    function validateWhenType(elementInput, type = 'empty'){
+        const idElement         = $(elementInput).attr('id');
+        const parent            = $(document).find('[for*="'+idElement+'"]').parent();
+        /* validate empty */
+        if(type=='empty'){
+            const valueElement  = $.trim($(elementInput).val());
+            if(valueElement!=''&&valueElement!='0'){
+                parent.removeClass('validateErrorEmpty');
+                parent.addClass('validateSuccess');
+            }else {
+                parent.removeClass('validateSuccess');
+                parent.addClass('validateErrorEmpty');
+            }
         }
-    })
-    /* select */
-    $('#'+idForm).find('select').each(function(){
-        if($(this).val()==0) error.push($(this).attr('name'));
-    })
-    return error;
-}
+        /* validate phone */ 
+        if(type=='phone'){
+            const valueElement = $.trim($(elementInput).val());
+            if(valueElement.length>=10&&/^\d+$/.test(valueElement)){
+                parent.removeClass('validateErrorPhone');
+                parent.addClass('validateSuccess');
+            }else {
+                parent.removeClass('validateSuccess');
+                parent.addClass('validateErrorPhone');
+            }
+        }
+        
+    }
+    /* load quận/huyện */
+    function loadDistrictByIdProvince(elementProvince, idWrite){
+        const valueProvince = $(elementProvince).val();
+        $.ajax({
+            url         : '{{ route("ajax.loadDistrictByIdProvince") }}',
+            type        : 'get',
+            dataType    : 'html',
+            data        : {
+                province_info_id : valueProvince
+            },
+            success     : function(response){
+                $('#'+idWrite).html(response);
+            }
+        });
+    }
+    function validateForm(idForm){
+        let error       = [];
+        /* input required không được bỏ trống */
+        $('#'+idForm).find('input[required]').each(function(){
+            /* đưa vào mảng */
+            if($(this).val()==''){
+                error.push($(this).attr('name'));
+            }
+        })
+        /* select */
+        $('#'+idForm).find('select[required]').each(function(){
+            if($(this).val()==0) error.push($(this).attr('name'));
+        })
+        return error;
+    }
 </script>
 
 @endsection

@@ -151,6 +151,7 @@
                 align-items: flex-start;
                 color: $colorLv1;
                 height: inherit;
+                cursor: pointer;
                 > * {
                     text-transform: uppercase;
                     font-weight: 600;
@@ -183,8 +184,10 @@
             background: $colorButtonLv1;
             padding: 0.5rem 1rem;
             border-radius: 0 7px 7px 0;
+            box-shadow: none;
             &:hover, &:focus {
                 background: $colorButtonLv2;
+                transform: unset;
             }
             i {
                 margin: 0;
@@ -198,7 +201,7 @@
         }
     }
     &_selectbox {
-        transition: all 0.5s;
+        transition: all 0.3s;
         position: absolute;
         overflow: hidden;
         width: 100%;

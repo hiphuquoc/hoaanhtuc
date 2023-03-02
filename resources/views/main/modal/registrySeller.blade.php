@@ -1,36 +1,47 @@
+@php
+    $provinces      = \App\Models\Province::all();
+@endphp
+
 <div id="modalRegistrySeller" class="modalBox">
     <div class="modalBox_bg js_toggleModalRegistrySeller"></div>
     <div class="modalBox_box">
         <form id="formModalSubmit" method="get" style="width:100%;">
             <!-- hidden -->
-            <input type="hidden" name="service_info_id" value="1">
             <div class="formModalBox_box_head">Đăng ký phân phối</div>
             <div class="formModalBox_box_body">
                 <!-- ===== -->
-
                 <div class="formBox">
                     <div class="formBox_item inputWithLabelInside">
-                        <label class="inputRequired" for="name">Người nhận</label>
+                        <label class="inputRequired" for="name">Họ tên</label>
                         <input type="text" id="name" name="name" value="" onkeyup="validateWhenType(this)" required>
                     </div>
                     <div class="formBox_item inputWithLabelInside">
-                            <label class="inputRequired" for="phone">Số điện thoại</label>
-                            <input type="text" id="phone" name="phone" value="" onkeyup="validateWhenType(this, 'phone')" required>
-                    </div>
-                    <div class="formBox_item inputWithLabelInside">
-                            <label class="inputRequired" for="address">Địa chỉ</label>
-                            <input type="text" id="address" name="address" value="" onkeyup="validateWhenType(this)" required>
+                        <label class="inputRequired" for="phone">Số điện thoại</label>
+                        <input type="text" id="phone" name="phone" value="" onkeyup="validateWhenType(this, 'phone')" required>
                     </div>
                     <div class="formBox_item inputWithLabelInside">
                         <label class="inputRequired" for="indentify">Số CMND/CCCD</label>
                         <input type="text" id="indentify" name="indentify" value="" onkeyup="validateWhenType(this)" required>
                     </div>
-                    {{-- <div class="formBox_item inputWithLabelInside">
+                    <div class="formBox_item inputWithLabelInside">
+                        <label class="inputRequired" for="address">Địa chỉ</label>
+                        <input type="text" id="address" name="address" value="" onkeyup="validateWhenType(this)" required>
+                    </div>
+                    <div class="formBox_item inputWithLabelInside">
                         <label class="inputRequired" for="province_info_id">Tỉnh thành</label>
-                        <select id="province_info_id" name="province_info_id" class="select2" onChange="validateWhenType(this);loadDistrictByIdProvince(this, 'district_info_id');">
+                        <select id="province_info_id" name="province_info_id" class="select2" onChange="validateWhenType(this);loadDistrictByIdProvince(this, 'district_info_id');" required>
+                            <option value="0" selected>- Vui lòng chọn -</option>
+                            @foreach($provinces as $province)
+                                <option value="{{ $province->id }}">{{ $province->province_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="formBox_item inputWithLabelInside">
+                        <label class="inputRequired" for="district_info_id">Quận huyện</label>
+                        <select id="district_info_id" name="district_info_id" class="select2" onChange="validateWhenType(this)" required>
                             <option value="0" selected>- Vui lòng chọn -</option>
                         </select>
-                    </div> --}}
+                    </div>
                 </div>
 
                 <!-- ===== -->
@@ -50,5 +61,31 @@
         $('.js_toggleModalRegistrySeller').on('click', function(){
             openCloseModal('modalRegistrySeller');
         })
+        function submitForm(idForm){
+            event.preventDefault();
+            const error     = validateForm(idForm);
+            if(error==''){
+                const data  = $('#'+idForm).serialize();
+                $.ajax({
+                    url         : '{{ route("ajax.registrySeller") }}',
+                    type        : 'get',
+                    dataType    : 'html',
+                    data        : data,
+                    success     : function(response){
+                        // $('#'+idWrite).html(response);
+                    }
+                });
+            }else {
+                /* thêm class thông báo lỗi cho label của input */
+                for(let i = 0;i<error.length;++i){
+                    const idInput = $('#'+idForm).find('[name='+error[i]+']').attr('id');
+                    if(idInput!=''){
+                        const elementLabel = $('#'+idForm).find('[for='+idInput+']');
+                        elementLabel.addClass('error');
+                    }
+                }
+            }
+        }
+        
     </script>
 @endpush

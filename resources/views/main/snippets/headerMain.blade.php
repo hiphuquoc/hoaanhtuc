@@ -114,7 +114,7 @@
                 @endif
                 
                 <div class="headerMain_item_menuRight_item js_toggleModalRegistrySeller">
-                    <img src="{{ Storage::url('images/svg/icon-user.svg') }}" alt="" title="" />
+                    <img src="{{ Storage::url('images/svg/icon-user.svg') }}" alt="đăng ký phân phối sản phẩm {{ config('main.company_name') }}" title="đăng ký phân phối sản phẩm {{ config('main.company_name') }}" />
                     <div>Đăng ký phân phối</div>
                 </div>
             </div>

@@ -136,4 +136,19 @@ class BuildInsertUpdateModel {
         }
         return $result;
     }
+
+    public static function buildArrayTableSellerInfo($dataForm){
+        $result     = [];
+        if(!empty($dataForm)){
+            $result['prefix_name']      = $dataForm['prefix_name'] ?? null;
+            $result['name']             = $dataForm['name'];
+            $result['phone']            = $dataForm['phone'];
+            $result['zalo']             = $dataForm['zalo'] ?? null;
+            $result['email']            = $dataForm['email'] ?? null;
+            $result['address']          = $dataForm['address'] ?? null;
+            $result['province_info_id'] = $dataForm['province_info_id'] ?? null;
+            $result['district_info_id'] = $dataForm['district_info_id'] ?? null;
+        }
+        return $result;
+    }
 }

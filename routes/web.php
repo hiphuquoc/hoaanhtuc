@@ -63,6 +63,7 @@ Route::get('/loadLoading', [AjaxController::class, 'loadLoading'])->name('ajax.l
 Route::get('/loadDistrictByIdProvince', [AjaxController::class, 'loadDistrictByIdProvince'])->name('ajax.loadDistrictByIdProvince');
 Route::get('/searchProductAjax', [AjaxController::class, 'searchProductAjax'])->name('ajax.searchProductAjax');
 Route::get('/registryEmail', [AjaxController::class, 'registryEmail'])->name('ajax.registryEmail');
+Route::get('/registrySeller', [AjaxController::class, 'registrySeller'])->name('ajax.registrySeller');
 /* login */
 Route::get('/admin', [LoginController::class, 'loginForm'])->name('admin.loginForm');
 Route::post('/loginAdmin', [LoginController::class, 'loginAdmin'])->name('admin.loginAdmin');

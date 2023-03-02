@@ -33,7 +33,7 @@
             padding: 1.5rem;
             margin-bottom: 0.5rem;
             border: 2px solid #fff;
-            transition: all 0.5s;
+            transition: all 0.3s;
             aspect-ratio: 1 / 1;
             display: flex;
             align-items: center;
@@ -286,7 +286,7 @@
             overflow: hidden;
             aspect-ration: 750/460;
             img {
-                transition: all 0.5s;
+                transition: all 0.3s;
                 border-radius: 7px;
             }
         }
