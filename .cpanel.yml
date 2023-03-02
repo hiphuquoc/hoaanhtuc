@@ -3,6 +3,10 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/eqeqmgjz/public_html/hoaanhtuc.vn/
     - /bin/cp -R * $DEPLOYPATH
+    - export DEPLOYPATH=/home/eqeqmgjz/public_html/thachtraquan.com/
+    - /bin/cp -R * $DEPLOYPATH
+    - export DEPLOYPATH=/home/eqeqmgjz/public_html/trumvape.com/
+    - /bin/cp -R * $DEPLOYPATH
     # - /bin/cp /app $DEPLOYPATH
     # - /bin/cp /bootstrap $DEPLOYPATH
     # - /bin/cp /config $DEPLOYPATH
