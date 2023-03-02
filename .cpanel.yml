@@ -1,13 +1,13 @@
 ---
 deployment:
   tasks:
-    # - export DEPLOYPATH=/home/eqeqmgjz/public_html/hoaanhtuc.vn/
-    # - /bin/cp -R * $DEPLOYPATH
-    # - rm $DEPLOYPATH/public/build/assets/style-main.css
+    - export DEPLOYPATH=/home/eqeqmgjz/public_html/hoaanhtuc.vn/
+    - /bin/cp -R * $DEPLOYPATH
+    - rm $DEPLOYPATH/public/build/assets/style-main.css
 
-    # - export DEPLOYPATH=/home/eqeqmgjz/public_html/thachtraquan.com/
-    # - /bin/cp -R * $DEPLOYPATH
-    # - rm $DEPLOYPATH/public/build/assets/style-main.css
+    - export DEPLOYPATH=/home/eqeqmgjz/public_html/thachtraquan.com/
+    - /bin/cp -R * $DEPLOYPATH
+    - rm $DEPLOYPATH/public/build/assets/style-main.css
 
     - export DEPLOYPATH=/home/eqeqmgjz/public_html/trumvape.com/
     - /bin/cp -R * $DEPLOYPATH
