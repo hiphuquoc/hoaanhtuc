@@ -18,6 +18,7 @@ use App\Models\ProductPrice;
 use App\Models\RelationCategoryProduct;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\GalleryController;
+use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 
 class ProductController extends Controller {
 

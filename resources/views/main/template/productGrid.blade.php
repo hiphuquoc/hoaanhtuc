@@ -19,7 +19,7 @@
                 $dataFilter         = 'tat-ca-danh-muc tat-ca-nhan-hang';
                 $i                  = 0;
                 foreach($product->categories as $category){
-                    $dataFilter     .= ' '.$category->infoCategory->seo->slug;
+                    if(!empty($category->infoCategory)) $dataFilter     .= ' '.$category->infoCategory->seo->slug;
                     ++$i;
                 }
                 /* gộp thêm của brand vào */
