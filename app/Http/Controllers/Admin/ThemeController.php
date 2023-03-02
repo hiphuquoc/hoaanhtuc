@@ -150,7 +150,8 @@ class ThemeController extends Controller {
                 foreach ($matches[1] as $index => $varName) {
                     $arrayColorSource[substr($varName, 1)] = '#' . $matches[2][$index];
                 }
-                /* tiến hành thay thế */
+                /* tạo map thay thế */
+                $arrayMap               = [];
                 foreach($arrayColorSource as $key => $value){
                     /* lấy thông tin theme đang được active */
                     if(!empty($id)){
@@ -175,16 +176,14 @@ class ThemeController extends Controller {
                             ->first();
                     }
                     foreach($infoTheme->colors as $color){
-                        // if($key==$color->name&&$color->name=='colorPrice'){
-                        //     dd($value.' + '.$color->value);
-                        // }
-
                         if($key==$color->name){
-                            $content = str_replace($value, $color->value, $content);
+                            $arrayMap[$value] = $color->value;
                             break;
                         }
                     }
                 }
+                /* tiến hành thay thế => thay cùng lúc để không bị lỗi trùng màu gốc và màu thay */
+                $content = strtr($content, $arrayMap);
                 /* xóa file vite được build cũ */
                 if(file_exists(public_path($fileVite))) @unlink(public_path($fileVite));
                 /* ghi vào file */
