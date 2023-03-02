@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/eqeqmgjz/public_html/hoaanhtuc.vn/
+    - export DEPLOYPATH=/home/eqeqmgjz/public_html/thachtraquan.com/
     - /bin/cp -R * $DEPLOYPATH
     # - /bin/cp /app $DEPLOYPATH
     # - /bin/cp /bootstrap $DEPLOYPATH
