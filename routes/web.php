@@ -64,6 +64,7 @@ Route::get('/loadDistrictByIdProvince', [AjaxController::class, 'loadDistrictByI
 Route::get('/searchProductAjax', [AjaxController::class, 'searchProductAjax'])->name('ajax.searchProductAjax');
 Route::get('/registryEmail', [AjaxController::class, 'registryEmail'])->name('ajax.registryEmail');
 Route::get('/registrySeller', [AjaxController::class, 'registrySeller'])->name('ajax.registrySeller');
+Route::get('/setMessageModal', [AjaxController::class, 'setMessageModal'])->name('ajax.setMessageModal');
 /* login */
 Route::get('/admin', [LoginController::class, 'loginForm'])->name('admin.loginForm');
 Route::post('/loginAdmin', [LoginController::class, 'loginAdmin'])->name('admin.loginAdmin');

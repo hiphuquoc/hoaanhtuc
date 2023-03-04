@@ -69,10 +69,13 @@
                 $.ajax({
                     url         : '{{ route("ajax.registrySeller") }}',
                     type        : 'get',
-                    dataType    : 'html',
+                    dataType    : 'json',
                     data        : data,
                     success     : function(response){
-                        // $('#'+idWrite).html(response);
+                        /* tắt modal form đăng ký */
+                        openCloseModal('modalRegistrySeller');
+                        /* bật thông báo */
+                        setMessageModal(response.title, response.content);
                     }
                 });
             }else {

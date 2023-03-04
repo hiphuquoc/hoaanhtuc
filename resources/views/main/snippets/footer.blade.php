@@ -90,7 +90,7 @@
                     {{ config('main.email') }}
                 </div>
                 <div class="footerBox_item_list_item">
-                    <img src="{{ Storage::url('images/svg/logo-dang-ky-bo-cong-thuong.png') }}" alt="" title="" style="max-width:150px;margin-top:1rem;" />
+                    <img src="{{ Storage::url('images/svg/logo-dang-ky-bo-cong-thuong.png') }}" alt="{{ config('main.company_name') }} đã đăng ký bộ công thương" title="{{ config('main.company_name') }} đã đăng ký bộ công thương" style="max-width:150px;margin-top:1rem;" />
                 </div>
             </div>
         </div>

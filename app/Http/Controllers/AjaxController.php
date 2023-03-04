@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\District;
 use App\Models\Product;
 use App\Models\RegistryEmail;
+use App\Models\Seller;
 use App\Services\BuildInsertUpdateModel;
 
 class AjaxController extends Controller {
@@ -79,19 +80,36 @@ class AjaxController extends Controller {
     }
 
     public static function registryEmail(Request $request){
-        $flag = false;
-        if(!empty($request->get('registry_email'))){
-            $idRegistryEmail    = RegistryEmail::insertItem([
-                'email'     => $request->get('registry_email')
-            ]);
-            if(!empty($idRegistryEmail)) $flag = true;
+        $idRegistryEmail    = RegistryEmail::insertItem([
+            'email'     => $request->get('registry_email')
+        ]);
+        if(!empty($idRegistryEmail)){
+            $result['type']     = 'success';
+            $result['title']    = 'Đăng ký email thành công!';
+            $result['content']  = '<div>Cảm ơn bạn đã đăng ký nhận tin!</div>
+                                    <div>Trong thời gian tới nếu có bất kỳ chương trình khuyến mãi nào '.config('main.company_name').' sẽ gửi cho bạn đầu tiên.</div>'; 
+        }else {
+            $result['type']     = 'error';
+            $result['title']    = 'Đăng ký email thất bại!';
+            $result['content']  = 'Có lỗi xảy ra, vui lòng thử lại'; 
         }
-        echo $flag;
+        return json_encode($result);
     }
 
     public function registrySeller(Request $request){
-        $insertSeller = $this->BuildInsertUpdateModel->buildArrayTableSellerInfo($request->all());
-        dd($insertSeller);
+        /* insert seller_info */
+        $insertSeller   = $this->BuildInsertUpdateModel->buildArrayTableSellerInfo($request->all());
+        $idSeller       = Seller::insertItem($insertSeller);
+        if(!empty($idSeller)){
+            $result['type']     = 'success';
+            $result['title']    = 'Đăng ký phân phối thành công!';
+            $result['content']  = 'Cảm ơn bạn đã cộng tác cùng '.config('main.company_name').'. Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất'; 
+        }else {
+            $result['type']     = 'error';
+            $result['title']    = 'Đăng ký phân phối thất bại!';
+            $result['content']  = 'Có lỗi xảy ra, vui lòng thử lại hoặc liên hệ trực tiếp chúng tôi qua hotline: '.config('main.hotline'); 
+        }
+        return json_encode($result);
     }
 
     public function buildTocContentMain(Request $request){
@@ -102,30 +120,11 @@ class AjaxController extends Controller {
         echo $xhtml;
     }
 
-    // public function submitFormRequestWebsite(Request $request){
-    //     $dataForm       = [];
-    //     foreach($request->get('data') as $value){
-    //         $dataForm[$value['name']]   = $value['value'];
-    //     }
-    //     /* insert customer_info */
-    //     $insertCustomer = $this->BuildInsertUpdateModel->buildArrayTableCustomerInfo($dataForm);
-    //     $idCustomer     = Customer::insertItem($insertCustomer);
-    //     /* insert request_info */
-    //     $priceService   = ServicePrice::find($dataForm['service_price_id']);
-    //     $dataForm['promotion']      = $priceService->sale_off ?? 0;
-    //     if(!empty((integer) $priceService->price_origin)){
-    //         /* là số */
-    //         $dataForm['total']      = $priceService->price_origin*(100-$priceService->sale_off)/100;
-    //     }else {
-    //         $dataForm['total']      = "không xác định";
-    //     }
-    //     $insertRequest  = $this->BuildInsertUpdateModel->buildArrayTableRequestInfo($dataForm, $idCustomer);
-    //     $idRequest      = RequestInfo::insertItem($insertRequest);
-    //     if($idRequest){
-    //         $xhtml      = view('main.ajax.notice')->render();
-    //         echo $xhtml;
-    //     }else {
-    //         echo 'error';
-    //     }
-    // }
+    public static function setMessageModal(Request $request){
+        $response   = view('main.modal.contentMessageModal', [
+            'title'     => $request->get('title') ?? null,
+            'content'   => $request->get('content') ?? null
+        ])->render();
+        echo $response;
+    }
 }

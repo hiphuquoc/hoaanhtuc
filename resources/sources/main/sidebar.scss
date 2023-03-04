@@ -33,7 +33,7 @@
                 border-top: 1px dashed $bg-05;
             }
             &:hover {
-                background: $bg-03;
+                @include colorOpacity('background', $colorLv1, 0.1);
             }
             &.children {
                 i {

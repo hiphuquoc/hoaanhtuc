@@ -14,6 +14,12 @@
         });
 
         // buildTocContentMain('js_contentBox');
+
+        $('img').each(function() {
+            if (!$(this).attr('alt') || !$(this).attr('title')) {
+                console.log(this);
+            }
+        });
     });
     function showHideListMenuMobile(element, idMenu){
         let elementMenu     = $('#'+idMenu);
@@ -471,13 +477,13 @@
                 $.ajax({
                     url         : '{{ route("ajax.registryEmail") }}',
                     type        : 'get',
-                    dataType    : 'html',
+                    dataType    : 'json',
                     data        : {
                         registry_email : valueEmail
                     },
                     success     : function(response){
-                        inputEmail.val('');
-                        if(response==true) openCloseModal('modalRegistryEmailSuccess');
+                        /* bật thông báo */
+                        setMessageModal(response.title, response.content);
                     }
                 });
             }else {
@@ -655,7 +661,6 @@
         })
         /* select */
         $('#'+idForm).find('select[required]').each(function(){
-            console.log($(this).val());
             if($(this).val()==0) error.push($(this).attr('name'));
         })
         return error;

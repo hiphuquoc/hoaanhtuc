@@ -48,8 +48,8 @@
     
     <!-- Modal -->
     @stack('modal')
-    @include('main.modal.registryEmailSuccess')
     @include('main.modal.registrySeller')
+    @include('main.modal.messageModal')
     <!-- === START:: Scripts Default === -->
     @include('main.snippets.scriptDefault')
     <!-- === END:: Scripts Default === -->

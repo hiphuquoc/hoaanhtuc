@@ -152,7 +152,7 @@ $fontTitle  : "SVN-Gilroy Bold", tahoma, serif;
         position: absolute;
         top: 0;
         right: 0;
-        background: $colorLabel;
+        @include colorOpacity('background', $colorPrice, 0.8);
         padding: 0.1rem 0.5rem;
         display: flex;
         color: #fff;
@@ -586,7 +586,7 @@ blockquote{
 
 .button {
   padding: 0.5rem 2rem;
-  background: $colorSLv1;
+  background: $colorButtonLv1;
   display: inline-block;
   font-family: $fontTitle;
   font-weight: 500;
@@ -598,13 +598,13 @@ blockquote{
   text-align: center;
   border-radius: 100px;
   letter-spacing: 0.5px;
-  box-shadow: 0 3px 0 $bg-06;
+  box-shadow: 0 2px 0 $bg-06;
   transition: all 0.3s;
   &:focus, &:hover {
     color: #fff;
     outline: none;
-    background: $colorSLv2;
-    transform: translateY(3px);
+    background: $colorButtonLv2;
+    transform: translateY(2px);
     box-shadow: none;
   }
   i {
@@ -683,12 +683,12 @@ label {
   border-radius: 7px;
   cursor: pointer;
   font-size: 0.925rem;
+  background: $bg-02;
   &:not(:last-child){
     margin-right: 0.25rem;
     margin-bottom: 0.5rem;
   }
-  &Secondary {
-    @include colorOpacity('background', $colorLabel, 0.1);
+  &Primary {
     &.selected {
         background: $colorLabel;
         color: #fff;

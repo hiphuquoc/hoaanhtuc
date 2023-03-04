@@ -7,7 +7,7 @@
         <div id="js_searchProductAjax_idWrite" class="searchViewBefore_selectbox">
             <div class="searchViewBefore_selectbox_item">
                 <div>
-                    <img src="/storage/images/svg/icon-search-100.png" alt="" title="" style="width:120px;margin:0 auto;" />
+                    <img src="/storage/images/svg/icon-search-100.png" alt="Tìm kiếm sản phẩm trên {{ config('main.company_name') }}" title="Tìm kiếm sản phẩm trên {{ config('main.company_name') }}" style="width:120px;margin:0 auto;" />
                     <div>Nhập tìm kiếm của bạn!</div>
                 </div>
             </div>

@@ -331,9 +331,9 @@
             border: none;
             a {
                 font-weight: 600;
-                @include colorOpacity('color', $colorText, 0.8);
+                @include colorOpacity('color', $colorText, 0.7);
                 &:hover {
-                    color: $colorSLv2;
+                    color: $colorButtonLv1;
                 }
                 i {
                     margin-right: 0.5rem;

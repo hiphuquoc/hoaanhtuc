@@ -225,7 +225,7 @@
                 margin-left: 0.75rem;
                 &_title {
                     line-height: 1.4;
-                    color: $colorLv1;
+                    color: $colorText;
                     margin-bottom: 0.25rem;
                 }
                 &_price {
@@ -240,6 +240,7 @@
                         margin-left: 0.5rem;
                         font-size: 0.95rem;
                         text-decoration: line-through;
+                        @include colorOpacity('color', $colorText, 0.7);
                     }
                 }
             }
@@ -249,7 +250,10 @@
             &:last-child {
                 align-items: center;
                 justify-content: center;
-                @include colorOpacity('color', $colorText, 0.8); 
+                color: $colorLv1; 
+                &:hover {
+                    color: $colorText;
+                }
                 i {
                     font-size: 0.9rem;
                     margin-left: 0.5rem;
@@ -505,7 +509,7 @@ $width_normalMenu : 250px;
         background: #fff;
         border: 1px solid $bg-03;
         &:hover {
-            border: 1px solid $colorText;
+            border: 1px solid $colorLv1;
         }
         
         &:nth-child(6n + 1){
