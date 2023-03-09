@@ -15,4 +15,9 @@ class SettingController extends Controller {
             Cookie::queue($request->get('name'), $request->get('default'), 86400);
         }
     }
+
+    public static function slider(Request $request){
+
+        return view('admin.setting.slider');
+    }
 }

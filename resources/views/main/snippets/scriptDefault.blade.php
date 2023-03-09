@@ -632,7 +632,36 @@
                 parent.addClass('validateErrorPhone');
             }
         }
-        
+        /* validate email */ 
+        if(type=='email'){
+            const valueElement = $.trim($(elementInput).val());
+            /* check empty (nếu required) */
+            if($(elementInput).prop('required')){
+                if(valueElement==''){
+                    parent.removeClass('validateSuccess');
+                    parent.removeClass('validateErrorEmail');
+                    parent.addClass('validateErrorEmpty');
+                    return false;
+                }
+                /* check email hợp lệ */
+                if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valueElement)){
+                    parent.removeClass('validateErrorEmail');
+                    parent.removeClass('validateErrorEmpty');
+                    parent.addClass('validateSuccess');
+                }else {
+                    parent.removeClass('validateSuccess');
+                    parent.removeClass('validateErrorEmpty');
+                    parent.addClass('validateErrorEmail');
+                }
+            }else {
+                /* check email hợp lệ */
+                if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valueElement)){
+                    parent.removeClass('validateErrorEmail');
+                    parent.removeClass('validateErrorEmpty');
+                    parent.addClass('validateSuccess');
+                }
+            }
+        }
     }
     /* load quận/huyện */
     function loadDistrictByIdProvince(elementProvince, idWrite){

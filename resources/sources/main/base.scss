@@ -269,6 +269,9 @@ body {
     @media(max-width: 990px){
       font-size: 0.95rem;
     }
+    &.background {
+      background: $bg-02;
+    }
 }
 
 .blurBackground {
@@ -764,13 +767,13 @@ label {
 /* form */
 .inputRequired {
   &:after {
-    content: '\f621';
-    font-weight: 900;
-    @include fontAwesome;
-    font-size: 0.55rem;
-    color: $colorRed;
-    margin-left: 0.3rem;
-    opacity: 0.6;
+      content: '\f621';
+      font-weight: 900;
+      @include fontAwesome;
+      font-size: 0.55rem;
+      color: $colorRed;
+      margin-left: 0.3rem;
+      opacity: 0.6;
   }
 }
 .inputWithLabelInside, .textareaWithLabelInside {
@@ -779,105 +782,203 @@ label {
   width: 100%;
   position: relative;
   padding: 0;
+  background: #fff;
+  cursor: pointer;
   label {
-    margin-bottom: 0;
-    font-weight: normal;
-    font-size: 0.85rem;
-    padding: 0 0.75rem;
+      cursor: pointer;
+      margin-bottom: 0;
+      font-weight: normal;
+      font-size: 0.85rem;
+      padding: 0 0.75rem;
   }
-  input {
-    display: flex;
-    margin-top: -2px;
-    font-size: 1.05rem;
-    padding: 0;
-    border: none;
-    outline: none;
-    padding: 0 0.75rem;
-    &:focus {
+  > input {
+      display: flex;
+      margin-top: -2px;
+      font-size: 1.05rem;
+      padding: 0;
       border: none;
       outline: none;
-    }
+      position: absolute;
+      top: 2px;
+      height: 100%;
+      padding: 35px 0.75rem 13px 0.75rem !important;
+      background: transparent !important;
+      color: $colorLv1;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2;
+      &:focus, &:-webkit-autofill, &:-webkit-autofill:focus, &:-webkit-autofill:hover, &:-webkit-autofill:active {
+          border: none;
+          outline: none;
+          background: transparent !important;
+          -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+          -webkit-transition-delay: 9999s;
+      }
   }
   &:not(:first-child){
-    margin-top: 1rem;
+      margin-top: 1rem;
   }
-  &.validateErrorEmpty {
-    border: 1px solid $colorRed;
-    label {
-      &:after {
-        content: 'Trường này không được bỏ trống';
-        font-family: $fontText;
-        font-size: inherit;
-        color: $colorRed;
-      }
-    }
+  &:after {
+      @include fontAwesome;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $bg-06;
+      font-size: 0.95rem;
+      z-index: 1;
   }
-  &.validateErrorPhone {
-    border: 1px solid $colorRed;
-    label {
+  &.email {
       &:after {
-        content: 'Số điện thoại không hợp lệ';
-        font-family: $fontText;
-        font-size: inherit;
-        color: $colorRed;
+          content: "\f0e0";
       }
-    }
   }
-  &.validateSuccess {
-    border: 1px solid $colorSuccess;
-    label {
+  &.phone {
       &:after {
-        content: '\f00c';
-        @include fontAwesome;
-        color: $colorSuccess;
-        font-size: 0.9rem;
+          content: "\f095";
       }
-    }
+  }
+  &.location {
+      &:after {
+          content: "\f3c5";
+      }
+  }
+  &.date {
+      &:after {
+          content: "\f073";
+      }
+  }  
+  &.adult {
+      &:after {
+          content: "\f183";
+          font-size: 1.1rem;
+      }
+  }  
+  &.child {
+      &:after {
+          content: "\f1ae";
+          font-size: 1.1rem;
+      }
+  } 
+  &.old {
+      &:after {
+          content: "\e53c";
+          font-size: 1.1rem;
+      }
+  } 
+  &.message {
+      &:after {
+          content: "\f4ad";
+          font-size: 1.1rem;
+      }
   }
   select {
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    appearance: none !important;
+      -webkit-appearance: none !important;
+      -moz-appearance: none !important;
+      appearance: none !important;
   }
   .select2-container .select2-selection--single {
-    // height: 45px !important;
-    padding: 0 !important;    
+      // height: 45px !important;
+      padding: 0 !important;    
   }
   .select2-container--default .select2-selection--single {
-    border: none !important;
-    background: none;
-    margin-top: -12px;
-    font-weight: bold;
-    height: 28px !important;
-    
-    .select2-selection__arrow {
+      border: none !important;
+      background: none;
+      margin-top: -12px;
+      font-weight: bold;
+      height: 28px !important;
+      
+      .select2-selection__arrow {
       display: none;
-    }
+      }
   }
   .select2-selection__arrow {
-    top: 50% !important;
-    transform: translateY(-50%);
+      top: 50% !important;
+      transform: translateY(-50%);
   }
   .select2-search--dropdown {
-    border-top: 1px solid $bg-05;
-    input {
+      border-top: 1px solid $bg-05;
+      input {
       margin: 0 !important;
-    }
+      }
   }
-  .select2-search--dropdown .select2-search__field, .select2-results__option {
-    padding: 7px !important;
+  .select2-results__option {
+      padding: 7px !important;
+  }
+  .select2-search--dropdown .select2-search__field {
+      display: none !important;
   }
   .select2-container {
-    left: 0 !important;
-    .select2-selection--single .select2-selection__rendered {
-      padding: 0 0.75rem !important;
-    }
+      left: 0 !important;
+      .select2-selection--single .select2-selection__rendered {
+          margin-top: -45px;
+          padding: 22px 0.75rem 10px 0.75rem !important;
+          z-index: 2;
+          position: relative;
+      }
   }
 }
 .textareaWithLabelInside {
   height: auto !important;
   textarea {
-    border: none;
+      border: none;
+      padding: 0 0.75rem 0.75rem;
+  }
+}
+.validateErrorEmpty {
+  border: 1px solid $colorRed;
+  label {
+      &:after {
+          content: 'Trường này không được bỏ trống';
+          font-family: $fontText;
+          font-size: inherit;
+          color: $colorRed;
+          margin-left: 0.3rem;
+      }
+  }
+  &.errorCustomLocation {
+      border: none !important;
+      label {
+          &:after {
+              content: 'Vui lòng chọn chuyến đi và loại vé!' !important;
+          }
+      }
+  }
+}
+.validateErrorPhone {
+  border: 1px solid $colorRed;
+  label {
+  &:after {
+      content: 'Số điện thoại không hợp lệ';
+      font-family: $fontText;
+      font-size: inherit;
+      color: $colorRed;
+      margin-left: 0.3rem;
+  }
+  }
+}
+.validateErrorEmail {
+  border: 1px solid $colorRed;
+  label {
+      &:after {
+      content: 'Email không hợp lệ';
+      font-family: $fontText;
+      font-size: inherit;
+      color: $colorRed;
+      margin-left: 0.3rem;
+      }
+  }
+  }
+.validateSuccess {
+  border: 1px solid $colorSuccess;
+  label {
+  &:after {
+      content: '\f00c';
+      @include fontAwesome;
+      color: $colorSuccess;
+      font-size: 0.9rem;
+      margin-left: 0.3rem;
+  }
   }
 }
 .select2-container .select2-selection--single {

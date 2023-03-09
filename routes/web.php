@@ -70,8 +70,6 @@ Route::get('/admin', [LoginController::class, 'loginForm'])->name('admin.loginFo
 Route::post('/loginAdmin', [LoginController::class, 'loginAdmin'])->name('admin.loginAdmin');
 Route::get('/createUser', [LoginController::class, 'create'])->name('admin.createUser');
 
-
-
 Route::middleware(['auth'])->group(function () {
     /* product */
     Route::prefix('product')->group(function(){
@@ -79,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/view', [ProductController::class, 'view'])->name('admin.product.view');
         Route::post('/create', [ProductController::class, 'create'])->name('admin.product.create');
         Route::post('/update', [ProductController::class, 'update'])->name('admin.product.update');
+        Route::get('/delete', [ProductController::class, 'delete'])->name('admin.product.delete');
         Route::post('/uploadImageProductPriceAjax', [ProductController::class, 'uploadImageProductPriceAjax'])->name('admin.product.uploadImageProductPriceAjax');
     });
     /* category */
@@ -131,6 +130,7 @@ Route::middleware(['auth'])->group(function () {
     /* setting */
     Route::prefix('setting')->group(function(){
         Route::get('/view', [SettingController::class, 'view'])->name('admin.setting.view');
+        Route::get('/slider', [SettingController::class, 'slider'])->name('admin.setting.slider');
     });
     /* theme */
     Route::prefix('theme')->group(function(){

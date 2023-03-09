@@ -124,17 +124,17 @@
 </a>
     
 @endsection
-@push('scripts-custom')
+@push('scriptCustom')
     <script type="text/javascript">
         function deleteItem(id){
             if(confirm('{{ config("admin.alert.confirmRemove") }}')) {
                 $.ajax({
-                    url         : "",
+                    url         : "{{ route('admin.product.delete') }}",
                     type        : "GET",
                     dataType    : "html",
                     data        : { id : id }
                 }).done(function(data){
-                    if(data==true) $('#tourLocation-'+id).remove();
+                    if(data==true) $('#item_'+id).remove();
                 });
             }
         }

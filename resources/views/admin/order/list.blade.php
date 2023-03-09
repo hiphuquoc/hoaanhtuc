@@ -21,9 +21,6 @@
             <tbody>
                 @if(!empty($list)&&$list->isNotEmpty())
                     @foreach($list as $item)
-                    @php
-                        // dd($item->toArray());
-                    @endphp
                     <tr id="booking_425">
                         <td class="text-center">{{ $loop->index + 1 }}</td>
                         <td style="text-align:center;">
@@ -56,10 +53,6 @@
                                     <div class="productListBox_item">
                                         <div class="productListBox_item_image">
                                             @php
-                                                // dd($product->toArray());
-                                            @endphp
-                                            @php
-                                                // dd($product->infoPrice->files[0]->file_path);
                                                 $image = !empty($product->infoPrice->files[0]->file_path) ? Storage::url($product->infoPrice->files[0]->file_path) : config('image.default_square');
                                                 $title = $product->infoProduct->name ?? $product->infoProduct->seo->title ?? null;
                                             @endphp
@@ -71,7 +64,7 @@
                                                 {{ $title }}
                                             </div>
                                             <div class="productListBox_item_content_option">
-                                                {{ $product->infoPrice->name }} / {!! number_format($product->price).config('main.currency_unit') !!}
+                                                {{ $product->infoPrice->name ?? 'Không xác định' }} / {!! number_format($product->price).config('main.currency_unit') !!}
                                             </div>
                                         </div>
                                         <div class="productListBox_item_price">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\BuildInsertUpdateModel;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Helpers\Upload;
 use App\Http\Requests\ProductRequest;
 use App\Models\Seo;
@@ -230,6 +231,41 @@ class ProductController extends Controller {
         $brands             = Brand::all();
         $categories         = Category::all();
         return view('admin.product.list', compact('list', 'brands', 'categories', 'viewPerPage', 'params'));
+    }
+
+    public function delete(Request $request){
+        if(!empty($request->get('id'))){
+            try {
+                DB::beginTransaction();
+                $id         = $request->get('id');
+                $info       = Product::select('*')
+                                ->where('id', $id)
+                                ->with('seo', 'prices.files')
+                                ->first();
+                /* xóa ảnh đại diện sản phẩm trong thư mục */
+                $imageSmallPath     = Storage::path(config('admin.images.folderUpload').basename($info->seo->image_small));
+                if(file_exists($imageSmallPath)) @unlink($imageSmallPath);
+                $imagePath          = Storage::path(config('admin.images.folderUpload').basename($info->seo->image));
+                if(file_exists($imagePath)) @unlink($imagePath);
+                /* xóa ảnh của product_price */
+                foreach($info->prices as $price){
+                    foreach($price->files as $file){
+                        GalleryController::removeById($file->id);
+                    }
+                }
+                /* xóa bảng product_price */
+                $info->prices()->delete();
+                /* delete bảng seo của product_info */
+                $info->seo()->delete();
+                /* xóa product_info */
+                $info->delete();
+                DB::commit();
+                return true;
+            } catch (\Exception $exception){
+                DB::rollBack();
+                return false;
+            }
+        }
     }
 
     public static function uploadImageProductPriceAjax(Request $request){

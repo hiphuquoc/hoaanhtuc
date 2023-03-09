@@ -43,7 +43,7 @@ class HomeController extends Controller{
                                     })
                                     ->with('seo')
                                     ->get();
-        return view('main.home.index', compact('item', 'categories', 'newProducts', 'hotProducts', 'promotionProducts', 'blogs'));
+        return view('wallpaper.home.index', compact('item', 'categories', 'newProducts', 'hotProducts', 'promotionProducts', 'blogs'));
     }
 
     public static function category(){

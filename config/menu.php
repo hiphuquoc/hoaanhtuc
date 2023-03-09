@@ -85,6 +85,11 @@ return [
                     'name'  => '1. Giao diện',
                     'route' => 'admin.theme.list',
                     'icon'  => '<i data-feather=\'circle\'></i>'
+                ],
+                [
+                    'name'  => '2. Slider home',
+                    'route' => 'admin.setting.slider',
+                    'icon'  => '<i data-feather=\'circle\'></i>'
                 ]
             ]
         ],
