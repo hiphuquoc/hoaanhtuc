@@ -13,7 +13,7 @@ deployment:
     - /bin/cp -R * $DEPLOYPATH
     - rm $DEPLOYPATH/public/build/assets/style-main.css
 
-    - export DEPLOYPATH=/home/eqeqmgjz/public_html/dacsanphuquoc24.vn/
+    - export DEPLOYPATH=/home/eqeqmgjz/public_html/dacsanphuquoc24h.vn/
     - /bin/cp -R * $DEPLOYPATH
     - rm $DEPLOYPATH/public/build/assets/style-main.css
     
