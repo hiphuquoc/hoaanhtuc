@@ -13,7 +13,11 @@ deployment:
     # - /bin/cp -R * $DEPLOYPATH
     # - rm $DEPLOYPATH/public/build/assets/style-main.css
 
-    - export DEPLOYPATH=/home/eqeqmgjz/public_html/dacsanphuquoc24h.vn/
+    # - export DEPLOYPATH=/home/eqeqmgjz/public_html/dacsanphuquoc24h.vn/
+    # - /bin/cp -R * $DEPLOYPATH
+    # - rm $DEPLOYPATH/public/build/assets/style-main.css
+
+    - export DEPLOYPATH=/home/bettacom/public_html/
     - /bin/cp -R * $DEPLOYPATH
     - rm $DEPLOYPATH/public/build/assets/style-main.css
     
