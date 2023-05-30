@@ -5,9 +5,9 @@ deployment:
     # - /bin/cp -R * $DEPLOYPATH
     # - rm $DEPLOYPATH/public/build/assets/style-main.css
 
-    # - export DEPLOYPATH=/home/eqeqmgjz/public_html/thachtraquan.com/
-    # - /bin/cp -R * $DEPLOYPATH
-    # - rm $DEPLOYPATH/public/build/assets/style-main.css
+    - export DEPLOYPATH=/home/eqeqmgjz/public_html/thachtraquan.com/
+    - /bin/cp -R * $DEPLOYPATH
+    - rm $DEPLOYPATH/public/build/assets/style-main.css
 
     # - export DEPLOYPATH=/home/eqeqmgjz/public_html/trumvape.com/
     # - /bin/cp -R * $DEPLOYPATH
@@ -17,9 +17,9 @@ deployment:
     # - /bin/cp -R * $DEPLOYPATH
     # - rm $DEPLOYPATH/public/build/assets/style-main.css
 
-    - export DEPLOYPATH=/home/bettacom/public_html/
-    - /bin/cp -R * $DEPLOYPATH
-    - rm $DEPLOYPATH/public/build/assets/style-main.css
+    # - export DEPLOYPATH=/home/bettacom/public_html/
+    # - /bin/cp -R * $DEPLOYPATH
+    # - rm $DEPLOYPATH/public/build/assets/style-main.css
     
     # - /bin/cp /app $DEPLOYPATH
     # - /bin/cp /bootstrap $DEPLOYPATH

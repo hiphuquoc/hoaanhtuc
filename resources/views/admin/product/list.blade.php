@@ -34,7 +34,7 @@
                                         @php
                                             $xhtmlCategory          = null;
                                             foreach($item->categories as $category){
-                                                $xhtmlCategory  .= '<div class="badge bg-primary" style="margin-left:0.25rem;">'.$category->infoCategory->name.'</div>';
+                                                if(!empty($category->infoCategory->name)) $xhtmlCategory  .= '<div class="badge bg-primary" style="margin-left:0.25rem;">'.$category->infoCategory->name.'</div>';
                                             }
                                         @endphp 
                                         <strong>Danh mục:</strong> {!! $xhtmlCategory !!}
